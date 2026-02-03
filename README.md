@@ -1,24 +1,13 @@
-# README
+# おくすリングとは
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+おくすリングは、自分や家族の服薬の飲み忘れを防ぐことに特化した、シンプルなリマインダーサービスです。
 
-Things you may want to cover:
+服用するお薬やサプリメントを決まった時間に飲み忘れてしまう人や、子ども・ペットなど家族の服薬管理をしたい人を対象にしています。
 
-* Ruby version
+服薬時間になると通知が届き、ワンタップで「飲んだよ」を記録できます。
+自分自身の予定だけでなく、家族の服薬スケジュールもまとめて管理でき、「ちゃんと飲めたか」を家族同士で確認できるのが特徴です。
 
-* System dependencies
+多機能で複雑になりがちな既存の服薬管理アプリとは異なり、
+「お薬情報の詳細管理」や「診療予約」などの機能はあえて省き、飲み忘れ防止に必要な機能だけに絞っています。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+服用チェックがされなかった場合には再通知や家族への通知を行い、周囲からの声かけを促すことで、家庭全体で支え合える仕組みを目指しています。
