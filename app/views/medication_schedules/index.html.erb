@@ -2,22 +2,20 @@
 
 <h1>今日の服薬予定</h1>
 
-<section>
-  <h2>自分</h2>
-  <ul>
-    <li>08:00 朝の薬</li>
-    <li>20:00 夜の薬</li>
-  </ul>
-</section>
+<% @today_schedules.each do |person| %>
+  <section>
+    <h2><%= person[:name] %></h2>
 
-<section>
-  <h2>line_user_id</h2>
-  <p>今日の服薬予定はありません</p>
-</section>
-
-<section>
-  <h2>子ども</h2>
-  <ul>
-    <li>07:30 朝の薬</li>
-  </ul>
-</section>
+    <% if person[:schedules].any? %>
+      <ul>
+        <% person[:schedules].each do |schedule| %>
+          <li>
+            <%= schedule[:time] %> <%= schedule[:name] %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>今日の服薬予定はありません</p>
+    <% end %>
+  </section>
+<% end %>
