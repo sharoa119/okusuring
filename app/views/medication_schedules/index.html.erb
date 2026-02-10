@@ -1,16 +1,17 @@
 <!-- app/views/medication_schedules/index.html.erb -->
 
-<h1>今日の服薬予定</h1>
+<h1>今日のお薬の予定</h1>
 
-<% @today_schedules.each do |person| %>
+<% @schedules.each do |schedule| %>
   <section>
-    <h2><%= person[:name] %></h2>
+    <h2><%= schedule.target_name %></h2>
+    <h3><%= schedule.title %></h3>
 
-    <% if person[:schedules].any? %>
+    <% if schedule.medication_times.any? %>
       <ul>
-        <% person[:schedules].each do |schedule| %>
+        <% schedule.medication_times.each do |time| %>
           <li>
-            <%= schedule[:time] %> <%= schedule[:name] %>
+            <%= time.time.strftime("%H:%M") %>
           </li>
         <% end %>
       </ul>

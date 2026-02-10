@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_06_034151) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_10_045720) do
   create_table "medication_records", force: :cascade do |t|
     t.integer "medication_time_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "taken_date", null: false
     t.index ["medication_time_id"], name: "index_medication_records_on_medication_time_id"
   end
 
@@ -22,6 +23,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_06_034151) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title", null: false
+    t.string "target_name", null: false
     t.index ["user_id"], name: "index_medication_schedules_on_user_id"
   end
 
@@ -29,6 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_06_034151) do
     t.integer "medication_schedule_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "time", null: false
     t.index ["medication_schedule_id"], name: "index_medication_times_on_medication_schedule_id"
   end
 

@@ -1,9 +1,25 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# frozen_string_literal: true
+
+user = User.find_or_create_by!(line_user_id: 'test_user_1')
+
+self_schedule = user.medication_schedules.find_or_create_by!(
+  title: '朝と夜の薬',
+  target_name: '自分'
+)
+
+child_schedule = user.medication_schedules.find_or_create_by!(
+  title: '朝の薬',
+  target_name: '子ども'
+)
+
+self_schedule.medication_times.find_or_create_by!(
+  time: Time.zone.parse('08:00')
+)
+
+self_schedule.medication_times.find_or_create_by!(
+  time: Time.zone.parse('20:00')
+)
+
+child_schedule.medication_times.find_or_create_by!(
+  time: Time.zone.parse('07:30')
+)
