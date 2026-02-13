@@ -1,0 +1,21 @@
+<!-- app/views/medication_schedules/new.html.erb -->
+
+<h1>お薬の予定を登録</h1>
+
+<%= form_with model: @medication_schedule do |f| %>
+
+    <div>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :target_name, "誰が飲む？" %><br>
+    <%= f.text_field :target_name %>
+  </div>
+
+  <div>
+    <%= f.submit "登録する" %>
+  </div>
+
+<% end %>

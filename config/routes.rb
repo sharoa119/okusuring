@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :medication_schedules, only: [:index]
+  resources :medication_schedules, only: [:index, :new, :create]
 end
