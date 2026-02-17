@@ -6,6 +6,7 @@ class MedicationSchedulesController < ApplicationController
 
   def new
     @medication_schedule = MedicationSchedule.new
+    @medication_schedule.medication_times.build
   end
 
   def create
@@ -23,6 +24,6 @@ class MedicationSchedulesController < ApplicationController
 
   def medication_schedule_params
     params.require(:medication_schedule)
-          .permit(:title, :target_name)
+          .permit(:title, :target_name, medication_times_attributes: [:time])
   end
 end
