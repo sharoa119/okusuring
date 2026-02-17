@@ -5,18 +5,16 @@
 <%= form_with model: @medication_schedule, data: { controller: "nested-form" } do |f| %>
 
   <h3>▪️タイトル</h3>
-    <div>
+  <div>
     <%= f.text_field :title %>
   </div>
 
   <h3>▪️飲む人</h3>
-
   <div>
     <%= f.text_field :target_name %>
   </div>
 
   <h3>▪️飲む時間</h3>
-
   <div data-nested-form-target="container">
     <%= f.fields_for :medication_times do |t| %>
       <div class="time-field">
@@ -40,6 +38,11 @@
       </div>
     <% end %>
   </template>
+
+  <h3>▪️メモ</h3>
+  <div>
+    <%= f.text_area :memo, placeholder: "例：オレンジジュースと一緒に飲ませる" %>
+  </div>
 
   <div>
     <%= f.submit "登録する" %>
