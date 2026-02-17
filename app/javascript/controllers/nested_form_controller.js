@@ -8,4 +8,16 @@ export default class extends Controller {
     const content = this.templateTarget.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())
     this.containerTarget.insertAdjacentHTML("beforeend", content)
   }
+
+  remove(e) {
+    const wrapper = e.target.closest(".time-field")
+    const destroyField = wrapper.querySelector("input[name*='_destroy']")
+
+    if (destroyField) {
+      destroyField.value = "1"
+      wrapper.style.display = "none"
+    } else {
+      wrapper.remove()
+    }
+  }
 }

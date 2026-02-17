@@ -21,6 +21,8 @@
     <%= f.fields_for :medication_times do |t| %>
       <div class="time-field">
         <%= t.time_field :time %>
+        <button type="button" data-action="nested-form#remove">削除</button>
+        <%= t.hidden_field :_destroy %>
       </div>
     <% end %>
   </div>
@@ -33,6 +35,8 @@
     <%= f.fields_for :medication_times, MedicationTime.new, child_index: "NEW_RECORD" do |t| %>
       <div class="time-field">
         <%= t.time_field :time %>
+        <button type="button" data-action="nested-form#remove">削除</button>
+        <%= t.hidden_field :_destroy %>
       </div>
     <% end %>
   </template>

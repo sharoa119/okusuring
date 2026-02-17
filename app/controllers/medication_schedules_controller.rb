@@ -24,6 +24,6 @@ class MedicationSchedulesController < ApplicationController
 
   def medication_schedule_params
     params.require(:medication_schedule)
-          .permit(:title, :target_name, medication_times_attributes: [:time])
+          .permit(:title, :target_name, medication_times_attributes: [:id, :time, :_destroy])
   end
 end
