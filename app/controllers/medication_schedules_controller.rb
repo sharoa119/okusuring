@@ -1,11 +1,4 @@
 class MedicationSchedulesController < ApplicationController
-  def index
-    user = User.find_by(line_user_id: 'test_user_1')
-    @today_times = user.medication_times
-                     .includes(:medication_schedule)
-                     .order(:time)
-  end
-
   def new
     @medication_schedule = MedicationSchedule.new
     @medication_schedule.medication_times.build
@@ -16,7 +9,7 @@ class MedicationSchedulesController < ApplicationController
     @medication_schedule = user.medication_schedules.build(medication_schedule_params)
 
     if @medication_schedule.save
-      redirect_to medication_schedules_path, notice: '登録しました'
+      redirect_to root_path, notice: '登録しました'
     else
       render :new, status: :unprocessable_entity
     end
