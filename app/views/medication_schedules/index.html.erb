@@ -2,21 +2,20 @@
 
 <h1>今日のお薬の予定</h1>
 
-<% if @schedules.any? %>
-  <% @schedules.each do |schedule| %>
-    <section>
-      <h2><%= schedule.target_name %></h2>
-      <h3><%= schedule.title %></h3>
+<h2>自分の予定</h2>
 
-      <ul>
-        <% schedule.medication_times.each do |time| %>
-          <li>
-            <%= time.time.strftime("%H:%M") %>
-          </li>
-        <% end %>
-      </ul>
-    </section>
-  <% end %>
+<% if @today_times.any? %>
+  <ul>
+    <% @today_times.each do |time| %>
+      <li>
+        <%= link_to time.medication_schedule.title,
+                    medication_schedule_path(time.medication_schedule) %>
+        （<%= time.time.strftime("%H:%M") %>）
+
+        <button>飲んだよ</button>
+      </li>
+    <% end %>
+  </ul>
 <% else %>
   <p>今日の服薬予定はありません</p>
 <% end %>
@@ -24,5 +23,5 @@
 <hr>
 
 <p>
-  <%= link_to "＋ 新しい服薬スケジュールを登録（準備中）", "#" %>
+  ＋ <%= link_to "新しい服薬スケジュールを登録", new_medication_schedule_path %>
 </p>
