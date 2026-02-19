@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_17_070558) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_19_081849) do
   create_table "medication_records", force: :cascade do |t|
     t.integer "medication_time_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "taken_date", null: false
+    t.index ["medication_time_id", "taken_date"], name: "index_medication_records_on_time_and_date", unique: true
     t.index ["medication_time_id"], name: "index_medication_records_on_medication_time_id"
   end
 
@@ -41,6 +42,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_17_070558) do
     t.string "line_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["line_user_id"], name: "index_users_on_line_user_id", unique: true
   end
 
