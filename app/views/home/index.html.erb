@@ -12,7 +12,12 @@
                     medication_schedule_path(time.medication_schedule) %>
         （<%= time.time.strftime("%H:%M") %>）
 
-        <button>飲んだよ</button>
+        <% if time.taken_today? %>
+          <span class="done">済</span>
+        <% else %>
+          <%= button_to "飲んだよ",
+            medication_time_medication_records_path(time) %>
+        <% end %>
       </li>
     <% end %>
   </ul>

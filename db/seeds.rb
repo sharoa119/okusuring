@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-user = User.find_or_create_by!(line_user_id: 'test_user_1')
+user = User.find_or_create_by!(line_user_id: 'test_user_1') do |u|
+  u.name = 'テストユーザー'
+end
 
 self_schedule = user.medication_schedules.find_or_create_by!(
   title: '朝と夜の薬',
