@@ -5,8 +5,7 @@ class MedicationSchedulesController < ApplicationController
   end
 
   def create
-    user = User.find_by(line_user_id: 'test_user_1')
-    @medication_schedule = user.medication_schedules.build(medication_schedule_params)
+    @medication_schedule = current_user.medication_schedules.build(medication_schedule_params)
 
     if @medication_schedule.save
       redirect_to root_path, notice: '登録しました'
