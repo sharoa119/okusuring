@@ -28,6 +28,7 @@ gem "jbuilder"
 
 gem "omniauth"
 gem "omniauth-line"
+gem "omniauth-rails_csrf_protection"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
