@@ -43,3 +43,29 @@
  .med-action {
    margin-left: 8px;
  }
+
+ .top-header {
+   margin-bottom: 20px;
+   padding-bottom: 12px;
+   border-bottom: 1px solid #ddd;
+ }
+
+ .header-row {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+
+ .site-title {
+   font-size: 24px;
+   margin: 0;
+ }
+
+ .welcome-message {
+   margin-top: 8px;
+   color: #555;
+ }
+
+ .logout-btn {
+   font-size: 14px;
+ }
