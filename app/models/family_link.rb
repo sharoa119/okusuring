@@ -1,0 +1,2 @@
+class FamilyLink < ApplicationRecord
+end
