@@ -1,0 +1,25 @@
+<!-- app/views/family_links/index.html.erb -->
+
+<h1>家族共有設定</h1>
+
+<h2>家族一覧</h2>
+<p>まだ共有している家族はいません</p>
+
+<hr>
+
+<h2>家族を招待</h2>
+
+<p>
+LINEでログインした家族と服薬スケジュールを共有できます。<br>
+以下のURLを招待したい家族に送ってください。
+</p>
+
+<p>
+<%= invite_url(@family_link.token) %>
+</p>
+
+<button>招待リンクをコピー</button>
+
+<p>
+<%= link_to "招待ページを確認する", invite_path(@family_link.token) %>
+</p>

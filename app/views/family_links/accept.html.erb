@@ -1,0 +1,27 @@
+<!-- app/views/family_links/accept.html.erb -->
+
+<div class="invite-page">
+  <h1>家族から招待が届いています</h1>
+
+  <p>
+  <%= @owner.name %> さんが、<br>
+  あなたを「おくすリング」に招待しています。
+  </p>
+
+  <p>
+  <%= link_to "【おくすリングとは】", "#" %>
+  </p>
+
+  <p>
+  まずはLINEでログインをお願いします。
+  </p>
+
+  <%= button_to "LINEでログイン",
+      "/auth/line",
+      method: :post,
+      data: { turbo: false } %>
+
+  <p class="invite-note">
+  ※ログイン後、このページに自動的に戻ってきます。
+  </p>
+</div>

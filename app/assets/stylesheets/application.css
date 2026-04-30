@@ -69,3 +69,16 @@
  .logout-btn {
    font-size: 14px;
  }
+
+.invite-page {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 24px;
+  text-align: center;
+}
+
+.invite-note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}

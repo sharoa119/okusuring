@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   resources :medication_times, only: [] do
     resources :medication_records, only: :create
   end
+  resources :family_links, only: [:index, :create]
+
+  get "/invite/:token", to: "family_links#accept", as: :invite
 end
