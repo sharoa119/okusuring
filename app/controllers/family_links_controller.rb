@@ -11,5 +11,7 @@ class FamilyLinksController < ApplicationController
   def accept
     @family_link = FamilyLink.find_by!(token: params[:token])
     @owner = @family_link.owner_user
+
+    render :accept_l2
   end
 end
