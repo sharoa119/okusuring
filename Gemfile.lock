@@ -140,6 +140,9 @@ GEM
     json (2.19.4)
     jwt (3.1.2)
       base64
+    line-bot-api (2.7.0)
+      base64 (~> 0.2)
+      multipart-post (~> 2.4)
     logger (1.7.0)
     loofah (2.25.0)
       crass (~> 1.0.2)
@@ -158,6 +161,7 @@ GEM
     msgpack (1.8.0)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
+    multipart-post (2.4.1)
     mutex_m (0.3.0)
     net-http (0.9.1)
       uri (>= 0.11.1)
@@ -323,6 +327,7 @@ DEPENDENCIES
   dotenv-rails
   importmap-rails
   jbuilder
+  line-bot-api
   omniauth
   omniauth-line
   omniauth-rails_csrf_protection
