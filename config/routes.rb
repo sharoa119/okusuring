@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   end
   resources :family_links, only: [:index, :create]
 
+  # LINE関連
   get "/invite/:token", to: "family_links#accept", as: :invite
+  post "/webhook", to: "line_bot#callback"
 end
