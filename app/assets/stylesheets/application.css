@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+ /* 行の余白 */
+ .med-item {
+   padding: 8px 0;
+   border-bottom: 1px solid #eee;
+ }
+
+ /* 時間を主役に */
+ .med-time {
+   font-weight: bold;
+   margin-right: 8px;
+ }
+
+ /* 対象（誰が飲むか）を少し控えめに */
+ .med-target {
+   color: #666;
+   margin-right: 8px;
+ }
+
+ /* 済の強調 */
+ .done {
+   color: #2e7d32;
+   /* 緑 */
+   font-weight: bold;
+   margin-left: 8px;
+ }
+
+ /* ボタンに少し余白 */
+ .med-action {
+   margin-left: 8px;
+ }

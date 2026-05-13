@@ -4,19 +4,26 @@
 
 <h2>自分の予定</h2>
 
-<% if @today_times.any? %>
+<% if @my_times.any? %>
   <ul>
-    <% @today_times.each do |time| %>
-      <li>
+    <% @my_times.each do |time| %>
+      <li class="med-item">
+        <span class="med-time">
+          <%= time.time.strftime("%H:%M") %>
+        </span>
+        <span class="med-target">
+          <%= time.medication_schedule.target_name %>
+        </span>
         <%= link_to time.medication_schedule.title,
-                    medication_schedule_path(time.medication_schedule) %>
-        （<%= time.time.strftime("%H:%M") %>）
-
+            medication_schedule_path(time.medication_schedule) %>
+          
         <% if time.taken_today? %>
-          <span class="done">済</span>
+          <span class="done">✔ 済</span>
         <% else %>
-          <%= button_to "飲んだよ",
-            medication_time_medication_records_path(time) %>
+          <span class="med-action">
+            <%= button_to "飲んだよ",
+                  medication_time_medication_records_path(time) %>
+          </span>
         <% end %>
       </li>
     <% end %>
@@ -25,9 +32,26 @@
   <p>今日の服薬予定はありません</p>
 <% end %>
 
-<hr>
-
 <p>
   ＋ <%= link_to "新しい服薬スケジュールを登録", new_medication_schedule_path %>
 </p>
 
+<hr>
+
+<h2>家族の予定</h2>
+
+<% if @family_times.any? %>
+  <ul>
+    <% @family_times.each do |time| %>
+      <li>
+        <%= link_to time.medication_schedule.title,
+                    medication_schedule_path(time.medication_schedule) %>
+        <%= time.medication_schedule.target_name %>
+        <%= time.time.strftime("%H:%M") %>
+        <span class="readonly">閲覧のみ</span>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>家族の予定はありません</p>
+<% end %>
