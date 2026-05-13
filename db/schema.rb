@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_19_081849) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_13_023343) do
+  create_table "family_links", force: :cascade do |t|
+    t.integer "owner_user_id", null: false
+    t.integer "member_user_id"
+    t.string "status", default: "pending", null: false
+    t.string "token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_user_id"], name: "index_family_links_on_member_user_id"
+    t.index ["owner_user_id", "member_user_id"], name: "index_family_links_on_owner_user_id_and_member_user_id", unique: true
+    t.index ["owner_user_id"], name: "index_family_links_on_owner_user_id"
+    t.index ["token"], name: "index_family_links_on_token", unique: true
+  end
+
   create_table "medication_records", force: :cascade do |t|
     t.integer "medication_time_id", null: false
     t.datetime "created_at", null: false
@@ -43,6 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_19_081849) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.boolean "line_bot_connected", default: false, null: false
     t.index ["line_user_id"], name: "index_users_on_line_user_id", unique: true
   end
 

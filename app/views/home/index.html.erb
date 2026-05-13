@@ -1,57 +1,88 @@
 <!-- app/views/home/index.html.erb -->
 
-<h1>今日のお薬の予定</h1>
+<% if current_user %>
 
-<h2>自分の予定</h2>
+  <header class="top-header">
+    <div class="header-row">
+      <h1 class="site-title">おくすリング</h1>
 
-<% if @my_times.any? %>
-  <ul>
-    <% @my_times.each do |time| %>
-      <li class="med-item">
-        <span class="med-time">
-          <%= time.time.strftime("%H:%M") %>
-        </span>
-        <span class="med-target">
-          <%= time.medication_schedule.target_name %>
-        </span>
-        <%= link_to time.medication_schedule.title,
-            medication_schedule_path(time.medication_schedule) %>
-          
-        <% if time.taken_today? %>
-          <span class="done">✔ 済</span>
-        <% else %>
-          <span class="med-action">
-            <%= button_to "飲んだよ",
-                  medication_time_medication_records_path(time) %>
+      <%= button_to "ログアウト",
+            logout_path,
+            method: :delete,
+            class: "logout-btn" %>
+      </div>
+
+      <p class="welcome-message">
+        こんにちは、<%= current_user.name %> さん
+      </p>
+    </header>
+
+  <h1>今日のお薬の予定</h1>
+
+  <h2>自分の予定</h2>
+
+  <% if @my_times.any? %>
+    <ul>
+      <% @my_times.each do |time| %>
+        <li class="med-item">
+          <span class="med-time">
+            <%= time.time.strftime("%H:%M") %>
           </span>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+          <span class="med-target">
+            <%= time.medication_schedule.target_name %>
+          </span>
+          <%= link_to time.medication_schedule.title,
+              medication_schedule_path(time.medication_schedule) %>
+            
+          <% if time.taken_today? %>
+            <span class="done">✔ 済</span>
+          <% else %>
+            <span class="med-action">
+              <%= button_to "飲んだよ",
+                    medication_time_medication_records_path(time) %>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>今日の服薬予定はありません</p>
+  <% end %>
+
+  <p>
+    ＋ <%= link_to "新しい服薬スケジュールを登録", new_medication_schedule_path %>
+  </p>
+
+  <hr>
+
+  <h2>家族の予定</h2>
+
+  <% if @family_times.any? %>
+    <ul>
+      <% @family_times.each do |time| %>
+        <li>
+          <%= link_to time.medication_schedule.title,
+                      medication_schedule_path(time.medication_schedule) %>
+          <%= time.medication_schedule.target_name %>
+          <%= time.time.strftime("%H:%M") %>
+          <span class="readonly">閲覧のみ</span>
+        </li>
+      <% end %>
+    </ul>
+  <% elsif @has_family_links %>
+    <p>今日のお薬の予定はありません</p>
+  <% else %>
+    <p>まだ家族と共有していません</p>
+
+    <%= link_to "＋ 家族を招待する", family_links_path %>
+  <% end %>
 <% else %>
-  <p>今日の服薬予定はありません</p>
-<% end %>
+  <h1>おくすリング</h1>
 
-<p>
-  ＋ <%= link_to "新しい服薬スケジュールを登録", new_medication_schedule_path %>
-</p>
+  <p>このサービスは、服薬忘れを防ぐ家族共有サービスです</p>
 
-<hr>
-
-<h2>家族の予定</h2>
-
-<% if @family_times.any? %>
-  <ul>
-    <% @family_times.each do |time| %>
-      <li>
-        <%= link_to time.medication_schedule.title,
-                    medication_schedule_path(time.medication_schedule) %>
-        <%= time.medication_schedule.target_name %>
-        <%= time.time.strftime("%H:%M") %>
-        <span class="readonly">閲覧のみ</span>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>家族の予定はありません</p>
+  <%= button_to "LINE公式アカウントでログイン",
+      "/auth/line",
+      method: :post,
+      data: { turbo: false } %>
 <% end %>
