@@ -14,9 +14,20 @@ class FamilyLinksController < ApplicationController
 
     if current_user.nil?
       render :accept
-    elsif true
+
+    elsif @family_link.owner_user == current_user
+      redirect_to root_path,
+                  alert: "自分自身は招待できません"
+
+    elsif true # BOT未追加（未実装
       render :accept_l2
+
     else
+      @family_link.update!(
+        member_user: current_user,
+        status: "accepted"
+      )
+
       render :accept_l3
     end
   end
