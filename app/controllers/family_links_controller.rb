@@ -12,6 +12,12 @@ class FamilyLinksController < ApplicationController
     @family_link = FamilyLink.find_by!(token: params[:token])
     @owner = @family_link.owner_user
 
-    render :accept_l3
+    if current_user.nil?
+      render :accept
+    elsif true
+      render :accept_l2
+    else
+      render :accept_l3
+    end
   end
 end
