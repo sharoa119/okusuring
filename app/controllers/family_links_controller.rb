@@ -19,7 +19,7 @@ class FamilyLinksController < ApplicationController
       redirect_to root_path,
                   alert: "自分自身は招待できません"
 
-    elsif true # BOT未追加（未実装
+    elsif !current_user.line_bot_connected?
       render :accept_l2
 
     else
