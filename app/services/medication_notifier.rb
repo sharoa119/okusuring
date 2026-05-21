@@ -13,7 +13,7 @@ class MedicationNotifier
 
       LineBotClient.push_text(
         user.line_user_id,
-        "お薬の時間です！"
+        "💊 #{medication_time.medication_schedule.title} の時間です！"
       )
     end
   end
