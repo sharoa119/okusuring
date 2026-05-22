@@ -7,8 +7,10 @@ class MedicationNotifier
     medication_times = MedicationTime.where(time: current_time)
 
     medication_times.each do |medication_time|
-      user = medication_time.medication_schedule.user
+      already_taken = medication_time.medication_records.exists?(taken_date: Date.current)
+      next if already_taken
 
+      user = medication_time.medication_schedule.user
       next unless user.line_bot_connected?
 
       LineBotClient.push_text(
