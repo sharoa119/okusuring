@@ -3,8 +3,9 @@
 class MedicationNotifier
   def self.notify_now
     current_time = Time.current.change(sec: 0)
+    reminder_time = 5.minutes.ago.change(sec: 0)
 
-    medication_times = MedicationTime.where(time: current_time)
+    medication_times = MedicationTime.where(time: [current_time, reminder_time])
 
     medication_times.each do |medication_time|
       already_taken = medication_time.medication_records.exists?(taken_date: Date.current)
