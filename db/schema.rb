@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_05_22_022936) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_27_032111) do
   create_table "family_links", force: :cascade do |t|
     t.integer "owner_user_id", null: false
     t.integer "member_user_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_22_022936) do
     t.string "target_name", null: false
     t.text "memo"
     t.integer "reminder_interval", default: 5, null: false
+    t.boolean "reminder_enabled", default: true, null: false
     t.index ["user_id"], name: "index_medication_schedules_on_user_id"
   end
 

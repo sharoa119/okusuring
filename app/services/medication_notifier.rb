@@ -15,6 +15,14 @@ class MedicationNotifier
       already_taken = medication_time.medication_records.exists?(taken_date: Date.current)
       next if already_taken
 
+      is_initial_notification =
+        medication_time.time.change(sec: 0) == current_time
+
+      is_reminder_notification =
+        medication_time.time.change(sec: 0) == reminder_time
+
+      next if is_reminder_notification && !medication_schedule.reminder_enabled?
+
       user = medication_time.medication_schedule.user
       next unless user.line_bot_connected?
 
