@@ -39,6 +39,16 @@
     <% end %>
   </template>
 
+  <h3>▪️再通知</h3>
+    <div>
+      <%= f.select :reminder_interval,
+        [
+          ["5分後", 5],
+          ["10分後", 10],
+          ["15分後", 15]
+        ]
+      %>
+    </div>
   <h3>▪️メモ</h3>
   <div>
     <%= f.text_area :memo, placeholder: "例：オレンジジュースと一緒に飲ませる" %>

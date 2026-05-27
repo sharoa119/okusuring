@@ -18,6 +18,6 @@ class MedicationSchedulesController < ApplicationController
 
   def medication_schedule_params
     params.require(:medication_schedule)
-          .permit(:title, :target_name, :memo, medication_times_attributes: [:id, :time, :_destroy])
+          .permit(:title, :target_name, :memo, :reminder_interval, medication_times_attributes: [:id, :time, :_destroy])
   end
 end
