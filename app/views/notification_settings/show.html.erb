@@ -1,0 +1,28 @@
+<!-- app/views/notification_settings/show.html.erb -->
+
+<h1>通知設定</h1>
+
+<h2>BOT連携</h2>
+
+<% if current_user.line_bot_connected? %>
+  <p>✅ 【おくすリングBOT】と友達済みです。通知を受け取れます。</p>
+<% else %>
+  <p>⚠️ まだ【おくすリングBOT】と友達になっていません。</p>
+
+  <%= link_to "【おくすリングBOT】を追加する", "#" %>
+<% end %>
+
+<h2>再通知</h2>
+
+<p>
+  再通知：
+  ON / OFF
+</p>
+
+<p>再通知までの時間</p>
+
+<ul>
+  <li>◉ 5分後</li>
+  <li>○ 10分後</li>
+  <li>○ 15分後</li>
+</ul>

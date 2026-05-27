@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notification_settings/show'
   get 'medication_records/create'
   get "up" => "rails/health#show", as: :rails_health_check
 
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
     resources :medication_records, only: :create
   end
   resources :family_links, only: [:index, :create]
+
+  get "notification_settings", to: "notification_settings#show"
 
   # LINE関連
   get "/invite/:token", to: "family_links#accept", as: :invite

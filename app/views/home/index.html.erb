@@ -6,10 +6,25 @@
     <div class="header-row">
       <h1 class="site-title">おくすリング</h1>
 
-      <%= button_to "ログアウト",
-            logout_path,
-            method: :delete,
-            class: "logout-btn" %>
+        <nav class="hamburger-menu">
+          <details>
+            <summary>☰</summary>
+
+            <ul>
+              <li><%= link_to "家族共有設定", family_links_path %></li>
+              <li><%= link_to "通知設定", notification_settings_path %></li>
+              <li><%= link_to "このサービスについて", "#" %></li>
+              <li><%= link_to "利用規約", "#" %></li>
+              <li><%= link_to "プライバシーポリシー", "#" %></li>
+              <li>
+                <%= button_to "ログアウト",
+                      logout_path,
+                      method: :delete,
+                      class: "logout-btn" %>
+              </li>
+            </ul>
+          </details>
+        </nav>
       </div>
 
       <p class="welcome-message">
