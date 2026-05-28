@@ -1,0 +1,65 @@
+<!-- app/views/medication_schedules/_form.html.erb -->
+
+<%= form_with model: @medication_schedule, data: { controller: "nested-form" } do |f| %>
+
+  <h3>▪️タイトル</h3>
+  <div>
+    <%= f.text_field :title %>
+  </div>
+
+  <h3>▪️飲む人</h3>
+  <div>
+    <%= f.text_field :target_name %>
+  </div>
+
+  <h3>▪️飲む時間</h3>
+  <div data-nested-form-target="container">
+    <%= f.fields_for :medication_times do |t| %>
+      <div class="time-field">
+        <%= t.time_field :time %>
+        <button type="button" data-action="nested-form#remove">削除</button>
+        <%= t.hidden_field :_destroy %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- 追加ボタン -->
+  <button type="button" data-action="nested-form#add">＋時間を追加</button>
+
+  <!-- テンプレート（非表示） -->
+  <template data-nested-form-target="template">
+    <%= f.fields_for :medication_times, MedicationTime.new, child_index: "NEW_RECORD" do |t| %>
+      <div class="time-field">
+        <%= t.time_field :time %>
+        <button type="button" data-action="nested-form#remove">削除</button>
+        <%= t.hidden_field :_destroy %>
+      </div>
+    <% end %>
+  </template>
+
+  <h3>▪️再通知</h3>
+
+    <div>
+      <%= f.check_box :reminder_enabled %>
+      <%= f.label :reminder_enabled, "再通知する" %>
+    </div>
+
+    <div>
+      <%= f.select :reminder_interval,
+        [
+          ["5分後", 5],
+          ["10分後", 10],
+          ["15分後", 15]
+        ]
+      %>
+    </div>
+  <h3>▪️メモ</h3>
+  <div>
+    <%= f.text_area :memo, placeholder: "例：オレンジジュースと一緒に飲ませる" %>
+  </div>
+
+  <div>
+    <%= f.submit medication_schedule.persisted? ? "更新する" : "登録する" %>
+  </div>
+
+<% end %>

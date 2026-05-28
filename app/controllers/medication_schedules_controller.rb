@@ -14,10 +14,24 @@ class MedicationSchedulesController < ApplicationController
     end
   end
 
+  def edit
+    @medication_schedule = current_user.medication_schedules.find(params[:id])
+  end
+
+  def update
+    @medication_schedule = current_user.medication_schedules.find(params[:id])
+
+    if @medication_schedule.update(medication_schedule_params)
+      redirect_to root_path, notice: "更新しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def medication_schedule_params
     params.require(:medication_schedule)
-          .permit(:title, :target_name, :memo, :reminder_interval, medication_times_attributes: [:id, :time, :_destroy])
+          .permit(:title, :target_name, :memo, :reminder_interval, :reminder_enabled, medication_times_attributes: [:id, :time, :_destroy])
   end
 end
