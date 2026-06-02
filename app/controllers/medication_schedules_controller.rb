@@ -14,6 +14,11 @@ class MedicationSchedulesController < ApplicationController
     end
   end
 
+  def show
+    @medication_schedule =
+      current_user.medication_schedules.find(params[:id])
+  end
+
   def edit
     @medication_schedule = current_user.medication_schedules.find(params[:id])
   end
@@ -26,6 +31,15 @@ class MedicationSchedulesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @medication_schedule =
+      current_user.medication_schedules.find(params[:id])
+
+    @medication_schedule.destroy
+
+    redirect_to root_path, notice: "削除しました"
   end
 
   private
