@@ -28,10 +28,12 @@
   <%= @medication_schedule.memo.presence || "メモはありません" %>
 </p>
 
-<%= link_to "編集",
-    edit_medication_schedule_path(@medication_schedule) %>
-
-<%= button_to "この予定を削除",
-      medication_schedule_path(@medication_schedule),
-      method: :delete,
-      data: { turbo_confirm: "本当に削除しますか？" } %>
+<% if @readonly %>
+  <p>閲覧専用です</p>
+<% else %>
+  <%= link_to "編集", edit_medication_schedule_path(@medication_schedule) %>
+  <%= button_to "この予定を削除",
+        medication_schedule_path(@medication_schedule),
+        method: :delete,
+        data: { turbo_confirm: "本当に削除しますか？" } %>
+<% end %>
