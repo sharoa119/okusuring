@@ -33,6 +33,21 @@ class MedicationNotifier
       end
 
       LineBotClient.push_text(user.line_user_id, message)
+      if reminder_notification
+        family_links = FamilyLink.where(owner_user: user, status: "accepted")
+
+        family_links.each do |link|
+          family_user = link.member_user
+          next unless family_user&.line_bot_connected?
+
+          Rails.logger.info("家族通知: #{family_user.name} に送信")
+
+          LineBotClient.push_text(
+            family_user.line_user_id,
+            "💊 #{user.name}さんの「#{medication_schedule.title}」の飲んだよが確認できません。声をかけてみてください。"
+          )
+        end
+      end
     end
   end
 end
