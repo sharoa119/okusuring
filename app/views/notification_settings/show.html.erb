@@ -15,14 +15,31 @@
 <h2>再通知</h2>
 
 <p>
-  再通知：
-  ON / OFF
+  ※「飲んだよ」が押されていない場合、設定した時間後に再通知されます。<br>
+  初期設定では10分後に再通知されます。
 </p>
 
-<p>再通知までの時間</p>
+<%= form_with model: current_user,
+      url: notification_settings_path,
+      method: :patch do |f| %>
 
-<ul>
-  <li>◉ 5分後</li>
-  <li>○ 10分後</li>
-  <li>○ 15分後</li>
-</ul>
+  <div>
+    <%= f.check_box :reminder_enabled %>
+    <%= f.label :reminder_enabled, "再通知を有効にする" %>
+  </div>
+
+  <div>
+    <%= f.label :reminder_interval, "再通知までの時間" %>
+
+    <%= f.select :reminder_interval,
+      [
+        ["5分後", 5],
+        ["10分後", 10],
+        ["15分後", 15]
+      ]
+    %>
+  </div>
+
+  <%= f.submit "保存する" %>
+
+<% end %>

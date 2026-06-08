@@ -8,7 +8,8 @@ class MedicationNotifier
 
     medication_times.each do |medication_time|
       medication_schedule = medication_time.medication_schedule
-      reminder_time = medication_schedule.reminder_interval.minutes.ago.change(sec: 0)
+      user = medication_schedule.user
+      reminder_time = user.reminder_interval.minutes.ago.change(sec: 0)
 
       next unless [current_time, reminder_time].include?(medication_time.time.change(sec: 0))
 
@@ -21,9 +22,8 @@ class MedicationNotifier
       reminder_notification =
         medication_time.time.change(sec: 0) == reminder_time
 
-      next if reminder_notification && !medication_schedule.reminder_enabled?
+      next if reminder_notification && !user.reminder_enabled?
 
-      user = medication_time.medication_schedule.user
       next unless user.line_bot_connected?
 
       if medication_time.time.change(sec: 0) == current_time

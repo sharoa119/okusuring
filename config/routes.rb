@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :family_links, only: [:index, :create]
 
   get "notification_settings", to: "notification_settings#show"
+  patch "notification_settings", to: "notification_settings#update"
 
   # LINE関連
   get "/invite/:token", to: "family_links#accept", as: :invite
