@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class MedicationSchedulesController < ApplicationController
+  before_action :require_login
+
   def new
     @medication_schedule = MedicationSchedule.new
     @medication_schedule.medication_times.build
