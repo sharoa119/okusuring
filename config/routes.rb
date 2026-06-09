@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'notification_settings/show'
-  get 'medication_records/create'
+  get "about", to: "pages#about"
+  get 'pages/terms', to: 'pages#terms'
+  get 'pages/privacy', to: 'pages#privacy'
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "home#index"
