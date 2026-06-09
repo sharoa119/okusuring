@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "about", to: "pages#about"
-  get 'pages/terms', to: 'pages#terms'
-  get 'pages/privacy', to: 'pages#privacy'
+  get "terms", to: "pages#terms"
+  get "privacy", to: "pages#privacy"
 
   get "up" => "rails/health#show", as: :rails_health_check
 
