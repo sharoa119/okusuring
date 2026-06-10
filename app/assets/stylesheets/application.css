@@ -82,3 +82,15 @@
   font-size: 14px;
   color: #666;
 }
+
+summary {
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.back-link {
+  text-decoration: none;
+}

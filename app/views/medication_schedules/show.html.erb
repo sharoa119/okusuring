@@ -1,0 +1,39 @@
+<!-- app/views/medication_schedules/show.html.erb -->
+
+<% content_for :page_title, "お薬の詳細" %>
+
+<p><%= @medication_schedule.title %></p>
+
+<p><%= @medication_schedule.target_name %></p>
+
+<h2>飲む時間</h2>
+
+<ul>
+  <% @medication_schedule.medication_times.each do |time| %>
+    <li>
+      <%= time.time.strftime("%H:%M") %>
+
+      <% if time.taken_today? %>
+        ☑️ 飲んだ
+      <% else %>
+        未
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>メモ</h2>
+
+<p>
+  <%= @medication_schedule.memo.presence || "メモはありません" %>
+</p>
+
+<% if @readonly %>
+  <p>閲覧専用です</p>
+<% else %>
+  <%= link_to "編集", edit_medication_schedule_path(@medication_schedule) %>
+  <%= button_to "この予定を削除",
+        medication_schedule_path(@medication_schedule),
+        method: :delete,
+        data: { turbo_confirm: "本当に削除しますか？" } %>
+<% end %>

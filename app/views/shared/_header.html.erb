@@ -1,0 +1,45 @@
+<!-- app/views/shared/_header.html.erb -->
+
+<% is_home = controller_name == "home" && action_name == "index" %>
+
+<header class="top-header">
+  <div class="header-row">
+    <% unless is_home %>
+      <%= link_to "＜", root_path, class: "back-link" %>
+    <% end %>
+
+    <h1 class="site-title">
+      <% if is_home %>
+        <%= link_to "おくすリング", root_path %>
+      <% else %>
+        <%= content_for?(:page_title) ? yield(:page_title) : "おくすリング" %>
+      <% end %>
+    </h1>
+
+    <nav class="hamburger-menu">
+      <details>
+        <summary>☰</summary>
+
+        <ul>
+          <li><%= link_to "家族共有設定", family_links_path %></li>
+          <li><%= link_to "通知設定", notification_settings_path %></li>
+          <li><%= link_to "このサービスについて", about_path %></li>
+          <li><%= link_to "利用規約", terms_path %></li>
+          <li><%= link_to "プライバシーポリシー", privacy_path %></li>
+          <li>
+            <%= button_to "ログアウト",
+                  logout_path,
+                  method: :delete,
+                  class: "logout-btn" %>
+          </li>
+        </ul>
+      </details>
+    </nav>
+  </div>
+
+ <% if is_home %>
+    <div class="header-user">
+      <span><%= current_user.name %> さん</span>
+    </div>
+  <% end %>
+</header>

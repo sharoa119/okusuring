@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'medication_records/create'
+  get "about", to: "pages#about"
+  get "terms", to: "pages#terms"
+  get "privacy", to: "pages#privacy"
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "home#index"
@@ -13,6 +16,9 @@ Rails.application.routes.draw do
     resources :medication_records, only: :create
   end
   resources :family_links, only: [:index, :create]
+
+  get "notification_settings", to: "notification_settings#show"
+  patch "notification_settings", to: "notification_settings#update"
 
   # LINE関連
   get "/invite/:token", to: "family_links#accept", as: :invite

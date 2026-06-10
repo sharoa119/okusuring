@@ -2,21 +2,6 @@
 
 <% if current_user %>
 
-  <header class="top-header">
-    <div class="header-row">
-      <h1 class="site-title">おくすリング</h1>
-
-      <%= button_to "ログアウト",
-            logout_path,
-            method: :delete,
-            class: "logout-btn" %>
-      </div>
-
-      <p class="welcome-message">
-        こんにちは、<%= current_user.name %> さん
-      </p>
-    </header>
-
   <h1>今日のお薬の予定</h1>
 
   <h2>自分の予定</h2>
@@ -77,12 +62,35 @@
     <%= link_to "＋ 家族を招待する", family_links_path %>
   <% end %>
 <% else %>
-  <h1>おくすリング</h1>
+  <div class="lp-container">
+    <h1 class="lp-logo">おくすリング</h1>
 
-  <p>このサービスは、服薬忘れを防ぐ家族共有サービスです</p>
+    <p>
+      おくすリングは、自分や家族の服薬の飲み忘れを防ぐことに特化した、
+      シンプルなリマインダーサービスです。
+    </p>
 
-  <%= button_to "LINE公式アカウントでログイン",
-      "/auth/line",
-      method: :post,
-      data: { turbo: false } %>
+    <p>
+      服薬時間になるとLINEで通知が届き、
+      「飲んだよ」を記録できます。
+      家族共有を使うことで、家族の服薬状況も見守れます。
+    </p>
+
+    <p>
+      おくすリングでは、服薬時間の通知や家族共有に
+      LINEを利用しています。
+      そのため、LINEアカウントでログインしてご利用ください。
+    </p>
+
+    <%= button_to "LINE公式アカウントでログイン",
+        "/auth/line",
+        method: :post,
+        data: { turbo: false } %>
+
+    <p class="lp-links">
+      <%= link_to "利用規約", terms_path %>
+      ｜
+      <%= link_to "プライバシーポリシー", privacy_path %>
+    </p>
+  </div>
 <% end %>
