@@ -18,6 +18,11 @@
     <% if alert %>
       <p class="alert"><%= alert %></p>
     <% end %>
+
+    <% if current_user %>
+      <%= render "shared/header" %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

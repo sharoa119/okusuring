@@ -2,36 +2,6 @@
 
 <% if current_user %>
 
-  <header class="top-header">
-    <div class="header-row">
-      <h1 class="site-title">おくすリング</h1>
-
-        <nav class="hamburger-menu">
-          <details>
-            <summary>☰</summary>
-
-            <ul>
-              <li><%= link_to "家族共有設定", family_links_path %></li>
-              <li><%= link_to "通知設定", notification_settings_path %></li>
-              <li><%= link_to "このサービスについて", about_path %></li>
-              <li><%= link_to "利用規約", terms_path %></li>
-              <li><%= link_to "プライバシーポリシー", privacy_path %></li>
-              <li>
-                <%= button_to "ログアウト",
-                      logout_path,
-                      method: :delete,
-                      class: "logout-btn" %>
-              </li>
-            </ul>
-          </details>
-        </nav>
-      </div>
-
-      <p class="welcome-message">
-        こんにちは、<%= current_user.name %> さん
-      </p>
-    </header>
-
   <h1>今日のお薬の予定</h1>
 
   <h2>自分の予定</h2>

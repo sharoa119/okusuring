@@ -90,3 +90,7 @@ summary {
 summary::-webkit-details-marker {
   display: none;
 }
+
+.back-link {
+  text-decoration: none;
+}

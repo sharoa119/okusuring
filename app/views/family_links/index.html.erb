@@ -1,24 +1,6 @@
 <!-- app/views/family_links/index.html.erb -->
 
-<header class="top-header">
-  <div class="header-row">
-    <h1 class="site-title">家族共有設定</h1>
-
-    <nav class="hamburger-menu">
-      <details>
-        <summary>☰</summary>
-
-        <ul>
-          <li><%= link_to "ホーム", root_path %></li>
-          <li><%= link_to "通知設定", notification_settings_path %></li>
-          <li><%= link_to "このサービスについて", "#" %></li>
-          <li><%= link_to "利用規約", "#" %></li>
-          <li><%= link_to "プライバシーポリシー", "#" %></li>
-        </ul>
-      </details>
-    </nav>
-  </div>
-</header>
+<% content_for :page_title, "家族共有設定" %>
 
 <h2>家族一覧</h2>
 
