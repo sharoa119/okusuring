@@ -15,6 +15,7 @@ class FamilyLinksController < ApplicationController
     @owner = @family_link.owner_user
 
     if current_user.nil?
+      session[:return_to_after_login] = invite_path(@family_link.token)
       render :accept
 
     elsif @family_link.owner_user == current_user

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     session[:user_id] = user.id
 
-    redirect_to root_path, notice: "ログインしました"
+    redirect_to(session.delete(:return_to_after_login) || root_path, notice: "ログインしました")
   end
 
   def destroy
