@@ -19,9 +19,11 @@
       <p class="alert"><%= alert %></p>
     <% end %>
 
-    <% if current_user %>
-      <%= render "shared/header" %>
-    <% end %>
+    <% hide_header =
+      (controller_name == "home" && action_name == "index" && current_user.nil?) ||
+      (controller_name == "family_links" && action_name == "accept") %>
+
+    <%= render "shared/header" unless hide_header %>
 
     <%= yield %>
   </body>

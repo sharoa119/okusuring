@@ -16,25 +16,29 @@
       <% end %>
     </h1>
 
-    <nav class="hamburger-menu">
-      <details>
-        <summary>☰</summary>
+    <% if current_user %>
+      <nav class="hamburger-menu">
+        <details>
+          <summary>☰</summary>
 
-        <ul>
-          <li><%= link_to "家族共有設定", family_links_path %></li>
-          <li><%= link_to "通知設定", notification_settings_path %></li>
-          <li><%= link_to "このサービスについて", about_path %></li>
-          <li><%= link_to "利用規約", terms_path %></li>
-          <li><%= link_to "プライバシーポリシー", privacy_path %></li>
-          <li>
-            <%= button_to "ログアウト",
-                  logout_path,
-                  method: :delete,
-                  class: "logout-btn" %>
-          </li>
-        </ul>
-      </details>
-    </nav>
+          <ul>
+            <li><%= link_to "家族共有設定", family_links_path %></li>
+            <li><%= link_to "通知設定", notification_settings_path %></li>
+            <li><%= link_to "このサービスについて", about_path %></li>
+            <li><%= link_to "利用規約", terms_path %></li>
+            <li><%= link_to "プライバシーポリシー", privacy_path %></li>
+            <li>
+              <%= button_to "ログアウト",
+                    logout_path,
+                    method: :delete,
+                    class: "logout-btn" %>
+            </li>
+          </ul>
+        </details>
+      </nav>
+    <% else %>
+      <div class="header-spacer"></div>
+    <% end %>
   </div>
 
  <% if is_home %>

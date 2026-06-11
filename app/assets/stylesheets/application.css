@@ -94,3 +94,7 @@ summary::-webkit-details-marker {
 .back-link {
   text-decoration: none;
 }
+
+.header-spacer {
+  width: 40px;
+}
