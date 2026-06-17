@@ -4,13 +4,15 @@
 
 <header class="top-header">
   <div class="header-row">
-    <% unless is_home %>
+    <% if is_home %>
+      <div class="header-spacer"></div>
+    <% else %>
       <%= link_to "＜", root_path, class: "back-link" %>
     <% end %>
 
     <h1 class="site-title">
       <% if is_home %>
-        <%= link_to "おくすリング", root_path %>
+        おくすリング
       <% else %>
         <%= content_for?(:page_title) ? yield(:page_title) : "おくすリング" %>
       <% end %>
