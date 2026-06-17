@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "おくすリング" %></title>
+    <%= favicon_link_tag "favicon.png" %>
     <meta name="description"
         content="<%= content_for?(:description) ? yield(:description) : '服薬時間の通知や再通知、家族共有機能により、飲み忘れを防ぐ服薬管理サービスです。' %>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
