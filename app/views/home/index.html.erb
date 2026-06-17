@@ -58,7 +58,7 @@
       <% end %>
     </ul>
   <% elsif @has_family_links %>
-    <p>今日のお薬の予定はありません</p>
+    <p>家族のお薬の予定はありません</p>
   <% else %>
     <p>まだ家族と共有していません</p>
 
@@ -66,7 +66,9 @@
   <% end %>
 <% else %>
   <div class="lp-container">
-    <h1 class="lp-logo">おくすリング</h1>
+    <div class="lp-logo">
+      <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
+    </div>
 
     <p>
       おくすリングは、自分や家族の服薬の飲み忘れを防ぐことに特化した、
@@ -85,15 +87,17 @@
       そのため、LINEアカウントでログインしてご利用ください。
     </p>
 
-    <%= button_to "LINE公式アカウントでログイン",
-        "/auth/line",
-        method: :post,
-        data: { turbo: false } %>
+    <div class="lp-actions">
+      <%= button_to "LINEでログイン",
+          "/auth/line",
+          method: :post,
+          data: { turbo: false } %>
 
-    <p class="lp-links">
-      <%= link_to "利用規約", terms_path %>
-      ｜
-      <%= link_to "プライバシーポリシー", privacy_path %>
-    </p>
+      <p class="lp-links">
+        <%= link_to "利用規約", terms_path %>
+        ｜
+        <%= link_to "プライバシーポリシー", privacy_path %>
+      </p>
+    </div>
   </div>
 <% end %>

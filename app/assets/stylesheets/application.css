@@ -107,3 +107,25 @@ summary::-webkit-details-marker {
   line-height: 1.8;
   text-align: center;
 }
+
+.lp-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.lp-logo {
+  text-align: center;
+  margin: 24px 0;
+}
+
+.lp-logo img {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+}
+
+.lp-actions {
+  text-align: center;
+  margin-top: 32px;
+}
