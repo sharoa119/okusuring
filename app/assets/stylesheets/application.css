@@ -102,7 +102,7 @@ summary::-webkit-details-marker {
 }
 
 .about-lead {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.8;
   text-align: center;
@@ -128,4 +128,53 @@ summary::-webkit-details-marker {
 .lp-actions {
   text-align: center;
   margin-top: 32px;
+}
+
+.detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.page-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.app-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #999;
+  border-radius: 8px;
+
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+
+  text-align: center;
+  text-decoration: none;
+
+  color: #333;
+  background-color: white;
+
+  box-sizing: border-box;
+  appearance: none;
+  cursor: pointer;
+}
+
+.detail-actions form {
+  margin: 0;
+}
+
+.form-submit {
+  margin-top: 32px;
+}
+
+.section-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
 }
