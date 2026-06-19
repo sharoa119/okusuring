@@ -17,3 +17,8 @@ another_member:
   line_user_id: line_member_003
   name: 別の招待される人
   line_bot_connected: true
+
+no_schedule_user:
+  line_user_id: line_member_004
+  name: 予定なしユーザー
+  line_bot_connected: true
