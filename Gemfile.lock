@@ -157,8 +157,7 @@ GEM
     marcel (1.1.0)
     matrix (0.4.3)
     mini_mime (1.1.5)
-    minitest (6.0.1)
-      prism (~> 1.5)
+    minitest (5.27.0)
     msgpack (1.8.0)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
@@ -207,7 +206,6 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.9.0)
     psych (5.3.1)
       date
       stringio
@@ -331,6 +329,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   line-bot-api
+  minitest (~> 5.25)
   omniauth
   omniauth-line
   omniauth-rails_csrf_protection

@@ -1,7 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+owner_schedule:
+  user: owner
+  title: 血圧の薬
+  target_name: 自分
+  memo: 朝食後に飲む
 
-one:
-  user: one
-
-two:
-  user: two
+member_schedule:
+  user: member
+  title: 頭痛薬
+  target_name: 自分
+  memo:

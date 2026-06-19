@@ -1,7 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+owner:
+  line_user_id: line_owner_001
+  name: 招待する人
+  line_bot_connected: true
 
-one:
-  line_user_id: MyString
+member:
+  line_user_id: line_member_001
+  name: 招待される人
+  line_bot_connected: true
 
-two:
-  line_user_id: MyString
+bot_not_connected:
+  line_user_id: line_member_002
+  name: BOT未連携の人
+  line_bot_connected: false

@@ -1,7 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+morning_time:
+  medication_schedule: owner_schedule
+  time: 2025-01-01 09:00:00
 
-one:
-  medication_schedule: one
+evening_time:
+  medication_schedule: owner_schedule
+  time: 2025-01-01 20:00:00
 
-two:
-  medication_schedule: two
+member_time:
+  medication_schedule: member_schedule
+  time: 2025-01-01 08:00:00
