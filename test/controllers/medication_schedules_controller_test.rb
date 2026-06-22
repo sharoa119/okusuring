@@ -4,12 +4,11 @@ require "test_helper"
 
 class MedicationSchedulesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    OmniAuth.config.test_mode = true
+    setup_omniauth
   end
 
   teardown do
-    OmniAuth.config.test_mode = false
-    OmniAuth.config.mock_auth[:line] = nil
+    teardown_omniauth
   end
 
   test "ログイン済みの場合は新規登録画面が表示される" do
@@ -121,17 +120,5 @@ class MedicationSchedulesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to root_path
-  end
-
-  private
-
-  def log_in_as(user)
-    OmniAuth.config.mock_auth[:line] = OmniAuth::AuthHash.new(
-      provider: "line",
-      uid: user.line_user_id,
-      info: { name: user.name }
-    )
-
-    get "/auth/line/callback"
   end
 end

@@ -4,12 +4,11 @@ require "test_helper"
 
 class NotificationSettingsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    OmniAuth.config.test_mode = true
+    setup_omniauth
   end
 
   teardown do
-    OmniAuth.config.test_mode = false
-    OmniAuth.config.mock_auth[:line] = nil
+    teardown_omniauth
   end
 
   test "ログイン済みの場合は通知設定ページが表示される" do
@@ -24,15 +23,22 @@ class NotificationSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_match "再通知", response.body
   end
 
-  private
+  test "通知設定を更新できる" do
+    user = users(:owner)
 
-  def log_in_as(user)
-    OmniAuth.config.mock_auth[:line] = OmniAuth::AuthHash.new(
-      provider: "line",
-      uid: user.line_user_id,
-      info: { name: user.name }
-    )
+    log_in_as(user)
 
-    get "/auth/line/callback"
+    patch notification_settings_url, params: {
+      user: {
+        reminder_enabled: false,
+        reminder_interval: 15
+      }
+    }
+
+    assert_redirected_to notification_settings_path
+
+    user.reload
+    assert_equal false, user.reminder_enabled
+    assert_equal 15, user.reminder_interval
   end
 end

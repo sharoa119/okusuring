@@ -4,12 +4,11 @@ require "test_helper"
 
 class FamilyLinksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    OmniAuth.config.test_mode = true
+    setup_omniauth
   end
 
   teardown do
-    OmniAuth.config.test_mode = false
-    OmniAuth.config.mock_auth[:line] = nil
+    teardown_omniauth
   end
 
   test "未ログインの招待相手が招待URLを開くとL-1が表示される" do
@@ -47,19 +46,5 @@ class FamilyLinksControllerTest < ActionDispatch::IntegrationTest
     family_link.reload
     assert_equal user, family_link.member_user
     assert_equal "accepted", family_link.status
-  end
-
-  private
-
-  def log_in_as(user)
-    OmniAuth.config.mock_auth[:line] = OmniAuth::AuthHash.new(
-      provider: "line",
-      uid: user.line_user_id,
-      info: {
-        name: user.name
-      }
-    )
-
-    get "/auth/line/callback"
   end
 end
