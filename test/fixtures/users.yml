@@ -22,3 +22,8 @@ no_schedule_user:
   line_user_id: line_member_004
   name: 予定なしユーザー
   line_bot_connected: true
+
+not_family_member:
+  line_user_id: line_member_005
+  name: 家族共有されていない人
+  line_bot_connected: true
