@@ -3,14 +3,13 @@
 class NotificationSettingsController < ApplicationController
   before_action :require_login
 
-  def show
-  end
+  def show; end
 
   def update
     if current_user.update(notification_setting_params)
-      redirect_to notification_settings_path, notice: "通知設定を更新しました"
+      redirect_to notification_settings_path, notice: '通知設定を更新しました'
     else
-      render :show, status: :unprocessable_entity
+      render :show, status: :unprocessable_content
     end
   end
 

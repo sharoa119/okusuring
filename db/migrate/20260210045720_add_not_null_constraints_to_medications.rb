@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddNotNullConstraintsToMedications < ActiveRecord::Migration[7.1]
   def change
     change_column_null :medication_schedules, :title, false

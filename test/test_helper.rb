@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
 
 module LoginSupport
   def setup_omniauth
@@ -16,12 +16,12 @@ module LoginSupport
 
   def log_in_as(user)
     OmniAuth.config.mock_auth[:line] = OmniAuth::AuthHash.new(
-      provider: "line",
+      provider: 'line',
       uid: user.line_user_id,
       info: { name: user.name }
     )
 
-    get "/auth/line/callback"
+    get '/auth/line/callback'
   end
 end
 
@@ -33,6 +33,8 @@ module ActiveSupport
   end
 end
 
-class ActionDispatch::IntegrationTest
-  include LoginSupport
+module ActionDispatch
+  class IntegrationTest
+    include LoginSupport
+  end
 end

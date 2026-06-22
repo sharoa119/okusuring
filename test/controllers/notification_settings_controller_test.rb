@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class NotificationSettingsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -11,7 +11,7 @@ class NotificationSettingsControllerTest < ActionDispatch::IntegrationTest
     teardown_omniauth
   end
 
-  test "ログイン済みの場合は通知設定ページが表示される" do
+  test 'ログイン済みの場合は通知設定ページが表示される' do
     user = users(:owner)
 
     log_in_as(user)
@@ -19,11 +19,11 @@ class NotificationSettingsControllerTest < ActionDispatch::IntegrationTest
     get notification_settings_url
 
     assert_response :success
-    assert_match "通知設定", response.body
-    assert_match "再通知", response.body
+    assert_match '通知設定', response.body
+    assert_match '再通知', response.body
   end
 
-  test "通知設定を更新できる" do
+  test '通知設定を更新できる' do
     user = users(:owner)
 
     log_in_as(user)
