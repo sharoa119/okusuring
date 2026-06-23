@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :line,
-    ENV["LINE_CHANNEL_ID"],
-    ENV["LINE_CHANNEL_SECRET"]
+           ENV.fetch('LINE_CHANNEL_ID', nil),
+           ENV.fetch('LINE_CHANNEL_SECRET', nil)
 end

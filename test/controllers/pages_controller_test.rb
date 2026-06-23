@@ -1,18 +1,20 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get about" do
-    get pages_about_url
+  test 'aboutページが表示される' do
+    get about_url
     assert_response :success
   end
 
-  test "should get terms" do
-    get pages_terms_url
+  test '利用規約ページが表示される' do
+    get terms_url
     assert_response :success
   end
 
-  test "should get privacy" do
-    get pages_privacy_url
+  test 'プライバシーポリシーページが表示される' do
+    get privacy_url
     assert_response :success
   end
 end

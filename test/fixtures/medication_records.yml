@@ -1,7 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  medication_time: one
+  medication_time: morning_time
+  taken_date: 2026-01-01
 
 two:
-  medication_time: two
+  medication_time: evening_time
+  taken_date: 2026-01-02

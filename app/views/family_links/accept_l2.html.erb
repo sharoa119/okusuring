@@ -1,22 +1,27 @@
 <!-- app/views/family_links/accept_l2.html.erb -->
 
-<h1>招待の確認ができました。</h1>
+<% content_for :title, "家族共有の招待 | おくすリング" %>
+<% content_for :description, "家族共有の招待を受け取り、設定を進めるページです。" %>
 
-<p>
-<%= @owner.name %> さんと家族共有を開始できます。
-</p>
+<div class="invite-page">
+  <h1>招待の確認ができました。</h1>
 
-<h2>LINE通知の設定</h2>
+  <p>
+  <%= @owner.name %> さんと家族共有を開始できます。
+  </p>
 
-<p>
-⚠️まだ「おくすリングBOT」と友達になっていません。<br>
-通知を受け取るために、BOTを追加してください。
-</p>
+  <h2>LINE通知の設定</h2>
 
-<p>
-  <%= link_to "BOTを追加する", "https://lin.ee/V1rMOS3" %>
-</p>
+  <p>
+  ⚠️まだ「おくすリングBOT」と友達になっていません。<br>
+  通知を受け取るために、BOTを追加してください。
+  </p>
 
-<p>
-※BOTの追加が完了しましたら、自動的にこのページへ戻ってきます。
-</p>
+  <p>
+    <%= link_to "BOTを追加する", "https://lin.ee/V1rMOS3" %>
+  </p>
+
+  <p>
+  ※BOTの追加が完了しましたら、自動的にこのページへ戻ってきます。
+  </p>
+</div>

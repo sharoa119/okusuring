@@ -1,13 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+pending_link:
+  owner_user: owner
+  member_user:
+  status: pending
+  token: pending-token-001
 
-one:
-  owner_user_id: 1
-  member_user_id: 1
-  status: MyString
-  token: MyString
-
-two:
-  owner_user_id: 1
-  member_user_id: 1
-  status: MyString
-  token: MyString
+accepted_link:
+  owner_user: owner
+  member_user: member
+  status: accepted
+  token: accepted-token-001

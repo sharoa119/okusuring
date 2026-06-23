@@ -1,0 +1,29 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+plugins:
+  - rubocop-rails
+
+Style/Documentation:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 35
+
+Metrics/AbcSize:
+  Max: 45
+
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+Metrics/PerceivedComplexity:
+  Max: 13
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*.rb'
+    - 'app/services/medication_notifier.rb'

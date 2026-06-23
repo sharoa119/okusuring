@@ -9,7 +9,7 @@ class HomeController < ApplicationController
 
       @owned_family_links = current_user.owned_family_links
 
-      accepted_links = current_user.owned_family_links.where(status: "accepted")
+      accepted_links = current_user.owned_family_links.where(status: 'accepted')
       family_users = accepted_links.map(&:member_user).compact
 
       @family_times = MedicationTime.joins(:medication_schedule)

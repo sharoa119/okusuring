@@ -1,17 +1,22 @@
 <!-- app/views/family_links/accept_l3.html.erb -->
 
-<h1>共有設定が完了しました。</h1>
+<% content_for :title, "家族共有の招待 | おくすリング" %>
+<% content_for :description, "家族共有の設定が完了しました。" %>
 
-<p>
-あなたは <%= @owner.name %> さんと<br>
-家族として連携されました。
-</p>
+<div class="invite-page">
+  <h1>共有設定が完了しました。</h1>
 
-<p>
-今後、共有されたお薬の予定で<br>
-通知を受け取れます。
-</p>
+  <p>
+  あなたは <%= @owner.name %> さんと<br>
+  家族として連携されました。
+  </p>
 
-<p>
-<%= link_to "トップページへ", root_path %>
-</p>
+  <p>
+  今後、共有されたお薬の予定で<br>
+  通知を受け取れます。
+  </p>
+
+  <p>
+  <%= link_to "トップページへ", root_path %>
+  </p>
+</div>

@@ -1,45 +1,51 @@
 <!-- app/views/notification_settings/show.html.erb -->
 
+<% content_for :title, "通知設定 | おくすリング" %>
 <% content_for :page_title, "通知設定" %>
+<% content_for :description, "服薬通知や再通知の設定を変更できます。" %>
 
-<h2>BOT連携</h2>
+<div class="page-container">
+  <div class="section-item">
+    <h2>BOT連携</h2>
 
-<% if current_user.line_bot_connected? %>
-  <p>✅ 【おくすリングBOT】と友達済みです。通知を受け取れます。</p>
-<% else %>
-  <p>⚠️ まだ【おくすリングBOT】と友達になっていません。</p>
+    <% if current_user.line_bot_connected? %>
+      <p>✅ 【おくすリングBOT】と友達済みです。通知を受け取れます。</p>
+    <% else %>
+      <p>⚠️ まだ【おくすリングBOT】と友達になっていません。</p>
 
-  <%= link_to "【おくすリングBOT】を追加する", "https://lin.ee/V1rMOS3" %>
-<% end %>
-
-<h2>再通知</h2>
-
-<p>
-  ※「飲んだよ」が押されていない場合、設定した時間後に再通知されます。<br>
-  初期設定では10分後に再通知されます。
-</p>
-
-<%= form_with model: current_user,
-      url: notification_settings_path,
-      method: :patch do |f| %>
-
-  <div>
-    <%= f.check_box :reminder_enabled %>
-    <%= f.label :reminder_enabled, "再通知を有効にする" %>
+      <%= link_to "【おくすリングBOT】を追加する", "https://lin.ee/V1rMOS3" %>
+    <% end %>
   </div>
 
-  <div>
-    <%= f.label :reminder_interval, "再通知までの時間" %>
+  <h2>再通知</h2>
 
-    <%= f.select :reminder_interval,
-      [
-        ["5分後", 5],
-        ["10分後", 10],
-        ["15分後", 15]
-      ]
-    %>
-  </div>
+  <p>
+    ※「飲んだよ」が押されていない場合、設定した時間後に再通知されます。<br>
+    初期設定では10分後に再通知されます。
+  </p>
 
-  <%= f.submit "保存する" %>
+  <%= form_with model: current_user,
+        url: notification_settings_path,
+        method: :patch do |f| %>
 
-<% end %>
+    <div>
+      <%= f.check_box :reminder_enabled %>
+      <%= f.label :reminder_enabled, "再通知を有効にする" %>
+    </div>
+
+    <div>
+      <%= f.label :reminder_interval, "再通知までの時間" %>
+
+      <%= f.select :reminder_interval,
+        [
+          ["5分後", 5],
+          ["10分後", 10],
+          ["15分後", 15]
+        ]
+      %>
+    </div>
+
+    <%= f.submit "保存する" %>
+
+  <% end %>
+</div>

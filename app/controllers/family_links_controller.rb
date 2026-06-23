@@ -6,7 +6,7 @@ class FamilyLinksController < ApplicationController
   def index
     @family_link = current_user.owned_family_links.first_or_create!(
       token: SecureRandom.hex(10),
-      status: "pending"
+      status: 'pending'
     )
   end
 
@@ -15,11 +15,12 @@ class FamilyLinksController < ApplicationController
     @owner = @family_link.owner_user
 
     if current_user.nil?
+      session[:return_to_after_login] = invite_path(@family_link.token)
       render :accept
 
     elsif @family_link.owner_user == current_user
       redirect_to root_path,
-                  alert: "自分自身は招待できません"
+                  alert: '自分自身は招待できません'
 
     elsif !current_user.line_bot_connected?
       render :accept_l2
@@ -27,7 +28,7 @@ class FamilyLinksController < ApplicationController
     else
       @family_link.update!(
         member_user: current_user,
-        status: "accepted"
+        status: 'accepted'
       )
 
       render :accept_l3

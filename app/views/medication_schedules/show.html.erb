@@ -1,39 +1,55 @@
 <!-- app/views/medication_schedules/show.html.erb -->
 
+
+<% content_for :title, "お薬の詳細 | おくすリング" %>
 <% content_for :page_title, "お薬の詳細" %>
+<% content_for :description, "登録した服薬スケジュールの内容を確認できます。" %>
 
-<p><%= @medication_schedule.title %></p>
+<div class="page-container">
+  <div class="section-item">
+    <p class="detail-label">タイトル</p>
+    <p class="detail-value"><%= @medication_schedule.title %></p>
+  </div>
 
-<p><%= @medication_schedule.target_name %></p>
+  <div class="section-item">
+    <p class="detail-label">飲む人</p>
+    <p class="detail-value"><%= @medication_schedule.target_name %></p>
+  </div>
 
-<h2>飲む時間</h2>
+  <div class="section-item">
+    <p class="detail-label">飲む時間</p>
 
-<ul>
-  <% @medication_schedule.medication_times.each do |time| %>
-    <li>
-      <%= time.time.strftime("%H:%M") %>
-
-      <% if time.taken_today? %>
-        ☑️ 飲んだ
-      <% else %>
-        未
+    <ul class="detail-time-list">
+      <% @medication_schedule.medication_times.each do |time| %>
+        <li>
+          <%= time.time.strftime("%H:%M") %>
+          <span class="detail-status">
+            <%= time.taken_today? ? "☑️ 飲んだ" : "未" %>
+          </span>
+        </li>
       <% end %>
-    </li>
+    </ul>
+  </div>
+
+  <div class="section-item">
+    <p class="detail-label">メモ</p>
+    <p class="detail-value">
+      <%= @medication_schedule.memo.presence || "メモはありません" %>
+    </p>
+  </div>
+
+  <% if @readonly %>
+    <p>閲覧専用です</p>
+  <% else %>
+    <div class="detail-actions">
+      <%= link_to "編集",
+        edit_medication_schedule_path(@medication_schedule),
+        class: "app-button" %>
+      <%= button_to "この予定を削除",
+            medication_schedule_path(@medication_schedule),
+            method: :delete,
+            data: { turbo_confirm: "本当に削除しますか？" },
+            class: "app-button" %>
+    </div>
   <% end %>
-</ul>
-
-<h2>メモ</h2>
-
-<p>
-  <%= @medication_schedule.memo.presence || "メモはありません" %>
-</p>
-
-<% if @readonly %>
-  <p>閲覧専用です</p>
-<% else %>
-  <%= link_to "編集", edit_medication_schedule_path(@medication_schedule) %>
-  <%= button_to "この予定を削除",
-        medication_schedule_path(@medication_schedule),
-        method: :delete,
-        data: { turbo_confirm: "本当に削除しますか？" } %>
-<% end %>
+</div>

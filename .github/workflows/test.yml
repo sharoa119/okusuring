@@ -1,0 +1,29 @@
+name: Rails Tests and Lint
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Set up Database
+        run: bin/rails db:prepare
+
+      - name: Run Rubocop
+        run: bundle exec rubocop
+
+      - name: Run tests
+        run: bin/rails test

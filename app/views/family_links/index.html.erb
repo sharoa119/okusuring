@@ -1,42 +1,48 @@
 <!-- app/views/family_links/index.html.erb -->
 
+<% content_for :title, "家族共有設定 | おくすリング" %>
 <% content_for :page_title, "家族共有設定" %>
+<% content_for :description, "家族共有の招待や共有状況の確認ができます。" %>
 
-<h2>家族一覧</h2>
+<div class="page-container">
+  <div class="section-item">
+    <h2>家族一覧</h2>
 
-<% accepted_links = current_user.owned_family_links.where(status: "accepted") %>
+    <% accepted_links = current_user.owned_family_links.where(status: "accepted") %>
 
-<% if accepted_links.any? %>
-  <ul>
-    <% accepted_links.each do |link| %>
-      <li>
-        <%= link.member_user.name %>
-        <span>（連携済み）</span>
-      </li>
+    <% if accepted_links.any? %>
+      <ul>
+        <% accepted_links.each do |link| %>
+          <li>
+            <%= link.member_user.name %>
+            <span>（連携済み）</span>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>まだ連携済みのメンバーはいません。</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>まだ連携済みのメンバーはいません。</p>
-<% end %>
 
-<p>
-  ※ここに表示されるのは、LINE連携が完了しているメンバーのみです。<br>
-  ほかに連携したいメンバーがいる場合は、下記の招待リンクを送ってください。
-</p>
+    <p>
+      ※ここに表示されるのは、LINE連携が完了しているメンバーのみです。<br>
+      ほかに連携したいメンバーがいる場合は、下記の招待リンクを送ってください。
+    </p>
+  </div>
 
-<hr>
+  <div class="section-item">
+    <h2>家族を招待</h2>
 
-<h2>家族を招待</h2>
+    <p>
+      LINEでログインした家族と服薬スケジュールを共有できます。<br>
+      以下のURLを招待したい家族に送ってください。
+    </p>
 
-<p>
-  LINEでログインした家族と服薬スケジュールを共有できます。<br>
-  以下のURLを招待したい家族に送ってください。
-</p>
+    <p>
+      <%= invite_url(@family_link.token) %>
+    </p>
 
-<p>
-  <%= invite_url(@family_link.token) %>
-</p>
+    <p>※リンクを長押ししてコピーしてください</p>
 
-<p>※リンクを長押ししてコピーしてください</p>
-
-<p>LINEやメールで送信してください。</p>
+    <p>LINEやメールで送信してください。</p>
+  </div>
+</div>

@@ -1,5 +1,8 @@
 <!-- app/views/medication_schedules/new.html.erb -->
 
+
+<% content_for :title, "お薬の予定を登録 | おくすリング" %>
 <% content_for :page_title, "お薬の予定を登録" %>
+<% content_for :description, "服薬スケジュールや通知時間を登録できます。" %>
 
 <%= render "form", medication_schedule: @medication_schedule %>
