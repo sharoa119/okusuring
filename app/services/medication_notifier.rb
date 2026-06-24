@@ -26,7 +26,7 @@ class MedicationNotifier
       next unless user.line_bot_connected?
 
       message = if medication_time.time.change(sec: 0) == current_time
-                  "💊 #{medication_schedule.title} の時間です！\n飲んだらアプリで「飲んだよ」を押してください。\nhttp://localhost:3000"
+                  "💊 #{medication_schedule.title} の時間です！\n飲んだらアプリで「飲んだよ」を押してください。\n#{ENV['APP_URL']}"
                 else
                   "💊 #{medication_schedule.title} の[飲んだよ]が確認できません。お薬は飲まれましたか？"
                 end
