@@ -25,4 +25,7 @@ Rails.application.routes.draw do
   # LINE関連
   get '/invite/:token', to: 'family_links#accept', as: :invite
   post '/webhook', to: 'line_bot#callback'
+
+  # 通知実行用
+  post '/notify', to: 'notifications#create'
 end

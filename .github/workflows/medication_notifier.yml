@@ -1,0 +1,16 @@
+name: Medication Notifier
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify Render
+        run: |
+          curl -X POST https://okusuring.onrender.com/notify \
+            -H "X-Notify-Token: ${{ secrets.NOTIFY_TOKEN }}"
