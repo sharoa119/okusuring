@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MedicationNotifier
+  # rubocop:disable Metrics/AbcSize
   def self.notify_now
     current_time = Time.current.change(sec: 0)
 
@@ -26,7 +27,7 @@ class MedicationNotifier
       next unless user.line_bot_connected?
 
       message = if medication_time.time.change(sec: 0) == current_time
-                  "💊 #{medication_schedule.title} の時間です！\n飲んだらアプリで「飲んだよ」を押してください。\n#{ENV['APP_URL']}"
+                  "💊 #{medication_schedule.title} の時間です！\n飲んだらアプリで「飲んだよ」を押してください。\n#{ENV.fetch('APP_URL', nil)}"
                 else
                   "💊 #{medication_schedule.title} の[飲んだよ]が確認できません。お薬は飲まれましたか？"
                 end
@@ -49,4 +50,5 @@ class MedicationNotifier
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end
