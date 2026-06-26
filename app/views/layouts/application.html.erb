@@ -6,6 +6,14 @@
     <meta name="description"
         content="<%= content_for?(:description) ? yield(:description) : '服薬時間の通知や再通知、家族共有機能により、飲み忘れを防ぐ服薬管理サービスです。' %>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+     <meta property="og:title" content="<%= content_for?(:title) ? yield(:title) : 'おくすリング' %>">
+    <meta property="og:description" content="<%= content_for?(:description) ? yield(:description) : '服薬時間の通知や再通知、家族共有機能により、飲み忘れを防ぐ服薬管理サービスです。' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:image" content="<%= request.base_url %>/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
