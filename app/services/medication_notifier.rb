@@ -54,10 +54,10 @@ class MedicationNotifier
   end
 
   def message
-    if first_notification?
-      "💊 #{@medication_schedule.title} の時間です！\n飲んだらアプリで「飲んだよ」を押してください。\n#{ENV.fetch('APP_URL', nil)}"
-    else
+    if reminder_notification?
       "💊 #{@medication_schedule.title} の[飲んだよ]が確認できません。お薬は飲まれましたか？"
+    else
+      "💊 #{@medication_schedule.title} の時間です！\n飲んだらアプリで「飲んだよ」を押してください。\n#{ENV.fetch('APP_URL', nil)}"
     end
   end
 
