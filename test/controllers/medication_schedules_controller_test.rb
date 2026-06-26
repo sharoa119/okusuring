@@ -102,7 +102,7 @@ class MedicationSchedulesControllerTest < ActionDispatch::IntegrationTest
       }
     }
 
-    assert_redirected_to root_path
+    assert_redirected_to medication_schedule_path(schedule)
 
     schedule.reload
     assert_equal '血圧の薬（変更後）', schedule.title
