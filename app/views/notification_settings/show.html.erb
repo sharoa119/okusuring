@@ -13,7 +13,18 @@
     <% else %>
       <p>⚠️ まだ【おくすリングBOT】と友達になっていません。</p>
 
-      <%= link_to "【おくすリングBOT】を追加する", "https://lin.ee/V1rMOS3" %>
+      <p>
+        通知を受け取るには、先に【おくすリングBOT】を追加してください。<br>
+        追加後はこの画面に戻って「連携状態を更新する」を押してください。
+      </p>
+
+      <p>
+        <%= link_to "【おくすリングBOT】を追加する", "https://lin.ee/V1rMOS3", class: "app-button" %>
+      </p>
+
+      <p>
+        <%= link_to "連携状態を更新する", notification_settings_path, class: "app-button" %>
+      </p>
     <% end %>
   </div>
 
