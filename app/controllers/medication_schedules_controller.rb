@@ -49,7 +49,7 @@ class MedicationSchedulesController < ApplicationController
     @medication_schedule = current_user.medication_schedules.find(params[:id])
 
     if @medication_schedule.update(medication_schedule_params)
-      redirect_to root_path, notice: '更新しました'
+      redirect_to @medication_schedule, notice: '更新しました'
     else
       render :edit, status: :unprocessable_content
     end
