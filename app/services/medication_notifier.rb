@@ -42,7 +42,11 @@ class MedicationNotifier
   end
 
   def scheduled_time
-    @medication_time.time.change(sec: 0)
+    Time.current.change(
+      hour: @medication_time.time.hour,
+      min: @medication_time.time.min,
+      sec: 0
+    )
   end
 
   def reminder_time
