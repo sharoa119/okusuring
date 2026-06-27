@@ -24,6 +24,9 @@ class FamilyLinksController < ApplicationController
       redirect_to root_path,
                   alert: '自分自身は招待できません'
 
+    elsif @family_link.member_user == current_user && @family_link.status == 'accepted'
+      redirect_to root_path, notice: 'すでに家族共有されています'
+
     elsif !current_user.line_bot_connected?
       render :accept_l2
 
