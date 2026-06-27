@@ -37,4 +37,10 @@
     周囲からの声かけを促すことで、
     家庭全体で支え合える仕組みを目指しています。
   </p>
+
+  <% if params[:return_to].present? %>
+    <p>
+      <%= link_to "← 家族共有の招待ページに戻る", params[:return_to] %>
+    </p>
+  <% end %>
 </div>
