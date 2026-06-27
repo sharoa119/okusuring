@@ -4,10 +4,12 @@ class FamilyLinksController < ApplicationController
   before_action :require_login, except: [:accept]
 
   def index
-    @family_link = current_user.owned_family_links.first_or_create!(
-      token: SecureRandom.hex(10),
-      status: 'pending'
-    )
+    @family_link = current_user.owned_family_links
+                               .where(status: 'pending')
+                               .first_or_create!(
+                                 token: SecureRandom.hex(10),
+                                 status: 'pending'
+                               )
   end
 
   def accept
