@@ -35,6 +35,7 @@
     <div data-nested-form-target="container">
       <%= f.fields_for :medication_times do |t| %>
         <div class="time-field">
+          <%= t.hidden_field :id if t.object.persisted? %>
           <%= t.time_field :time %>
           <button type="button" data-action="nested-form#remove">削除</button>
           <%= t.hidden_field :_destroy %>
