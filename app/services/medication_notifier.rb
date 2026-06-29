@@ -19,6 +19,17 @@ class MedicationNotifier
 
   def notify
     return unless notification_target?
+
+    Rails.logger.info(
+      "[NOTIFY] " \
+      "schedule_id=#{@medication_schedule.id} " \
+      "time_id=#{@medication_time.id} " \
+      "title=#{@medication_schedule.title} " \
+      "time=#{@medication_time.time} " \
+      "current_time=#{@current_time} " \
+      "first=#{first_notification?} " \
+      "reminder=#{reminder_notification?}"
+    )
     return if already_taken?
     return if reminder_notification? && !@user.reminder_enabled?
     return unless @user.line_bot_connected?
