@@ -39,4 +39,12 @@ class FamilyLinksController < ApplicationController
       render :accept_l3
     end
   end
+
+  def destroy
+    family_link = current_user.owned_family_links.find(params[:id])
+
+    family_link.destroy
+
+    redirect_to family_links_path, notice: '家族共有を解除しました'
+  end
 end
