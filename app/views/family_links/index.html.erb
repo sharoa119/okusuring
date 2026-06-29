@@ -16,6 +16,10 @@
           <li>
             <%= link.member_user.name %>
             <span>（連携済み）</span>
+            <%= button_to "共有を解除する",
+                  family_link_path(link),
+                  method: :delete,
+                  data: { turbo_confirm: "本当に家族共有を解除しますか？" } %>
           </li>
         <% end %>
       </ul>

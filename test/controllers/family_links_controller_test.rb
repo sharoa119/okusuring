@@ -47,4 +47,17 @@ class FamilyLinksControllerTest < ActionDispatch::IntegrationTest
     assert_equal user, family_link.member_user
     assert_equal 'accepted', family_link.status
   end
+
+  test 'オーナーが家族共有を解除できる' do
+    family_link = family_links(:accepted_link)
+    owner = family_link.owner_user
+
+    log_in_as(owner)
+
+    assert_difference('FamilyLink.count', -1) do
+      delete family_link_path(family_link)
+    end
+
+    assert_redirected_to family_links_path
+  end
 end

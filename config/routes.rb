@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :medication_times, only: [] do
     resources :medication_records, only: :create
   end
-  resources :family_links, only: %i[index create]
+  resources :family_links, only: %i[index create destroy]
 
   get 'notification_settings', to: 'notification_settings#show'
   patch 'notification_settings', to: 'notification_settings#update'
