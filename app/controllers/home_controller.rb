@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     if current_user
       @my_times = current_user.medication_times
                               .includes(:medication_schedule, :medication_records)
-                              .order(:time)
+                              .sort_by { |time| [time.time.hour, time.time.min] }
 
       @owned_family_links = current_user.owned_family_links
 
@@ -21,7 +21,7 @@ class HomeController < ApplicationController
       @family_times = MedicationTime.joins(:medication_schedule)
                                     .where(medication_schedules: { user_id: family_users.map(&:id) })
                                     .includes(:medication_schedule, :medication_records)
-                                    .order(:time)
+                                    .sort_by { |time| [time.time.hour, time.time.min] }
     else
       @my_times = []
       @owned_family_links = []
