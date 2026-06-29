@@ -21,7 +21,7 @@ class MedicationNotifier
     return unless notification_target?
 
     Rails.logger.info(
-      "[NOTIFY] " \
+      '[NOTIFY] ' \
       "schedule_id=#{@medication_schedule.id} " \
       "time_id=#{@medication_time.id} " \
       "title=#{@medication_schedule.title} " \
