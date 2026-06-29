@@ -178,3 +178,19 @@ summary::-webkit-details-marker {
   margin-bottom: 20px;
   border-bottom: 1px solid #eee;
 }
+
+.family-member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.family-member form {
+  margin: 0;
+}
+
+.family-link-delete-button {
+  white-space: nowrap;
+}
