@@ -23,33 +23,27 @@ body {
  
  /* 行の余白 */
  .med-item {
-   padding: 8px 0;
+   padding: 10px 0;
    border-bottom: 1px solid #eee;
  }
 
- /* 時間を主役に */
- .med-time {
-   font-weight: bold;
-   margin-right: 8px;
- }
+.med-time {
+  font-weight: 700;
+  color: #2f3b46;
+  min-width: 60px;
+}
 
- /* 対象（誰が飲むか）を少し控えめに */
- .med-target {
-   color: #666;
-   margin-right: 8px;
- }
+.med-target {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #eef5f1;
+  color: #555;
+  font-size: 0.9rem;
+}
 
- /* 済の強調 */
  .done {
-   color: #2e7d32;
-   /* 緑 */
-   font-weight: bold;
-   margin-left: 8px;
- }
-
- /* ボタンに少し余白 */
- .med-action {
-   margin-left: 8px;
+   color: #2f8f5b;
+   font-weight: 700;
  }
 
  .top-header {
@@ -289,4 +283,65 @@ summary::-webkit-details-marker {
 .lp-login-note {
   font-size: 15px;
   line-height: 1.7;
+}
+
+.app-card+.app-card {
+  margin-top: 24px;
+}
+
+.home-action {
+  margin: 24px 0;
+}
+
+.app-button {
+  border: 1px solid #b7d8cc;
+}
+
+.med-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.med-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.med-action .app-button {
+  width: auto;
+  min-width: 96px;
+  padding: 10px 18px;
+  border-color: #63D98A;
+  border-radius: 14px;
+  color: #2f8f5b;
+  background: #F5FBFA;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.readonly {
+  color: #888;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.med-item a {
+  color: #2f7bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.med-title {
+  font-weight: 600;
+  color: #3d6fd6;
+  text-decoration: none;
+}
+
+.med-title:hover {
+  text-decoration: underline;
 }
