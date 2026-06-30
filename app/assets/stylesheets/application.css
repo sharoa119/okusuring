@@ -227,3 +227,66 @@ summary::-webkit-details-marker {
 
   box-shadow: 0 6px 18px rgba(99, 217, 138, 0.2);
 }
+
+.app-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(47, 58, 63, 0.06);
+}
+
+.lp-description {
+  margin-top: 32px;
+  line-height: 1.8;
+}
+
+.lp-description p:first-child {
+  margin-top: 0;
+}
+
+.lp-description p:last-child {
+  margin-bottom: 0;
+}
+
+.lp-section-title {
+  margin: 40px 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.feature-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.feature-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.feature-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.feature-item:last-child {
+  border-bottom: none;
+}
+
+.feature-content h3 {
+  margin: 0 0 8px;
+}
+
+.feature-content p {
+  margin: 0;
+  color: #666;
+}
+
+.lp-login-note {
+  font-size: 15px;
+  line-height: 1.7;
+}

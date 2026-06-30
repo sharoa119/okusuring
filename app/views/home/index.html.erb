@@ -70,21 +70,44 @@
       <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
     </div>
 
-    <p>
-      おくすリングは、自分や家族の服薬の飲み忘れを防ぐことに特化した、
-      シンプルなリマインダーサービスです。
-    </p>
+    <h2 class="lp-section-title">おくすリングでできること</h2>
 
-    <p>
-      服薬時間になるとLINEで通知が届き、
-      「飲んだよ」を記録できます。
-      家族共有を使うことで、家族の服薬状況も見守れます。
-    </p>
+    <div class="app-card feature-list">
 
-    <p>
-      おくすリングでは、服薬時間の通知や家族共有に
-      LINEを利用しています。
-      そのため、LINEアカウントでログインしてご利用ください。
+      <div class="feature-item">
+        <div class="feature-icon">💊</div>
+
+        <div class="feature-content">
+          <h3>服薬時間になるとLINEでお知らせ</h3>
+          <p>決まった時間にLINEへ通知します。</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">✅</div>
+
+        <div class="feature-content">
+          <h3>飲んだらワンタップで記録</h3>
+          <p>「飲んだよ」を押すだけで記録できます。</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">👨‍👩‍👧</div>
+
+        <div class="feature-content">
+          <h3>家族と服薬状況を見守れる</h3>
+          <p>飲み忘れがあったときは家族にも通知します。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="lp-login-note">
+      LINEアカウントでログインすると、すぐにご利用いただけます。<br>
+      <%= link_to "利用規約", terms_path %>・
+      <%= link_to "プライバシーポリシー", privacy_path %>
+      をご確認の上、ログインしてください。
     </p>
 
     <div class="lp-actions">
@@ -93,12 +116,6 @@
           method: :post,
           class: "app-button app-button-primary",
           data: { turbo: false } %>
-
-      <p class="lp-links">
-        <%= link_to "利用規約", terms_path %>
-        ｜
-        <%= link_to "プライバシーポリシー", privacy_path %>
-      </p>
     </div>
   </div>
 <% end %>
