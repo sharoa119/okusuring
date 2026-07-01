@@ -400,3 +400,60 @@ summary::-webkit-details-marker {
   color: #777;
   font-style: italic;
 }
+
+.form-note {
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.form-target-tag {
+  color: #3f5f52;
+  font-weight: 600;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d8e2dc;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px 14px;
+  border: 1px solid #d8e2dc;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.time-field {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.time-add-button {
+  padding: 10px 14px;
+  border: 1px solid #63D98A;
+  border-radius: 12px;
+  background: #F5FBFA;
+  color: #2f8f5b;
+  font-weight: 600;
+}
+
+.time-remove-button {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  color: #777;
+  font-size: 0.85rem;
+}
