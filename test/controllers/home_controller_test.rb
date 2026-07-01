@@ -15,7 +15,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get root_path
 
     assert_response :success
-    assert_match "おくすリングでできること", response.body
+    assert_match 'おくすリングでできること', response.body
     assert_match 'LINEでログイン', response.body
   end
 

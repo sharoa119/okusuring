@@ -345,3 +345,58 @@ summary::-webkit-details-marker {
 .med-title:hover {
   text-decoration: underline;
 }
+
+.detail-label {
+  font-size: 0.9rem;
+  color: #777;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.detail-value {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.detail-time-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.detail-time-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.detail-time {
+  font-weight: 600;
+}
+
+.detail-status {
+  color: #2f8f5b;
+  font-weight: 600;
+}
+
+.detail-status.pending {
+  color: #777;
+  font-weight: 500;
+}
+
+.detail-status.done {
+  color: #2f8f5b;
+  font-weight: 600;
+}
+
+.detail-memo {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.detail-empty {
+  color: #777;
+  font-style: italic;
+}
