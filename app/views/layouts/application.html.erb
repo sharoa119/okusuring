@@ -13,6 +13,9 @@
     <meta property="og:url" content="<%= request.original_url %>">
     <meta property="og:image" content="<%= request.base_url %>/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= content_for?(:title) ? yield(:title) : 'おくすリング' %>">
+    <meta name="twitter:description" content="<%= content_for?(:description) ? yield(:description) : '服薬時間の通知や再通知、家族共有機能により、飲み忘れを防ぐ服薬管理サービスです。' %>">
+    <meta name="twitter:image" content="<%= request.base_url %>/ogp.png">
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
