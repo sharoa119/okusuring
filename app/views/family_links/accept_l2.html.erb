@@ -4,24 +4,41 @@
 <% content_for :description, "家族共有の招待を受け取り、設定を進めるページです。" %>
 
 <div class="invite-page">
-  <h1>招待の確認ができました。</h1>
+  <section class="app-card">
+    <div class="invite-icon">
+      🎉
+    </div>
 
-  <p>
-  <%= @owner.name %> さんと家族共有を開始できます。
-  </p>
+    <h1>招待の確認が<br>
+    できました</h1>
 
-  <h2>LINE通知の設定</h2>
+    <p class="invite-summary">
+      <strong><%= @owner.name %></strong> さんと<br>
+      家族共有を開始できます。
+    </p>
+  </section>
 
-  <p>
-  ⚠️まだ「おくすリングBOT」と友達になっていません。<br>
-  通知を受け取るために、BOTを追加してください。
-  </p>
+  <section class="app-card">
+    <h2>LINE BOT連携</h2>
 
-  <p>
-    <%= link_to "BOTを追加する", "https://lin.ee/V1rMOS3" %>
-  </p>
+    <p class="status-message warning">
+      ⚠️ まだ「おくすリングBOT」と友達になっていません。
+    </p>
 
-  <p>
-  ※BOTの追加が完了しましたら、自動的にこのページへ戻ってきます。
-  </p>
+    <p>
+      通知を受け取るには、BOTを追加してください。
+    </p>
+
+    <p>
+      <%= link_to "BOTを追加する",
+            "https://lin.ee/V1rMOS3",
+            class: "app-button app-button-primary" %>
+    </p>
+
+    <p class="invite-help-text">
+      BOTを追加すると、<br>
+      自動でこの画面に戻ります。<br>
+      続けて家族共有を開始できます。
+    </p>
+  </section>
 </div>

@@ -651,3 +651,38 @@ input.invite-url-field {
   padding: 8px 14px;
   font-size: 14px;
 }
+
+.invite-page .app-card {
+  padding: 24px 20px;
+}
+
+.invite-page h1 {
+  font-size: 36px;
+  line-height: 1.3;
+}
+
+.invite-page h2 {
+  margin-bottom: 20px;
+}
+
+.invite-page p {
+  word-break: keep-all;
+  line-break: strict;
+}
+
+.invite-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.invite-summary {
+  font-size: 16px;
+}
+
+.invite-summary strong {
+  font-size: 18px;
+}
+
+.invite-help-text {
+  color: #5f6b66;
+}
