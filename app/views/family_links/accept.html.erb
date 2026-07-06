@@ -4,27 +4,46 @@
 <% content_for :description, "家族共有の招待を受け取り、設定を進めるページです。" %>
 
 <div class="invite-page">
-  <h1>家族から招待が届いています</h1>
+  <section class="app-card">
+    <div class="invite-icon">💌</div>
 
-  <p>
-  <%= @owner.name %> さんが、<br>
-  あなたを「おくすリング」に招待しています。
-  </p>
+    <h1>
+      家族から招待が<br>
+      届いています
+    </h1>
 
-  <p>
-  <%= link_to "【おくすリングとは】", about_path(return_to: request.fullpath) %>
-  </p>
+    <p class="invite-summary">
+      <strong><%= @owner.name %></strong> さんから<br>
+      おくすリングに招待されています。
+    </p>
+  </section>
 
-  <p>
-  まずはLINEでログインをお願いします。
-  </p>
+  <section class="app-card invite-action-card">
+    <h2>おくすリングをはじめる</h2>
 
-  <%= button_to "LINEでログイン",
-      "/auth/line",
-      method: :post,
-      data: { turbo: false } %>
+    <p>
+      おくすリングでは、<br>
+      家族とお薬の予定を共有できます。
+    </p>
 
-  <p class="invite-note">
-  ※ログイン後、このページに自動的に戻ってきます。
-  </p>
+    <p>
+      <%= link_to "おくすリングとは",
+          about_path(return_to: request.fullpath),
+          class: "text-link" %>
+    </p>
+
+    <p>
+      まずはLINEでログインしてください。
+    </p>
+
+    <%= button_to "LINEでログイン",
+          "/auth/line",
+          method: :post,
+          data: { turbo: false },
+          class: "app-button app-button-primary" %>
+
+    <p class="invite-note">
+      ログイン後、自動でこのページに戻ります。
+    </p>
+  </section>
 </div>
