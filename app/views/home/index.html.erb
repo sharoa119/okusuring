@@ -11,10 +11,15 @@
   </div>
 
   <div class="page-container home-page">
-    <h1>今日のお薬の予定</h1>
+    <h1 class="home-title">
+      今日のお薬の予定 <span class="home-title-icon">💊</span>
+    </h1>
 
     <section class="app-card">
-      <h2>自分の予定</h2>
+      <h2 class="schedule-card-title">
+        <span class="title-dot"></span>
+        自分の予定
+      </h2>
 
       <% if @my_times.any? %>
         <ul>
@@ -56,7 +61,10 @@
     </p>
 
     <section class="app-card">
-      <h2>家族の予定</h2>
+      <h2 class="schedule-card-title">
+        <span class="title-dot"></span>
+        家族の予定
+      </h2>
 
       <% if @family_times.any? %>
         <ul>
