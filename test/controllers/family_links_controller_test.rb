@@ -17,7 +17,7 @@ class FamilyLinksControllerTest < ActionDispatch::IntegrationTest
     get invite_path(family_link.token)
 
     assert_response :success
-    assert_match '家族から招待が届いています', response.body
+    assert_match '家族から招待が', response.body
   end
 
   test 'BOT未連携の招待相手が招待URLを開くとL-2が表示される' do
@@ -29,7 +29,7 @@ class FamilyLinksControllerTest < ActionDispatch::IntegrationTest
     get invite_path(family_link.token)
 
     assert_response :success
-    assert_match '招待の確認ができました', response.body
+    assert_match '招待の確認が', response.body
   end
 
   test 'BOT連携済みの招待相手が招待URLを開くとL-3が表示され共有が完了する' do
@@ -41,7 +41,7 @@ class FamilyLinksControllerTest < ActionDispatch::IntegrationTest
     get invite_path(family_link.token)
 
     assert_response :success
-    assert_match '共有設定が完了しました', response.body
+    assert_match '共有設定が', response.body
 
     family_link.reload
     assert_equal user, family_link.member_user

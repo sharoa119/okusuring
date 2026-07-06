@@ -20,7 +20,9 @@
 
     <% if current_user %>
       <nav class="hamburger-menu">
-        <details>
+        <details
+          data-controller="menu"
+          data-action="click@window->menu#close">
           <summary>☰</summary>
 
           <ul>
@@ -38,14 +40,6 @@
           </ul>
         </details>
       </nav>
-    <% else %>
-      <div class="header-spacer"></div>
     <% end %>
   </div>
-
- <% if is_home %>
-    <div class="header-user">
-      <span><%= current_user.name %> さん</span>
-    </div>
-  <% end %>
 </header>

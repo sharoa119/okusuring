@@ -5,58 +5,73 @@
 <% content_for :description, "服薬通知や再通知の設定を変更できます。" %>
 
 <div class="page-container">
-  <div class="section-item">
-    <h2>BOT連携</h2>
+  <section class="app-card">
+    <h2>LINE BOT連携</h2>
 
     <% if current_user.line_bot_connected? %>
-      <p>✅ 【おくすリングBOT】と友達済みです。通知を受け取れます。</p>
+      <p class="status-message connected">
+        ✅ BOTと連携済みです。<br>
+        服薬時間になると通知を受け取れます。
+      </p>
     <% else %>
-      <p>⚠️ まだ【おくすリングBOT】と友達になっていません。</p>
-
-      <p>
-        通知を受け取るには、先に【おくすリングBOT】を追加してください。<br>
-        追加後はこの画面に戻って「連携状態を更新する」を押してください。
+      <p class="status-message warning">
+        ⚠️ まだ【おくすリングBOT】と友達になっていません。
       </p>
 
       <p>
-        <%= link_to "【おくすリングBOT】を追加する", "https://lin.ee/V1rMOS3", class: "app-button" %>
+        通知を受け取るには、先に【おくすリングBOT】を追加してください。
       </p>
 
       <p>
-        <%= link_to "連携状態を更新する", notification_settings_path, class: "app-button" %>
+        追加後はこの画面に戻り、
+        「連携状態を更新する」を押してください。
+      </p>
+
+      <p>
+        <%= link_to "【おくすリングBOT】を追加する", "https://lin.ee/V1rMOS3", class: "app-button app-button-primary" %>
+      </p>
+
+      <p>
+        <%= link_to "連携状態を更新する", notification_settings_path, class: "app-button app-button-small" %>
       </p>
     <% end %>
+  </section>
+
+  <section class="app-card">
+    <h2>再通知</h2>
+
+    <p>
+      ※「飲んだよ」が押されていない場合、<br>
+      設定した時間後に再通知されます。<br>
+      初期設定では10分後に再通知されます。
+    </p>
+
+    <%= form_with model: current_user,
+          url: notification_settings_path,
+          method: :patch do |f| %>
+
+      <div class="setting-row">
+        <%= f.check_box :reminder_enabled %>
+        <%= f.label :reminder_enabled, "再通知を有効にする" %>
+      </div>
+
+      <div class="setting-field">
+        <%= f.label :reminder_interval, "再通知までの時間" %>
+
+        <%= f.select :reminder_interval,
+          [
+            ["5分後", 5],
+            ["10分後", 10],
+            ["15分後", 15]
+          ],
+          {},
+          class: "setting-select"
+        %>
+      </div>
+
+      <div class="form-submit">
+        <%= f.submit "保存する", class: "app-button" %>
+      </div>
+    <% end %>
   </div>
-
-  <h2>再通知</h2>
-
-  <p>
-    ※「飲んだよ」が押されていない場合、設定した時間後に再通知されます。<br>
-    初期設定では10分後に再通知されます。
-  </p>
-
-  <%= form_with model: current_user,
-        url: notification_settings_path,
-        method: :patch do |f| %>
-
-    <div>
-      <%= f.check_box :reminder_enabled %>
-      <%= f.label :reminder_enabled, "再通知を有効にする" %>
-    </div>
-
-    <div>
-      <%= f.label :reminder_interval, "再通知までの時間" %>
-
-      <%= f.select :reminder_interval,
-        [
-          ["5分後", 5],
-          ["10分後", 10],
-          ["15分後", 15]
-        ]
-      %>
-    </div>
-
-    <%= f.submit "保存する" %>
-
-  <% end %>
-</div>
+</section>

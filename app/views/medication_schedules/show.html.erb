@@ -13,7 +13,11 @@
 
   <div class="section-item">
     <p class="detail-label">飲む人</p>
-    <p class="detail-value"><%= @medication_schedule.target_name %></p>
+    <p class="detail-value">
+      <span class="med-target">
+        <%= @medication_schedule.target_name %>
+      </span>
+    </p>
   </div>
 
   <div class="section-item">
@@ -21,10 +25,13 @@
 
     <ul class="detail-time-list">
       <% @medication_schedule.medication_times.each do |time| %>
-        <li>
-          <%= time.time.strftime("%H:%M") %>
-          <span class="detail-status">
-            <%= time.taken_today? ? "☑️ 飲んだ" : "未" %>
+        <li class="detail-time-item">
+          <span class="detail-time">
+            <%= time.time.strftime("%H:%M") %>
+          </span>
+
+          <span class="detail-status <%= time.taken_today? ? "done" : "pending" %>">
+            <%= time.taken_today? ? "✔ 済" : "未" %>
           </span>
         </li>
       <% end %>
@@ -33,9 +40,11 @@
 
   <div class="section-item">
     <p class="detail-label">メモ</p>
-    <p class="detail-value">
-      <%= @medication_schedule.memo.presence || "メモはありません" %>
-    </p>
+    <% if @medication_schedule.memo.present? %>
+      <p class="detail-memo"><%= @medication_schedule.memo %></p>
+    <% else %>
+      <p class="detail-memo detail-empty">メモはありません</p>
+    <% end %>
   </div>
 
   <% if @readonly %>

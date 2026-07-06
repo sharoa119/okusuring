@@ -12,12 +12,14 @@
 
     <% if medication_schedule.persisted? %>
       <p>
-        <%= medication_schedule.target_name %>
-        （変更できません）
+        <span class="med-target form-target-tag">
+          <%= medication_schedule.target_name %>
+        </span>
       </p>
 
-      <p>
-        ※飲む人を変えたい場合は、新しくお薬の予定を登録してください。
+      <p class="form-note">
+        ※飲む人は変更できません。<br>
+        変更する場合は新しく予定を登録してください。
       </p>
     <% else %>
       <div>
@@ -37,21 +39,21 @@
         <div class="time-field">
           <%= t.hidden_field :id if t.object.persisted? %>
           <%= t.time_field :time %>
-          <button type="button" data-action="nested-form#remove">削除</button>
+          <button type="button" class="time-remove-button" data-action="nested-form#remove">削除</button>
           <%= t.hidden_field :_destroy %>
         </div>
       <% end %>
     </div>
 
     <!-- 追加ボタン -->
-    <button type="button" data-action="nested-form#add">＋時間を追加</button>
+    <button type="button" class="time-add-button" data-action="nested-form#add">＋時間を追加</button>
 
     <!-- テンプレート（非表示） -->
     <template data-nested-form-target="template">
       <%= f.fields_for :medication_times, MedicationTime.new, child_index: "NEW_RECORD" do |t| %>
         <div class="time-field">
           <%= t.time_field :time %>
-          <button type="button" data-action="nested-form#remove">削除</button>
+          <button type="button" class="time-remove-button" data-action="nested-form#remove">削除</button>
           <%= t.hidden_field :_destroy %>
         </div>
       <% end %>
@@ -59,7 +61,7 @@
 
     <h3>メモ</h3>
     <div>
-      <%= f.text_area :memo, placeholder: "例：オレンジジュースと一緒に飲ませる" %>
+      <%= f.text_area :memo, rows: 3, placeholder: "例：オレンジジュースと一緒に飲ませる" %>
     </div>
 
     <div class="form-submit">

@@ -4,100 +4,150 @@
 <% content_for :description, "服薬時間の通知や再通知、家族共有機能により、飲み忘れを防ぐ服薬管理サービスです。" %>
 
 <% if current_user %>
+  <div class="home-greeting">
+    <p>
+      こんにちは、<strong><%= current_user.name %> さん</strong>
+    </p>
+  </div>
 
-  <h1>今日のお薬の予定</h1>
+  <div class="page-container home-page">
+    <h1 class="home-title">
+      今日のお薬の予定 <span class="home-title-icon">💊</span>
+    </h1>
 
-  <h2>自分の予定</h2>
+    <section class="app-card">
+      <h2 class="schedule-card-title">
+        <span class="title-dot"></span>
+        自分の予定
+      </h2>
 
-  <% if @my_times.any? %>
-    <ul>
-      <% @my_times.each do |time| %>
-        <li class="med-item">
-          <span class="med-time">
-            <%= time.time.strftime("%H:%M") %>
-          </span>
-          <span class="med-target">
-            <%= time.medication_schedule.target_name %>
-          </span>
-          <%= link_to time.medication_schedule.title,
-              medication_schedule_path(time.medication_schedule) %>
-            
-          <% if time.taken_today? %>
-            <span class="done">✔ 済</span>
-          <% else %>
-            <span class="med-action">
-              <%= button_to "飲んだよ",
-                    medication_time_medication_records_path(time) %>
-            </span>
+      <% if @my_times.any? %>
+        <ul>
+          <% @my_times.each do |time| %>
+            <li class="med-item">
+              <div class="med-info">
+                <span class="med-time"><%= time.time.strftime("%H:%M") %></span>
+
+                <span class="med-target">
+                  <%= time.medication_schedule.target_name %>
+                </span>
+
+                <%= link_to time.medication_schedule.title,
+                    medication_schedule_path(time.medication_schedule),
+                    class: "med-title" %>
+              </div>
+
+              <% if time.taken_today? %>
+                <span class="done">✔ 済</span>
+              <% else %>
+                <span class="med-action">
+                  <%= button_to "飲んだよ",
+                      medication_time_medication_records_path(time),
+                      class: "app-button" %>
+                </span>
+              <% end %>
+            </li>
           <% end %>
-        </li>
+        </ul>
+      <% else %>
+        <p>今日の服薬予定はありません</p>
       <% end %>
-    </ul>
-  <% else %>
-    <p>今日の服薬予定はありません</p>
-  <% end %>
+    </section>
 
-  <p>
-    ＋ <%= link_to "新しい服薬スケジュールを登録", new_medication_schedule_path %>
-  </p>
+    <p class="home-action">
+      <%= link_to "＋ 新しい服薬スケジュールを登録",
+          new_medication_schedule_path,
+          class: "app-button app-button-primary" %>
+    </p>
 
-  <hr>
+    <section class="app-card">
+      <h2 class="schedule-card-title">
+        <span class="title-dot"></span>
+        家族の予定
+      </h2>
 
-  <h2>家族の予定</h2>
+      <% if @family_times.any? %>
+        <ul>
+          <% @family_times.each do |time| %>
+            <li class="med-item">
+              <div class="med-info">
+                <span class="med-time"><%= time.time.strftime("%H:%M") %></span>
 
-  <% if @family_times.any? %>
-    <ul>
-      <% @family_times.each do |time| %>
-        <li>
-          <%= link_to time.medication_schedule.title,
-                      medication_schedule_path(time.medication_schedule) %>
-          <%= time.medication_schedule.target_name %>
-          <%= time.time.strftime("%H:%M") %>
-          <span class="readonly">閲覧のみ</span>
-        </li>
+                <span class="med-target">
+                  <%= time.medication_schedule.target_name %>
+                </span>
+
+                <%= link_to time.medication_schedule.title,
+                    medication_schedule_path(time.medication_schedule),
+                    class: "med-title" %>
+              </div>
+              <span class="readonly">閲覧のみ</span>
+            </li>
+          <% end %>
+        </ul>
+      <% elsif @has_family_links %>
+        <p>家族のお薬の予定はありません</p>
+      <% else %>
+        <p>まだ家族と共有していません</p>
+
+        <%= link_to "＋ 家族を招待する",
+              family_links_path,
+              class: "app-button" %>
       <% end %>
-    </ul>
-  <% elsif @has_family_links %>
-    <p>家族のお薬の予定はありません</p>
-  <% else %>
-    <p>まだ家族と共有していません</p>
-
-    <%= link_to "＋ 家族を招待する", family_links_path %>
-  <% end %>
+    </section>
+  </div>
 <% else %>
   <div class="lp-container">
     <div class="lp-logo">
       <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
     </div>
 
-    <p>
-      おくすリングは、自分や家族の服薬の飲み忘れを防ぐことに特化した、
-      シンプルなリマインダーサービスです。
-    </p>
+    <h2 class="lp-section-title">おくすリングでできること</h2>
 
-    <p>
-      服薬時間になるとLINEで通知が届き、
-      「飲んだよ」を記録できます。
-      家族共有を使うことで、家族の服薬状況も見守れます。
-    </p>
+    <div class="app-card feature-list">
 
-    <p>
-      おくすリングでは、服薬時間の通知や家族共有に
-      LINEを利用しています。
-      そのため、LINEアカウントでログインしてご利用ください。
+      <div class="feature-item">
+        <div class="feature-icon">💊</div>
+
+        <div class="feature-content">
+          <h3>服薬時間になるとLINEでお知らせ</h3>
+          <p>決まった時間にLINEへ通知します。</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">✅</div>
+
+        <div class="feature-content">
+          <h3>飲んだらワンタップで記録</h3>
+          <p>「飲んだよ」を押すだけで記録できます。</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">👨‍👩‍👧</div>
+
+        <div class="feature-content">
+          <h3>家族と服薬状況を見守れる</h3>
+          <p>飲み忘れがあったときは家族にも通知します。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="lp-login-note">
+      LINEアカウントでログインすると、すぐにご利用いただけます。<br>
+      <%= link_to "利用規約", terms_path %>・
+      <%= link_to "プライバシーポリシー", privacy_path %>
+      をご確認の上、ログインしてください。
     </p>
 
     <div class="lp-actions">
       <%= button_to "LINEでログイン",
           "/auth/line",
           method: :post,
+          class: "app-button app-button-primary",
           data: { turbo: false } %>
-
-      <p class="lp-links">
-        <%= link_to "利用規約", terms_path %>
-        ｜
-        <%= link_to "プライバシーポリシー", privacy_path %>
-      </p>
     </div>
   </div>
 <% end %>

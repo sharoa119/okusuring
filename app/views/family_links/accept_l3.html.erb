@@ -4,19 +4,32 @@
 <% content_for :description, "家族共有の設定が完了しました。" %>
 
 <div class="invite-page">
-  <h1>共有設定が完了しました。</h1>
+  <section class="app-card">
+    <div class="invite-icon">
+      🤝
+    </div>
 
-  <p>
-  あなたは <%= @owner.name %> さんと<br>
-  家族として連携されました。
-  </p>
+    <h1>
+      共有設定が<br>
+      完了しました
+    </h1>
 
-  <p>
-  今後、共有されたお薬の予定で<br>
-  通知を受け取れます。
-  </p>
+    <p class="invite-summary">
+      <strong><%= @owner.name %></strong> さんと<br>
+      家族として連携されました。
+    </p>
+  </section>
 
-  <p>
-  <%= link_to "トップページへ", root_path %>
-  </p>
+  <section class="app-card">
+    <h2>家族共有が利用できます</h2>
+
+    <p class="invite-help-text">
+      今後は共有されたお薬の予定を確認したり<br>
+      通知を受け取ったりできます。
+    </p>
+
+    <%= link_to "トップページへ",
+          root_path,
+          class: "app-button app-button-primary" %>
+  </section>
 </div>
