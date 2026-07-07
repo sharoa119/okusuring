@@ -503,7 +503,6 @@ textarea {
 .family-status {
   margin-left: auto;
   flex-shrink: 0;
-
   padding: 4px 10px;
   border-radius: 999px;
   background: #eef5f1;
@@ -526,7 +525,6 @@ textarea {
   display: flex;
   align-items: center;
   gap: 8px;
-
   padding: 10px;
   border: 1px solid #cfe1d8;
   border-radius: 14px;
@@ -808,14 +806,27 @@ summary {
 
 a:active,
 button:active,
-summary:active {
+summary:active,
+input[type="submit"]:active {
   transform: scale(0.98);
 }
 
 @media (hover: hover) {
   a:hover,
   button:hover,
-  summary:hover {
+  summary:hover,
+  input[type="submit"]:hover {
     opacity: 0.8;
+  }
+}
+
+@media (min-width: 768px) {
+  .family-member-row {
+    width: 100%;
+  }
+
+  .family-member-actions {
+    margin-left: auto;
+    align-items: flex-end;
   }
 }
