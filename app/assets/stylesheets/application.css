@@ -470,7 +470,7 @@ textarea {
 
 .family-member-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 }
 
@@ -798,4 +798,24 @@ input.invite-url-field {
   background: var(--color-primary-start);
   flex-shrink: 0;
   opacity: 0.8;
+}
+
+a,
+button,
+summary {
+  transition: transform 0.15s ease;
+}
+
+a:active,
+button:active,
+summary:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  a:hover,
+  button:hover,
+  summary:hover {
+    opacity: 0.8;
+  }
 }
