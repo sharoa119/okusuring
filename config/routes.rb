@@ -13,6 +13,12 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy', as: :logout
 
+  if Rails.env.local?
+    namespace :dev do
+      resource :session, only: %i[new create]
+    end
+  end
+
   resources :medication_schedules
   resources :medication_times, only: [] do
     resources :medication_records, only: :create

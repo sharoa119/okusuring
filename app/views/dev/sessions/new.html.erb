@@ -1,0 +1,12 @@
+<div class="page-container">
+  <h1>開発用ログイン</h1>
+
+  <p>確認するユーザーを選択してください。</p>
+
+  <% @users.each do |user| %>
+    <%= button_to "#{user.name}としてログイン",
+                  dev_session_path(line_user_id: user.line_user_id),
+                  method: :post,
+                  class: "app-button app-button-primary" %>
+  <% end %>
+</div>
