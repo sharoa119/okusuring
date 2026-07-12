@@ -30,9 +30,7 @@
             <%= time.time.strftime("%H:%M") %>
           </span>
 
-          <span class="detail-status <%= time.taken_today? ? "done" : "pending" %>">
-            <%= time.taken_today? ? "✔ 済" : "未" %>
-          </span>
+          <%= medication_status_badge(time.taken_today?) %>
         </li>
       <% end %>
     </ul>

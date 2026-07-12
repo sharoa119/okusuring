@@ -453,8 +453,15 @@ summary::-webkit-details-marker {
 }
 
 .med-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-weight: 700;
   white-space: nowrap;
+}
+
+.status-icon {
+  flex-shrink: 0;
 }
 
 .med-status.done {

@@ -58,7 +58,7 @@
 
               <% if time.taken_today? %>
                 <span class="med-meta">
-                  <span class="med-status done">✔ 済</span>
+                  <%= medication_status_badge(true) %>
                   <%= button_to "取り消す",
                       medication_time_medication_record_path(
                         time,
@@ -112,11 +112,7 @@
               </div>
 
               <div class="med-meta">
-                <% if time.taken_today? %>
-                  <span class="med-status done">✔ 済</span>
-                <% else %>
-                  <span class="med-status pending">未</span>
-                <% end %>
+                <%= medication_status_badge(time.taken_today?) %>
                 <span class="readonly">閲覧のみ</span>
               </div>
             </li>
