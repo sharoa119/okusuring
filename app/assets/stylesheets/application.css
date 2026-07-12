@@ -19,6 +19,22 @@
 body {
   background: var(--color-background);
   color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.7;
+}
+
+/* 見出しの既定マージンを正規化（カード先頭の過剰な余白を防ぐ）。
+   必要な余白は個別クラス側で付与する。 */
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+.app-card > :first-child {
+  margin-top: 0;
 }
  
  /* 行の余白 */
