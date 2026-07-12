@@ -40,7 +40,9 @@
 
     <%= render "shared/header" unless hide_header %>
 
-    <%= yield %>
+    <main class="site-main">
+      <%= yield %>
+    </main>
 
     <%= render "shared/footer" %>
   </body>
