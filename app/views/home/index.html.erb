@@ -15,6 +15,10 @@
       今日のお薬の予定 <span class="home-title-icon" aria-hidden="true">💊</span>
     </h1>
 
+    <p class="home-date">
+      <%= Date.current.strftime("%-m月%-d日") %>（<%= %w[日 月 火 水 木 金 土][Date.current.wday] %>）
+    </p>
+
     <% unless current_user.line_bot_connected? %>
       <div class="bot-alert" role="status">
         <span class="bot-alert-icon" aria-hidden="true">🔔</span>
