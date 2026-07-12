@@ -7,7 +7,7 @@
     <% if is_home %>
       <div class="header-spacer"></div>
     <% else %>
-      <%= link_to "＜", root_path, class: "back-link" %>
+      <%= link_to "＜", root_path, class: "back-link", "aria-label": "ホームに戻る" %>
     <% end %>
 
     <h1 class="site-title">
@@ -23,7 +23,7 @@
         <details
           data-controller="menu"
           data-action="click@window->menu#close">
-          <summary>☰</summary>
+          <summary aria-label="メニュー">☰</summary>
 
           <ul>
             <li><%= link_to "家族共有設定", family_links_path %></li>

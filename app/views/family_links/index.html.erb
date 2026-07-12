@@ -15,7 +15,7 @@
         <% accepted_links.each do |link| %>
           <li class="family-member">
             <div class="family-member-row">
-              <span class="family-icon">👤</span>
+              <span class="family-icon" aria-hidden="true">👤</span>
 
               <strong class="family-member-name">
                 <%= link.member_user.name %>
@@ -54,7 +54,7 @@
 
     <div data-controller="clipboard">
       <div class="invite-link-box">
-        <span class="invite-link-icon">🔗</span>
+        <span class="invite-link-icon" aria-hidden="true">🔗</span>
 
         <input
           type="text"
@@ -71,7 +71,7 @@
         </button>
       </div>
 
-      <p class="copy-message" data-clipboard-target="message" hidden>
+      <p class="copy-message" data-clipboard-target="message" role="status" aria-live="polite" hidden>
         リンクをコピーしました
       </p>
     </div>
