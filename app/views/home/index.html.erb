@@ -96,7 +96,15 @@
                     medication_schedule_path(time.medication_schedule),
                     class: "med-title" %>
               </div>
-              <span class="readonly">閲覧のみ</span>
+
+              <div class="med-meta">
+                <% if time.taken_today? %>
+                  <span class="med-status done">✔ 済</span>
+                <% else %>
+                  <span class="med-status pending">未</span>
+                <% end %>
+                <span class="readonly">閲覧のみ</span>
+              </div>
             </li>
           <% end %>
         </ul>

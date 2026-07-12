@@ -424,6 +424,27 @@ summary::-webkit-details-marker {
   white-space: nowrap;
 }
 
+.med-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.med-status {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.med-status.done {
+  color: #2f8f5b;
+}
+
+.med-status.pending {
+  color: #8a959a;
+  font-weight: 600;
+}
+
 .readonly {
   color: #888;
   font-size: 0.9rem;
