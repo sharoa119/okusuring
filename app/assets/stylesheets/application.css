@@ -743,6 +743,16 @@ input.invite-url-field {
   margin-top: 16px;
 }
 
+/* 再通知が無効のときは「再通知までの時間」をグレーアウト */
+.setting-field.is-disabled {
+  opacity: 0.5;
+}
+
+.setting-select:disabled {
+  cursor: not-allowed;
+  background: #f2f4f5;
+}
+
 .setting-field label {
   display: block;
   margin-bottom: 10px;

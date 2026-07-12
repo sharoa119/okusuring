@@ -48,14 +48,16 @@
 
     <%= form_with model: current_user,
           url: notification_settings_path,
-          method: :patch do |f| %>
+          method: :patch,
+          data: { controller: "reminder" } do |f| %>
 
       <div class="setting-row">
-        <%= f.check_box :reminder_enabled %>
+        <%= f.check_box :reminder_enabled,
+              data: { reminder_target: "enabled", action: "change->reminder#toggle" } %>
         <%= f.label :reminder_enabled, "再通知を有効にする" %>
       </div>
 
-      <div class="setting-field">
+      <div class="setting-field" data-reminder-target="field">
         <%= f.label :reminder_interval, "再通知までの時間" %>
 
         <%= f.select :reminder_interval,
@@ -65,7 +67,8 @@
             ["15分後", 15]
           ],
           {},
-          class: "setting-select"
+          class: "setting-select",
+          data: { reminder_target: "interval" }
         %>
       </div>
 
@@ -73,5 +76,5 @@
         <%= f.submit "保存する", class: "app-button app-button-primary" %>
       </div>
     <% end %>
-  </div>
-</section>
+  </section>
+</div>
