@@ -185,12 +185,20 @@ summary::-webkit-details-marker {
   margin: 8px 0 16px;
 }
 
+/* ボタン体系:
+   - .app-button                = secondary（白背景・枠線）。画面遷移などの副次アクション用。
+   - .app-button + .app-button-primary = primary（グラデ）。DBに保存する主要アクション用。
+   - 削除系（.schedule-delete-button 等） = danger（控えめな赤）。
+   横幅はバナー化を防ぐため最大幅を設けて中央寄せする。 */
 .app-button {
   display: block;
   width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 12px 16px;
 
-  border: 1px solid var(--color-border);
+  border: 1px solid #b7d8cc;
   border-radius: 16px;
 
   background: var(--color-surface);
@@ -214,18 +222,6 @@ summary::-webkit-details-marker {
 
 .form-submit {
   margin-top: 24px;
-}
-
-.form-button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 999px;
-  background: #7ddfbc;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
 }
 
 .section-item {
@@ -252,9 +248,11 @@ summary::-webkit-details-marker {
 
 .app-button-primary {
   background: var(--color-primary-gradient);
-  color: white;
+  /* 淡いグラデ背景では白文字はコントラスト不足(約1.7:1)のため、濃い緑の文字で
+     可読性を確保(約5.7:1)しつつ、やわらかい世界観のグラデーションは維持する。 */
+  color: #134a30;
   border: none;
-  font-weight: 600;
+  font-weight: 700;
 
   box-shadow: 0 6px 18px rgba(99, 217, 138, 0.2);
 }
@@ -330,10 +328,6 @@ summary::-webkit-details-marker {
   margin: 24px 0;
 }
 
-.app-button {
-  border: 1px solid #b7d8cc;
-}
-
 .med-item {
   display: flex;
   justify-content: space-between;
@@ -348,15 +342,14 @@ summary::-webkit-details-marker {
   flex-wrap: wrap;
 }
 
+/* 「飲んだよ」は服薬をDBに記録する主要アクション。色は app-button-primary に任せ、
+   ここではサイズ（内容ぶんの横幅）だけを制御する。 */
 .med-action .app-button {
   width: auto;
   min-width: 96px;
+  margin: 0;
   padding: 10px 18px;
-  border-color: #63D98A;
   border-radius: 14px;
-  color: #2f8f5b;
-  background: #F5FBFA;
-  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -662,12 +655,6 @@ input.invite-url-field {
   outline: none;
   border-color: #7ddfbc;
   box-shadow: 0 0 0 3px rgba(125, 223, 188, 0.2);
-}
-
-.app-button-primary {
-  background: #73d8b3;
-  border-color: #7ddfbc;
-  color: #fff;
 }
 
 .app-button-small {
