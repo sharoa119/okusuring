@@ -448,6 +448,10 @@ summary::-webkit-details-marker {
   flex-shrink: 0;
 }
 
+.med-meta form {
+  margin: 0;
+}
+
 .med-status {
   font-weight: 700;
   white-space: nowrap;
@@ -460,6 +464,17 @@ summary::-webkit-details-marker {
 .med-status.pending {
   color: #8a959a;
   font-weight: 600;
+}
+
+/* 「済」の取り消し（誤操作からの復帰）。控えめなテキストボタン。 */
+.undo-button {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .readonly {

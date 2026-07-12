@@ -57,7 +57,17 @@
               </div>
 
               <% if time.taken_today? %>
-                <span class="done">✔ 済</span>
+                <span class="med-meta">
+                  <span class="med-status done">✔ 済</span>
+                  <%= button_to "取り消す",
+                      medication_time_medication_record_path(
+                        time,
+                        time.medication_records.find { |r| r.taken_date == Date.current }
+                      ),
+                      method: :delete,
+                      class: "undo-button",
+                      form: { data: { turbo_confirm: "「済」を取り消しますか？" } } %>
+                </span>
               <% else %>
                 <span class="med-action">
                   <%= button_to "飲んだよ",

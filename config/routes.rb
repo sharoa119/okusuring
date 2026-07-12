@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :medication_schedules
   resources :medication_times, only: [] do
-    resources :medication_records, only: :create
+    resources :medication_records, only: %i[create destroy]
   end
   resources :family_links, only: %i[index create destroy]
 
