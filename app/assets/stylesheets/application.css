@@ -167,6 +167,47 @@ summary::-webkit-details-marker {
   padding: 24px 20px;
 }
 
+/* BOT未連携の注意喚起バナー（ホーム） */
+.bot-alert {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 16px 0 24px;
+  padding: 16px;
+  border: 1px solid #f0d9a8;
+  border-radius: 16px;
+  background: #fff8e8;
+}
+
+.bot-alert-icon {
+  font-size: 22px;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.bot-alert-body {
+  min-width: 0;
+}
+
+.bot-alert-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: #7a5c00;
+}
+
+.bot-alert-text {
+  margin: 0 0 12px;
+  color: #6b5a2e;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.bot-alert .app-button {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+}
+
 /* フラッシュメッセージ（成功/エラー） */
 .flash {
   display: flex;
