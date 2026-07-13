@@ -8,7 +8,8 @@
   --color-background: #F5FBFA;
   --color-surface: #FFFFFF;
 
-  --color-text: #2F3A3F;
+  /* ロゴの文字色に合わせたブラウン */
+  --color-text: #554029;
   --color-text-secondary: #5F6B70;
   --color-text-muted: #8A959A;
 
@@ -55,7 +56,7 @@ h3 {
 
 .med-time {
   font-weight: 700;
-  color: #2f3b46;
+  color: var(--color-text);
   min-width: 60px;
 }
 
@@ -175,7 +176,7 @@ summary::-webkit-details-marker {
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.02em;
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   text-wrap: balance;
 }
 
