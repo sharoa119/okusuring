@@ -162,13 +162,6 @@
       </div>
     </div>
 
-    <p class="lp-login-note">
-      LINEアカウントでログインすると、すぐにご利用いただけます。<br>
-      <%= link_to "利用規約", terms_path %>・
-      <%= link_to "プライバシーポリシー", privacy_path %>
-      をご確認の上、ログインしてください。
-    </p>
-
     <div class="lp-actions">
       <%= button_to "LINEでログイン",
           "/auth/line",
@@ -176,5 +169,12 @@
           class: "app-button app-button-primary",
           data: { turbo: false } %>
     </div>
+
+    <p class="lp-login-note">
+      LINEアカウントでログインすると、すぐにご利用いただけます。<br>
+      <%= link_to "利用規約", terms_path %>・
+      <%= link_to "プライバシーポリシー", privacy_path %>
+      をご確認の上、ログインしてください。
+    </p>
   </div>
 <% end %>

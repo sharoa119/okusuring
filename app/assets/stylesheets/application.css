@@ -413,8 +413,11 @@ summary::-webkit-details-marker {
   }
 }
 
-/* グリッド内はカード間の余白を gap に任せる */
-.feature-grid .app-card {
+/* グリッド内はカード間の余白を gap に任せる。
+   .app-card+.app-card の margin-top がグリッド項目の高さを崩すため、
+   詳細度を上げて確実に打ち消す。 */
+.feature-grid .app-card,
+.feature-grid .app-card + .app-card {
   margin-top: 0;
 }
 
@@ -440,8 +443,10 @@ summary::-webkit-details-marker {
 }
 
 .lp-login-note {
+  margin-top: 20px;
   font-size: 15px;
   line-height: 1.7;
+  text-align: center;
 }
 
 .app-card+.app-card {
