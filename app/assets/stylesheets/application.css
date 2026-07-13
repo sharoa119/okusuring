@@ -374,7 +374,7 @@ summary::-webkit-details-marker {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  padding: 24px;
+  padding: 18px 24px;
   box-shadow: 0 8px 24px rgba(47, 58, 63, 0.06);
 }
 
@@ -411,11 +411,17 @@ summary::-webkit-details-marker {
 }
 
 .feature-item {
-  padding: 20px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--color-border);
 }
 
+/* カードの上下パディングと二重にならないよう、先頭/末尾の余白は詰める */
+.feature-item:first-child {
+  padding-top: 0;
+}
+
 .feature-item:last-child {
+  padding-bottom: 0;
   border-bottom: none;
 }
 
@@ -829,7 +835,7 @@ input.invite-url-field {
 }
 
 .invite-page .app-card {
-  padding: 24px 20px;
+  padding: 18px 20px;
 }
 
 .invite-page h1 {
