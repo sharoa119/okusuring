@@ -166,6 +166,16 @@ summary::-webkit-details-marker {
   height: auto;
 }
 
+/* ロゴ下のキャッチコピー（画像内のタグラインをテキスト化） */
+.lp-tagline {
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+}
+
 .lp-actions {
   text-align: center;
   margin-top: 32px;

@@ -6,8 +6,13 @@
 
 <div class="about-page">
   <div class="about-logo">
-    <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
+    <picture>
+      <source srcset="<%= image_path "logo.webp" %>" type="image/webp">
+      <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
+    </picture>
   </div>
+
+  <p class="lp-tagline">家族も、ペットも、やさしく見守る。</p>
 
   <p class="about-lead">
     おくすリングは<br>

@@ -132,8 +132,13 @@
 <% else %>
   <div class="lp-container">
     <div class="lp-logo">
-      <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
+      <picture>
+        <source srcset="<%= image_path "logo.webp" %>" type="image/webp">
+        <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
+      </picture>
     </div>
+
+    <p class="lp-tagline">家族も、ペットも、やさしく見守る。</p>
 
     <h2 class="lp-section-title">おくすリングでできること</h2>
 
