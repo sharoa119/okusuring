@@ -168,12 +168,27 @@ summary::-webkit-details-marker {
 
 /* ロゴ下のキャッチコピー（画像内のタグラインをテキスト化） */
 .lp-tagline {
-  margin: 8px 0 0;
+  margin-block-start: 12px;
   text-align: center;
-  font-size: 17px;
+  /* 32px前後。狭い画面では自動で少し縮めて横あふれを防ぐ */
+  font-size: clamp(28px, 8vw, 32px);
   font-weight: 700;
+  line-height: 1.4;
   letter-spacing: 0.02em;
   color: var(--color-text-secondary);
+  text-wrap: balance;
+}
+
+/* フレーズ単位で扱い、文の途中では改行しない */
+.lp-tagline-seg {
+  display: inline-block;
+}
+
+/* スマホでは「家族も、ペットも、」/「やさしく見守る。」で改行する */
+@media (width <= 600px) {
+  .lp-tagline-seg {
+    display: block;
+  }
 }
 
 .lp-actions {
