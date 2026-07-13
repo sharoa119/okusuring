@@ -400,39 +400,43 @@ summary::-webkit-details-marker {
   text-align: center;
 }
 
-.feature-item {
-  display: flex;
+/* 「おくすリングでできること」の3枚のカード。PCでは横並び、スマホでは縦積み */
+.feature-grid {
+  display: grid;
   gap: 16px;
-  align-items: flex-start;
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 768px) {
+  .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* グリッド内はカード間の余白を gap に任せる */
+.feature-grid .app-card {
+  margin-top: 0;
+}
+
+.feature-card {
+  text-align: center;
 }
 
 .feature-icon {
-  font-size: 28px;
+  font-size: 32px;
   line-height: 1;
 }
 
-.feature-item {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--color-border);
+.feature-card h3 {
+  margin: 8px 0;
+  font-size: 16px;
 }
 
-/* カードの上下パディングと二重にならないよう、先頭/末尾の余白は詰める */
-.feature-item:first-child {
-  padding-top: 0;
-}
-
-.feature-item:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.feature-content h3 {
-  margin: 0 0 8px;
-}
-
-.feature-content p {
+.feature-card p {
   margin: 0;
-  color: #666;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .lp-login-note {
