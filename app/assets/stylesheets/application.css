@@ -971,6 +971,13 @@ input.invite-url-field {
   margin: 0;
 }
 
+/* ヘッダーのおくすリングのワードマーク画像 */
+.site-logo {
+  display: block;
+  height: 24px;
+  width: auto;
+}
+
 .home-greeting {
   margin: 24px 0 16px;
   font-size: 16px;
