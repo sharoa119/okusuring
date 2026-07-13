@@ -7,7 +7,12 @@
     <% if is_home %>
       <div class="header-spacer"></div>
     <% else %>
-      <%= link_to "＜", root_path, class: "back-link", "aria-label": "ホームに戻る" %>
+      <%= link_to root_path, class: "back-link", "aria-label": "ホームに戻る" do %>
+        <svg class="back-icon" viewBox="0 0 24 24" width="24" height="24"
+             fill="currentColor" aria-hidden="true">
+          <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      <% end %>
     <% end %>
 
     <h1 class="site-title">
@@ -40,6 +45,9 @@
           </ul>
         </details>
       </nav>
+    <% else %>
+      <%# タイトルを中央に保つための右側スペーサー %>
+      <div class="header-spacer"></div>
     <% end %>
   </div>
 </header>

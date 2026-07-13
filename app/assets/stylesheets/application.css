@@ -289,6 +289,11 @@ summary::-webkit-details-marker {
   line-height: 1.8;
 }
 
+.legal-title {
+  margin: 0 0 24px;
+  font-size: 24px;
+}
+
 .legal-page h3 {
   margin-top: 32px;
 }
