@@ -939,10 +939,14 @@ input.invite-url-field {
 
 .setting-select {
   width: 100%;
-  padding: 10px 12px;
+  padding: 10px 40px 10px 12px;
   border: 1px solid #b8ddd0;
   border-radius: 12px;
   background: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23554029' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 7.5l5 5 5-5'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
   color: var(--color-text);
   font: inherit;
   appearance: none;
