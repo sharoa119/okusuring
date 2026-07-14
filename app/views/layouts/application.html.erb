@@ -33,7 +33,7 @@
     <%= render "shared/header" unless hide_header %>
 
     <% if notice %>
-      <div class="flash flash-notice" role="status">
+      <div class="flash flash-notice" role="status" data-controller="flash">
         <span class="flash-icon" aria-hidden="true">✅</span>
         <span><%= notice %></span>
       </div>
