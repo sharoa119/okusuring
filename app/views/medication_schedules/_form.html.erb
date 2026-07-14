@@ -3,77 +3,81 @@
 <div class="page-container">
   <h1 class="page-title"><%= page_title %></h1>
 
-  <%= form_with model: @medication_schedule, data: { controller: "nested-form" } do |f| %>
+  <section class="app-card">
+    <div class="app-card__body">
+      <%= form_with model: @medication_schedule, data: { controller: "nested-form" } do |f| %>
 
-    <div class="field">
-      <%= f.label :title, "タイトル", class: "field-label" %>
-      <%= f.text_field :title,
-            placeholder: "例：朝の薬、花粉症の薬" %>
-    </div>
+        <div class="field">
+          <%= f.label :title, "タイトル", class: "field-label" %>
+          <%= f.text_field :title,
+                placeholder: "例：朝の薬、花粉症の薬" %>
+        </div>
 
-    <div class="field">
-      <% if medication_schedule.persisted? %>
-        <span class="field-label">誰が飲む？</span>
+        <div class="field">
+          <% if medication_schedule.persisted? %>
+            <span class="field-label">誰が飲む？</span>
 
-        <p>
-          <span class="med-target form-target-tag">
-            <%= medication_schedule.target_name %>
-          </span>
-        </p>
+            <p>
+              <span class="med-target form-target-tag">
+                <%= medication_schedule.target_name %>
+              </span>
+            </p>
 
-        <p class="form-note">
-          ※これまでの服薬記録と結びついているため、飲む人は変更できません。<br>
-          別の人の分は、新しく予定を登録してください。
-        </p>
-      <% else %>
-        <%= f.label :target_name, "誰が飲む？", class: "field-label" %>
-        <%= f.text_field :target_name,
-              placeholder: "例：自分、みーちゃん、ポチ" %>
+            <p class="form-note">
+              ※これまでの服薬記録と結びついているため、飲む人は変更できません。<br>
+              別の人の分は、新しく予定を登録してください。
+            </p>
+          <% else %>
+            <%= f.label :target_name, "誰が飲む？", class: "field-label" %>
+            <%= f.text_field :target_name,
+                  placeholder: "例：自分、みーちゃん、ポチ" %>
 
-        <p class="form-note">
-          お薬を飲む人の名前を書いてください。<br>
-          （例：自分、子どもの名前、ペットの名前）
-        </p>
+            <p class="form-note">
+              お薬を飲む人の名前を書いてください。<br>
+              （例：自分、子どもの名前、ペットの名前）
+            </p>
+          <% end %>
+        </div>
+
+        <fieldset class="field time-fieldset">
+          <legend class="field-label">飲む時間</legend>
+
+          <div data-nested-form-target="container">
+            <%= f.fields_for :medication_times do |t| %>
+              <div class="time-field">
+                <%= t.hidden_field :id if t.object.persisted? %>
+                <%= t.time_field :time %>
+                <button type="button" class="time-remove-button" data-action="nested-form#remove">削除</button>
+                <%= t.hidden_field :_destroy %>
+              </div>
+            <% end %>
+          </div>
+
+          <button type="button" class="time-add-button" data-action="nested-form#add">＋時間を追加</button>
+
+          <%# 追加用テンプレート（非表示） %>
+          <template data-nested-form-target="template">
+            <%= f.fields_for :medication_times, MedicationTime.new, child_index: "NEW_RECORD" do |t| %>
+              <div class="time-field">
+                <%= t.time_field :time %>
+                <button type="button" class="time-remove-button" data-action="nested-form#remove">削除</button>
+                <%= t.hidden_field :_destroy %>
+              </div>
+            <% end %>
+          </template>
+        </fieldset>
+
+        <div class="field">
+          <%= f.label :memo, "メモ", class: "field-label" %>
+          <%= f.text_area :memo, rows: 3, placeholder: "例：オレンジジュースと一緒に飲ませる" %>
+        </div>
+
+        <div class="form-submit">
+          <%= f.submit medication_schedule.persisted? ? "更新する" : "登録する",
+            class: "app-button app-button-primary" %>
+        </div>
+
       <% end %>
     </div>
-
-    <fieldset class="field time-fieldset">
-      <legend class="field-label">飲む時間</legend>
-
-      <div data-nested-form-target="container">
-        <%= f.fields_for :medication_times do |t| %>
-          <div class="time-field">
-            <%= t.hidden_field :id if t.object.persisted? %>
-            <%= t.time_field :time %>
-            <button type="button" class="time-remove-button" data-action="nested-form#remove">削除</button>
-            <%= t.hidden_field :_destroy %>
-          </div>
-        <% end %>
-      </div>
-
-      <button type="button" class="time-add-button" data-action="nested-form#add">＋時間を追加</button>
-
-      <%# 追加用テンプレート（非表示） %>
-      <template data-nested-form-target="template">
-        <%= f.fields_for :medication_times, MedicationTime.new, child_index: "NEW_RECORD" do |t| %>
-          <div class="time-field">
-            <%= t.time_field :time %>
-            <button type="button" class="time-remove-button" data-action="nested-form#remove">削除</button>
-            <%= t.hidden_field :_destroy %>
-          </div>
-        <% end %>
-      </template>
-    </fieldset>
-
-    <div class="field">
-      <%= f.label :memo, "メモ", class: "field-label" %>
-      <%= f.text_area :memo, rows: 3, placeholder: "例：オレンジジュースと一緒に飲ませる" %>
-    </div>
-
-    <div class="form-submit">
-      <%= f.submit medication_schedule.persisted? ? "更新する" : "登録する",
-        class: "app-button app-button-primary" %>
-    </div>
-
-  <% end %>
+  </section>
 </div>
