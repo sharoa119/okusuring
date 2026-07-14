@@ -39,9 +39,7 @@
     <% end %>
 
     <section class="app-card">
-      <h2 class="schedule-card-title">
-        自分の予定
-      </h2>
+      <h2 class="card-header">自分の予定</h2>
 
       <% if @my_times.any? %>
         <ul>
@@ -82,7 +80,9 @@
           <% end %>
         </ul>
       <% else %>
-        <p>今日の服薬予定はありません</p>
+        <div class="app-card__body">
+          <p>今日の服薬予定はありません</p>
+        </div>
       <% end %>
     </section>
 
@@ -93,9 +93,7 @@
     </p>
 
     <section class="app-card">
-      <h2 class="schedule-card-title">
-        家族の予定
-      </h2>
+      <h2 class="card-header">家族の予定</h2>
 
       <% if @family_times.any? %>
         <ul>
@@ -121,13 +119,17 @@
           <% end %>
         </ul>
       <% elsif @has_family_links %>
-        <p>家族のお薬の予定はありません</p>
+        <div class="app-card__body">
+          <p>家族のお薬の予定はありません</p>
+        </div>
       <% else %>
-        <p>まだ家族と共有していません</p>
+        <div class="app-card__body">
+          <p>まだ家族と共有していません</p>
 
-        <%= link_to "＋ 家族を招待する",
-              family_links_path,
-              class: "app-button" %>
+          <%= link_to "＋ 家族を招待する",
+                family_links_path,
+                class: "app-button" %>
+        </div>
       <% end %>
     </section>
   </div>

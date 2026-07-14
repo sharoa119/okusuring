@@ -49,7 +49,7 @@ h3 {
   margin-top: 0;
 }
 
- /* 行の余白（カードの padding は外しているので、行が左右の余白を持つ） */
+ /* 全幅の区切りリスト。各行が左右の余白を持ち、区切り線はカード端まで伸ばす */
  .med-item {
    padding: 12px 24px;
    border-bottom: 1px solid #eee;
@@ -313,7 +313,8 @@ summary::-webkit-details-marker {
   line-height: 1.8;
 }
 
-.legal-title {
+/* ページ見出し（コンテンツ内の h1） */
+.page-title {
   margin: 0 0 24px;
   font-size: 24px;
 }
@@ -1076,27 +1077,30 @@ input.invite-url-field {
   color: var(--color-text-secondary);
 }
 
-/* 中身がリストのカード(ヘッダー付き)は、カード自体の padding を外し、
-   余白はヘッダーと行が自前で持つ(負マージンのハックが不要になる)。 */
-.app-card:has(> .schedule-card-title) {
+/* カードヘッダー(全幅の帯)を持つカードは、カード自体の padding を外す。
+   余白はヘッダーと本文ラッパー(.app-card__body)が持つ。 */
+.app-card:has(> .card-header) {
   padding: 0;
 }
 
-/* 予定カードの見出し。下線付きの全幅ヘッダー。 */
-.schedule-card-title {
+/* カードヘッダー：下線付きの全幅の帯 */
+.card-header {
   margin: 0;
   padding: 10px 24px;
   border-bottom: 1px solid var(--color-border);
   font-size: 15px;
 }
 
-/* 空状態の文言・招待ボタンにも余白を付ける */
-.app-card:has(> .schedule-card-title) > p {
-  margin: 16px 24px;
+/* パディングを持つ本文ラッパー（プロース用。リストには使わない） */
+.app-card__body {
+  padding: 16px 24px;
 }
 
-.app-card:has(> .schedule-card-title) > .app-button {
-  margin-bottom: 18px;
+/* カード内のリストは既定のマーカー・字下げを消す */
+.app-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a,
