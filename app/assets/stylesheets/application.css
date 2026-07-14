@@ -685,8 +685,7 @@ summary::-webkit-details-marker {
 }
 
 .detail-empty {
-  color: #777;
-  font-style: italic;
+  color: #999;
 }
 
 /* フォームの項目グループ */
