@@ -404,10 +404,17 @@ summary::-webkit-details-marker {
   margin-top: 24px;
 }
 
-.section-item {
+/* 詳細ページの定義リスト（dt=項目名 / dd=内容） */
+.detail-row {
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .family-member {
@@ -473,6 +480,8 @@ summary::-webkit-details-marker {
   display: grid;
   gap: 16px;
   grid-template-columns: 1fr;
+  list-style: none;
+  padding: 0;
 }
 
 @media (width >= 768px) {
@@ -671,7 +680,30 @@ summary::-webkit-details-marker {
   font-style: italic;
 }
 
+/* フォームの項目グループ */
+.field {
+  margin-bottom: 24px;
+}
+
+/* fieldset の既定枠を消して他の項目と揃える */
+.time-fieldset {
+  border: 0;
+  padding: 0;
+  min-inline-size: 0;
+}
+
+/* 項目名（label / legend 共通） */
+.field-label {
+  display: block;
+  margin-bottom: 8px;
+  padding: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
 .form-note {
+  margin-top: 8px;
   color: #777;
   font-size: 0.9rem;
   line-height: 1.6;
@@ -1130,6 +1162,10 @@ input.invite-url-field {
 /* パディングを持つ本文ラッパー（プロース用。リストには使わない） */
 .app-card__body {
   padding: 16px 24px;
+}
+
+.app-card__body > * + * {
+  margin-block-start: 16px;
 }
 
 /* カード内のリストは既定のマーカー・字下げを消す */

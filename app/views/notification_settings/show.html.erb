@@ -6,75 +6,79 @@
 
 <div class="page-container">
   <section class="app-card">
-    <h2>LINE BOT連携</h2>
+    <h2 class="card-header">LINE BOT連携</h2>
 
-    <% if current_user.line_bot_connected? %>
-      <p class="status-message connected">
-        ✅ BOTと連携済みです。<br>
-        服薬時間になると通知を受け取れます。
-      </p>
-    <% else %>
-      <p class="status-message warning">
-        ⚠️ まだ【おくすリングBOT】と友だちになっていません。
-      </p>
+    <div class="app-card__body">
+      <% if current_user.line_bot_connected? %>
+        <p class="status-message connected">
+          ✅ BOTと連携済みです。<br>
+          服薬時間になると通知を受け取れます。
+        </p>
+      <% else %>
+        <p class="status-message warning">
+          ⚠️ まだ【おくすリングBOT】と友だちになっていません。
+        </p>
 
-      <p>
-        通知を受け取るには、先に【おくすリングBOT】を追加してください。
-      </p>
+        <p>
+          通知を受け取るには、先に【おくすリングBOT】を追加してください。
+        </p>
 
-      <p>
-        追加後はこの画面に戻り、
-        「連携状態を更新する」を押してください。
-      </p>
+        <p>
+          追加後はこの画面に戻り、
+          「連携状態を更新する」を押してください。
+        </p>
 
-      <p>
-        <%= link_to "【おくすリングBOT】を追加する", "https://lin.ee/V1rMOS3", class: "app-button app-button-primary" %>
-      </p>
+        <p>
+          <%= link_to "【おくすリングBOT】を追加する", "https://lin.ee/V1rMOS3", class: "app-button app-button-primary" %>
+        </p>
 
-      <p>
-        <%= link_to "連携状態を確認する", notification_settings_path, class: "app-button app-button-small" %>
-      </p>
-    <% end %>
+        <p>
+          <%= link_to "連携状態を確認する", notification_settings_path, class: "app-button app-button-small" %>
+        </p>
+      <% end %>
+    </div>
   </section>
 
   <section class="app-card">
-    <h2>再通知</h2>
+    <h2 class="card-header">再通知</h2>
 
-    <p>
-      ※「飲んだよ」が押されていない場合、<br>
-      設定した時間後に再通知されます。<br>
-      初期設定では10分後に再通知されます。
-    </p>
+    <div class="app-card__body">
+      <p>
+        ※「飲んだよ」が押されていない場合、<br>
+        設定した時間後に再通知されます。<br>
+        初期設定では10分後に再通知されます。
+      </p>
 
-    <%= form_with model: current_user,
-          url: notification_settings_path,
-          method: :patch,
-          data: { controller: "reminder" } do |f| %>
+      <%= form_with model: current_user,
+            url: notification_settings_path,
+            method: :patch,
+            data: { controller: "reminder" } do |f| %>
 
-      <div class="setting-row">
-        <%= f.check_box :reminder_enabled,
-              data: { reminder_target: "enabled", action: "change->reminder#toggle" } %>
-        <%= f.label :reminder_enabled, "再通知を有効にする" %>
-      </div>
+        <div class="setting-row">
+          <%= f.check_box :reminder_enabled,
+                data: { reminder_target: "enabled", action: "change->reminder#toggle" } %>
+          <%= f.label :reminder_enabled, "再通知を有効にする" %>
+        </div>
 
-      <div class="setting-field" data-reminder-target="field">
-        <%= f.label :reminder_interval, "再通知までの時間" %>
+        <div class="setting-field" data-reminder-target="field">
+          <%= f.label :reminder_interval, "再通知までの時間" %>
 
-        <%= f.select :reminder_interval,
-          [
-            ["5分後", 5],
-            ["10分後", 10],
-            ["15分後", 15]
-          ],
-          {},
-          class: "setting-select",
-          data: { reminder_target: "interval" }
-        %>
-      </div>
+          <%= f.select :reminder_interval,
+            [
+              ["5分後", 5],
+              ["10分後", 10],
+              ["15分後", 15]
+            ],
+            {},
+            class: "setting-select",
+            data: { reminder_target: "interval" }
+          %>
+        </div>
 
-      <div class="form-submit">
-        <%= f.submit "保存する", class: "app-button app-button-primary" %>
-      </div>
-    <% end %>
+        <div class="form-submit">
+          <%= f.submit "保存する", class: "app-button app-button-primary" %>
+        </div>
+      <% end %>
+    </div>
   </section>
 </div>

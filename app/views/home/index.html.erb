@@ -5,18 +5,16 @@
 
 <% if current_user %>
   <div class="page-container home-page">
-    <div class="home-greeting">
-      <p>
-        こんにちは、<strong><%= current_user.name %> さん</strong>
-      </p>
-    </div>
+    <p class="home-greeting">
+      こんにちは、<strong><%= current_user.name %> さん</strong>
+    </p>
 
     <div class="home-heading">
-      <div class="daily-calendar" aria-label="<%= Date.current.strftime("%-m月%-d日") %>（<%= %w[日 月 火 水 木 金 土][Date.current.wday] %>）">
+      <time class="daily-calendar" datetime="<%= Date.current.iso8601 %>" aria-label="<%= Date.current.strftime("%-m月%-d日") %>（<%= %w[日 月 火 水 木 金 土][Date.current.wday] %>）">
         <span class="daily-calendar-month"><%= Date.current.strftime("%-m月") %></span>
         <span class="daily-calendar-day"><%= Date.current.strftime("%-d") %></span>
         <span class="daily-calendar-weekday"><%= %w[日 月 火 水 木 金 土][Date.current.wday] %></span>
-      </div>
+      </time>
 
       <h1 class="home-title">
         今日のお薬の予定 <span class="home-title-icon" aria-hidden="true">💊</span>
@@ -46,7 +44,7 @@
           <% @my_times.each do |time| %>
             <li class="med-item">
               <div class="med-info">
-                <span class="med-time"><%= time.time.strftime("%H:%M") %></span>
+                <time class="med-time" datetime="<%= time.time.strftime("%H:%M") %>"><%= time.time.strftime("%H:%M") %></time>
 
                 <span class="med-target">
                   <%= time.medication_schedule.target_name %>
@@ -100,7 +98,7 @@
           <% @family_times.each do |time| %>
             <li class="med-item">
               <div class="med-info">
-                <span class="med-time"><%= time.time.strftime("%H:%M") %></span>
+                <time class="med-time" datetime="<%= time.time.strftime("%H:%M") %>"><%= time.time.strftime("%H:%M") %></time>
 
                 <span class="med-target">
                   <%= time.medication_schedule.target_name %>
@@ -144,27 +142,29 @@
 
     <p class="lp-tagline"><span class="lp-tagline-seg">家族も、ペットも、</span><span class="lp-tagline-seg">やさしく見守る。</span></p>
 
-    <h2 class="lp-section-title">おくすリングでできること</h2>
+    <section class="lp-features">
+      <h2 class="lp-section-title">おくすリングでできること</h2>
 
-    <div class="feature-grid">
-      <div class="app-card feature-card">
-        <div class="feature-icon" aria-hidden="true">💊</div>
-        <h3>服薬時間になると<br>LINEでお知らせ</h3>
-        <p>決まった時間に<br>LINEへ通知します。</p>
-      </div>
+      <ul class="feature-grid">
+        <li class="app-card feature-card">
+          <div class="feature-icon" aria-hidden="true">💊</div>
+          <h3>服薬時間になると<br>LINEでお知らせ</h3>
+          <p>決まった時間に<br>LINEへ通知します。</p>
+        </li>
 
-      <div class="app-card feature-card">
-        <div class="feature-icon" aria-hidden="true">✅</div>
-        <h3>飲んだら<br>ワンタップで記録</h3>
-        <p>「飲んだよ」を押すだけで<br>記録できます。</p>
-      </div>
+        <li class="app-card feature-card">
+          <div class="feature-icon" aria-hidden="true">✅</div>
+          <h3>飲んだら<br>ワンタップで記録</h3>
+          <p>「飲んだよ」を押すだけで<br>記録できます。</p>
+        </li>
 
-      <div class="app-card feature-card">
-        <div class="feature-icon" aria-hidden="true">👨‍👩‍👧</div>
-        <h3>家族と<br>服薬状況を見守れる</h3>
-        <p>飲み忘れがあったときは<br>家族にも通知します。</p>
-      </div>
-    </div>
+        <li class="app-card feature-card">
+          <div class="feature-icon" aria-hidden="true">👨‍👩‍👧</div>
+          <h3>家族と<br>服薬状況を見守れる</h3>
+          <p>飲み忘れがあったときは<br>家族にも通知します。</p>
+        </li>
+      </ul>
+    </section>
 
     <div class="lp-actions">
       <%= button_to "LINEでログイン",
