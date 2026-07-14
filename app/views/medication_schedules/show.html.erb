@@ -7,60 +7,64 @@
 <div class="page-container">
   <h1 class="page-title">お薬の詳細</h1>
 
-  <dl class="detail-list">
-    <div class="detail-row">
-      <dt class="detail-label">タイトル</dt>
-      <dd class="detail-value"><%= @medication_schedule.title %></dd>
-    </div>
+  <section class="app-card">
+    <div class="app-card__body">
+      <dl class="detail-list">
+        <div class="detail-row">
+          <dt class="detail-label">タイトル</dt>
+          <dd class="detail-value"><%= @medication_schedule.title %></dd>
+        </div>
 
-    <div class="detail-row">
-      <dt class="detail-label">飲む人</dt>
-      <dd class="detail-value">
-        <span class="med-target">
-          <%= @medication_schedule.target_name %>
-        </span>
-      </dd>
-    </div>
+        <div class="detail-row">
+          <dt class="detail-label">飲む人</dt>
+          <dd class="detail-value">
+            <span class="med-target">
+              <%= @medication_schedule.target_name %>
+            </span>
+          </dd>
+        </div>
 
-    <div class="detail-row">
-      <dt class="detail-label">飲む時間</dt>
-      <dd>
-        <ul class="detail-time-list">
-          <% @medication_schedule.medication_times.each do |time| %>
-            <li class="detail-time-item">
-              <time class="detail-time" datetime="<%= time.time.strftime("%H:%M") %>">
-                <%= time.time.strftime("%H:%M") %>
-              </time>
+        <div class="detail-row">
+          <dt class="detail-label">飲む時間</dt>
+          <dd>
+            <ul class="detail-time-list">
+              <% @medication_schedule.medication_times.each do |time| %>
+                <li class="detail-time-item">
+                  <time class="detail-time" datetime="<%= time.time.strftime("%H:%M") %>">
+                    <%= time.time.strftime("%H:%M") %>
+                  </time>
 
-              <%= medication_status_badge(time.taken_today?) %>
-            </li>
+                  <%= medication_status_badge(time.taken_today?) %>
+                </li>
+              <% end %>
+            </ul>
+          </dd>
+        </div>
+
+        <div class="detail-row">
+          <dt class="detail-label">メモ</dt>
+          <% if @medication_schedule.memo.present? %>
+            <dd class="detail-memo"><%= @medication_schedule.memo %></dd>
+          <% else %>
+            <dd class="detail-memo detail-empty">メモはありません</dd>
           <% end %>
-        </ul>
-      </dd>
-    </div>
+        </div>
+      </dl>
 
-    <div class="detail-row">
-      <dt class="detail-label">メモ</dt>
-      <% if @medication_schedule.memo.present? %>
-        <dd class="detail-memo"><%= @medication_schedule.memo %></dd>
+      <% if @readonly %>
+        <p>閲覧専用です</p>
       <% else %>
-        <dd class="detail-memo detail-empty">メモはありません</dd>
+        <div class="detail-actions">
+          <%= link_to "編集",
+            edit_medication_schedule_path(@medication_schedule),
+            class: "app-button" %>
+          <%= button_to "この予定を削除",
+                medication_schedule_path(@medication_schedule),
+                method: :delete,
+                data: { turbo_confirm: "本当に削除しますか？" },
+                class: "schedule-delete-button" %>
+        </div>
       <% end %>
     </div>
-  </dl>
-
-  <% if @readonly %>
-    <p>閲覧専用です</p>
-  <% else %>
-    <div class="detail-actions">
-      <%= link_to "編集",
-        edit_medication_schedule_path(@medication_schedule),
-        class: "app-button" %>
-      <%= button_to "この予定を削除",
-            medication_schedule_path(@medication_schedule),
-            method: :delete,
-            data: { turbo_confirm: "本当に削除しますか？" },
-            class: "schedule-delete-button" %>
-    </div>
-  <% end %>
+  </section>
 </div>
