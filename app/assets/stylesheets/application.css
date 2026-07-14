@@ -173,13 +173,8 @@ summary::-webkit-details-marker {
   height: auto;
 }
 
-.about-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.about-page .app-card + .app-card {
+.about-hero + .app-card,
+.about-section + .app-card {
   margin-top: 20px;
 }
 
