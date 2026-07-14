@@ -11,13 +11,17 @@
       </p>
     </div>
 
-    <h1 class="home-title">
-      今日のお薬の予定 <span class="home-title-icon" aria-hidden="true">💊</span>
-    </h1>
+    <div class="home-heading">
+      <div class="daily-calendar" aria-label="<%= Date.current.strftime("%-m月%-d日") %>（<%= %w[日 月 火 水 木 金 土][Date.current.wday] %>）">
+        <span class="daily-calendar-month"><%= Date.current.strftime("%-m月") %></span>
+        <span class="daily-calendar-day"><%= Date.current.strftime("%-d") %></span>
+        <span class="daily-calendar-weekday"><%= %w[日 月 火 水 木 金 土][Date.current.wday] %></span>
+      </div>
 
-    <p class="home-date">
-      <%= Date.current.strftime("%-m月%-d日") %>（<%= %w[日 月 火 水 木 金 土][Date.current.wday] %>）
-    </p>
+      <h1 class="home-title">
+        今日のお薬の予定 <span class="home-title-icon" aria-hidden="true">💊</span>
+      </h1>
+    </div>
 
     <% unless current_user.line_bot_connected? %>
       <div class="bot-alert" role="status">

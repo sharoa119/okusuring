@@ -44,7 +44,9 @@ h3 {
   line-height: 1.4;
 }
 
-.app-card > :first-child {
+/* カード先頭要素の既定マージンを消す。ただしカードヘッダー帯
+   (.schedule-card-title) を持つカードは、帯の負マージンを活かすため除外する。 */
+.app-card:not(:has(> .schedule-card-title)) > :first-child {
   margin-top: 0;
 }
  
@@ -1002,20 +1004,59 @@ input.invite-url-field {
   margin-top: 0;
 }
 
+/* 日付(日めくりカレンダー)＋タイトルの横並び */
+.home-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
 .home-title {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.home-date {
-  margin: 4px 0 0;
-  color: var(--color-text-secondary);
-  font-size: 14px;
+  margin: 0;
 }
 
 .home-title-icon {
   font-size: 28px;
+}
+
+/* 日めくりカレンダー風の日付 */
+.daily-calendar {
+  flex-shrink: 0;
+  width: 56px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-surface);
+  box-shadow: 0 2px 6px rgba(47, 58, 63, 0.1);
+  text-align: center;
+  line-height: 1;
+}
+
+.daily-calendar-month {
+  display: block;
+  padding: 3px 0;
+  background: #ec6a6a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.daily-calendar-day {
+  display: block;
+  padding: 5px 0 3px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.daily-calendar-weekday {
+  display: block;
+  padding-bottom: 5px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
 }
 
 /* 予定カードの見出しをカードヘッダー風の帯にする。
