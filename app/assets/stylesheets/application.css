@@ -722,7 +722,8 @@ summary::-webkit-details-marker {
   font-weight: 600;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="time"] {
   width: 100%;
   padding: 12px 14px;
   border: 1px solid #d8e2dc;
