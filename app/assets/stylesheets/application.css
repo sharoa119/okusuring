@@ -188,6 +188,11 @@ summary::-webkit-details-marker {
   font-weight: 600;
   line-height: 1.8;
   text-align: center;
+  text-wrap: balance;
+}
+
+.about-lead-seg {
+  display: inline-block;
 }
 
 .about-section p {
