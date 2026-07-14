@@ -648,8 +648,8 @@ summary::-webkit-details-marker {
 
 .detail-time-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
   padding: 10px 0;
 }
 
