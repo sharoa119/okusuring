@@ -273,6 +273,14 @@ summary::-webkit-details-marker {
   margin-top: 32px;
 }
 
+.lp-values {
+  margin-top: 24px;
+}
+
+.lp-values p {
+  line-height: 1.8;
+}
+
 .detail-actions {
   display: flex;
   flex-direction: column;
