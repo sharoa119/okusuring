@@ -24,13 +24,18 @@
                 </strong>
 
                 <div class="family-member-actions">
-                  <span class="family-status">連携済み</span>
+                  <span class="family-status">
+                    <%= family_linked_icon %>
+                    <span>連携済み</span>
+                  </span>
 
-                  <%= button_to "解除する",
-                        family_link_path(link),
+                  <%= button_to family_link_path(link),
                         method: :delete,
                         data: { turbo_confirm: "本当に家族共有を解除しますか？" },
-                        class: "family-link-delete-button" %>
+                        class: "family-link-delete-button" do %>
+                    <%= remove_icon %>
+                    <span>解除する</span>
+                  <% end %>
                 </div>
               </div>
             </li>
@@ -58,7 +63,7 @@
 
       <div data-controller="clipboard">
         <div class="invite-link-box">
-          <span class="invite-link-icon" aria-hidden="true">🔗</span>
+          <%= invite_link_icon %>
 
           <input
             type="text"

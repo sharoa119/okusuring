@@ -802,6 +802,11 @@ textarea {
 .family-status {
   margin-left: auto;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 88px;
   padding: 4px 10px;
   border-radius: 999px;
   background: #eef5f1;
@@ -811,6 +816,11 @@ textarea {
 }
 
 .family-link-delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 88px;
   padding: 5px 10px;
   border: 1px solid #f0b6b6;
   border-radius: 8px;
@@ -832,6 +842,7 @@ textarea {
 
 .invite-link-icon {
   flex-shrink: 0;
+  color: #5b7a6a;
 }
 
 input.invite-url-field {
@@ -1154,9 +1165,9 @@ input.invite-url-field {
 /* カードヘッダー：下線付きの全幅の帯 */
 .card-header {
   margin: 0;
-  padding: 10px 24px;
+  padding: 12px 24px;
   border-bottom: 1px solid var(--color-border);
-  font-size: 15px;
+  font-size: 18px;
 }
 
 /* パディングを持つ本文ラッパー（プロース用。リストには使わない） */
