@@ -18,10 +18,15 @@
 
 服用するお薬と服薬時間を登録します。
 
-<img src="docs/images/new_create.png" alt="新規登録画面" width="240">
-<img src="docs/images/home.png" alt="服薬予定と服薬記録画面" width="240">
+<p>
+  <img src="docs/images/new_create.png" alt="新規登録画面" width="240">
+  &nbsp;&nbsp;&nbsp;
+  <img src="docs/images/home.png" alt="登録後の服薬予定画面" width="240">
+</p>
 
-左：服薬スケジュール登録画面 ／ 右：登録後の服薬予定画面
+左：服薬スケジュール登録画面
+
+右：登録後の服薬予定画面
 
 ### 2. 服薬時間にLINEで通知
 
@@ -33,10 +38,15 @@
 
 服薬後に「飲んだよ」を押すことで、その日の服薬を記録できます。
 
-<img src="docs/images/nondayo.png" alt="飲んだよ画面" width="240">
-<img src="docs/images/nondayo_sumi.png" alt="飲んだよを押した後の済画面" width="240">
+<p>
+  <img src="docs/images/nondayo.png" alt="飲んだよ画面" width="240">
+  &nbsp;&nbsp;&nbsp;
+  <img src="docs/images/nondayo_sumi.png" alt="飲んだよを押した後の済画面" width="240">
+</p>
 
-左：服薬前 ／ 右：「飲んだよ」記録後
+左：服薬前
+
+右：「飲んだよ」記録後
 
 ### 4. 家族と服薬予定を共有
 
@@ -44,10 +54,15 @@
 
 予定の詳細画面では、服薬済みかどうかも確認できます。
 
-<img src="docs/images/family-home.png" alt="家族の服薬予定閲覧画面" width="240">
-<img src="docs/images/family-detail.png" alt="家族の服薬状況を確認する詳細画面" width="240">
+<p>
+  <img src="docs/images/family-home.png" alt="家族の服薬予定閲覧画面" width="240">
+  &nbsp;&nbsp;&nbsp;
+  <img src="docs/images/family-detail.png" alt="家族の服薬状況を確認する詳細画面" width="240">
+</p>
 
-左：家族の服薬予定一覧 ／ 右：服薬状況を確認できる詳細画面
+左：家族の服薬予定一覧
+
+右：服薬状況を確認できる詳細画面
 
 ## 主な機能
 
