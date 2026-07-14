@@ -1046,16 +1046,16 @@ input.invite-url-field {
 
 .daily-calendar-day {
   display: block;
-  padding: 5px 0 3px;
-  font-size: 24px;
+  padding: 2px 0 1px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--color-text);
 }
 
 .daily-calendar-weekday {
   display: block;
-  padding-bottom: 5px;
-  font-size: 11px;
+  padding-bottom: 4px;
+  font-size: 10px;
   color: var(--color-text-secondary);
 }
 
