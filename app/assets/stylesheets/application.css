@@ -208,12 +208,11 @@ summary::-webkit-details-marker {
 }
 
 .about-feature-item {
-  padding-bottom: 14px;
+  padding: 14px 24px;
   border-bottom: 1px solid var(--color-border);
 }
 
 .about-feature-item:last-child {
-  padding-bottom: 0;
   border-bottom: none;
 }
 
