@@ -6,46 +6,61 @@
 <div class="about-page">
   <h1 class="page-title">このサービスについて</h1>
 
-  <div class="about-logo">
-    <picture>
-      <source srcset="<%= image_path "logo.webp" %>" type="image/webp">
-      <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
-    </picture>
-  </div>
+  <section class="app-card about-hero">
+    <div class="app-card__body">
+      <div class="about-logo">
+        <picture>
+          <source srcset="<%= image_path "logo.webp" %>" type="image/webp">
+          <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
+        </picture>
+      </div>
 
-  <p class="lp-tagline"><span class="lp-tagline-seg">家族も、ペットも、</span><span class="lp-tagline-seg">やさしく見守る。</span></p>
+      <p class="lp-tagline"><span class="lp-tagline-seg">家族も、ペットも、</span><span class="lp-tagline-seg">やさしく見守る。</span></p>
 
-  <p class="about-lead">
-    おくすリングは<br>
-    飲み忘れ防止に必要な機能だけに絞った<br>
-    シンプルな服薬リマインダーサービスです。
-  </p>
+      <p class="about-lead">
+        おくすリングは、飲み忘れ防止に必要な機能だけに絞った
+        シンプルな服薬リマインダーサービスです。
+      </p>
+    </div>
+  </section>
 
-  <p>
-    自分の予定はもちろんのこと、
-    子どもやペットなど家族の服薬スケジュールもまとめて管理できます。
-  </p>
+  <section class="app-card about-section">
+    <h2 class="card-header">できること</h2>
+    <div class="app-card__body">
+      <ul class="about-feature-list">
+        <li class="about-feature-item">
+          <h3>自分や家族の予定をまとめて管理</h3>
+          <p>自分の予定はもちろん、子どもやペットなど家族の服薬スケジュールも一緒に確認できます。</p>
+        </li>
+        <li class="about-feature-item">
+          <h3>通知が届いたらワンタップで記録</h3>
+          <p>服薬時間になると通知が届き、そのまま「飲んだよ」を記録できます。</p>
+        </li>
+        <li class="about-feature-item">
+          <h3>見守りが必要なときは家族にも共有</h3>
+          <p>「ちゃんとお薬を飲んだか」を家族同士で確認できるのが特徴です。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-  <p>
-    服薬時間になると通知が届き、
-    ワンタップで「飲んだよ」を記録できます。
-    「ちゃんとお薬を飲んだか」を家族同士で確認できるのが特徴です。
-  </p>
+  <section class="app-card about-section">
+    <h2 class="card-header">大切にしていること</h2>
+    <div class="app-card__body">
+      <p>
+        毎日続けやすいように、「通知」「飲んだ記録」「家族共有」を中心に、
+        わかりやすく使えることを大切にしています。
+      </p>
 
-  <p>
-    毎日続けやすいように、
-    「通知」「飲んだ記録」「家族共有」を中心に、
-    わかりやすく使えることを大切にしています。
-  </p>
-
-  <p>
-    服用チェックがされなかった場合には再通知や家族への通知を行い、
-    周囲からの声かけを促すことで、
-    家庭全体で支え合える仕組みを目指しています。
-  </p>
+      <p>
+        服用チェックがされなかった場合には再通知や家族への通知を行い、
+        周囲からの声かけを促すことで、家庭全体で支え合える仕組みを目指しています。
+      </p>
+    </div>
+  </section>
 
   <% if params[:return_to].present? %>
-    <p>
+    <p class="about-return-link">
       <%= link_to "← 家族共有の招待ページに戻る", params[:return_to] %>
     </p>
   <% end %>
