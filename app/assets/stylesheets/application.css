@@ -690,7 +690,7 @@ summary::-webkit-details-marker {
 
 .readonly {
   color: #888;
-  font-size: 0.9rem;
+  font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
 }
