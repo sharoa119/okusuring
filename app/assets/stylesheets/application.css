@@ -183,6 +183,7 @@ summary::-webkit-details-marker {
 }
 
 .about-lead {
+  margin-bottom: 24px;
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.8;
