@@ -630,7 +630,7 @@ summary::-webkit-details-marker {
 
 .detail-label {
   font-size: 0.9rem;
-  color: #777;
+  color: var(--color-text);
   font-weight: 600;
   margin-bottom: 6px;
 }
