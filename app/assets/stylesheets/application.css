@@ -208,6 +208,10 @@ summary::-webkit-details-marker {
 }
 
 .about-feature-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: start;
+  column-gap: 16px;
   padding: 14px 24px;
   border-bottom: 1px solid var(--color-border);
 }
@@ -216,11 +220,17 @@ summary::-webkit-details-marker {
   border-bottom: none;
 }
 
-.about-feature-item h3 {
+.about-feature-icon {
+  font-size: 28px;
+  line-height: 1;
+  text-align: center;
+}
+
+.about-feature-body h3 {
   font-size: 1rem;
 }
 
-.about-feature-item p {
+.about-feature-body p {
   margin-top: 8px;
   color: var(--color-text-secondary);
 }
