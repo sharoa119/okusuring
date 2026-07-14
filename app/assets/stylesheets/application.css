@@ -236,6 +236,10 @@ summary::-webkit-details-marker {
   margin-top: 32px;
 }
 
+.detail-actions form {
+  align-self: flex-end;
+}
+
 .page-container {
   max-width: 640px;
   margin: 0 auto;
@@ -1253,12 +1257,13 @@ input[type="submit"]:active {
 }
 
 .schedule-delete-button {
-  padding: 8px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  background: white;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--color-text-secondary);
   font-size: 14px;
   font-weight: 400;
   cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
