@@ -15,16 +15,14 @@
       <% end %>
     <% end %>
 
-    <h1 class="site-title">
-      <% if content_for?(:page_title) %>
-        <%= yield(:page_title) %>
-      <% else %>
+    <div class="site-title">
+      <%= link_to root_path, "aria-label": "ホームへ" do %>
         <picture>
           <source srcset="<%= image_path "mini-logo.webp" %>" type="image/webp">
           <%= image_tag "mini-logo.png", alt: "おくすリング", class: "site-logo" %>
         </picture>
       <% end %>
-    </h1>
+    </div>
 
     <% if current_user %>
       <nav class="hamburger-menu">

@@ -1,6 +1,8 @@
 <!-- app/views/medication_schedules/_form.html.erb -->
 
 <div class="page-container">
+  <h1 class="page-title"><%= page_title %></h1>
+
   <%= form_with model: @medication_schedule, data: { controller: "nested-form" } do |f| %>
 
     <div class="field">
