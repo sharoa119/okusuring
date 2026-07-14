@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def invite_link_icon
-    tag.svg(class: 'invite-link-icon', viewBox: '0 0 24 24', width: 20, height: 20,
+    tag.svg(class: 'invite-link-icon', viewBox: '0 0 24 24', width: 24, height: 24,
             fill: 'none', stroke: 'currentColor', 'stroke-linecap': 'round',
             'stroke-linejoin': 'round', 'stroke-width': 2, 'aria-hidden': 'true') do
       safe_join([
