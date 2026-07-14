@@ -1,3 +1,29 @@
+/* ===== モダンリセット ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
 :root {
   --color-primary-start: #63D98A;
   --color-primary-end: #6DD5FA;
@@ -319,8 +345,18 @@ summary::-webkit-details-marker {
   font-size: 24px;
 }
 
+/* リセットで消えた本文の段落・リスト間隔を付け直す */
+.legal-page p,
+.legal-page ol {
+  margin-block: 0 1em;
+}
+
+.legal-page ol {
+  padding-inline-start: 1.5em;
+}
+
 .legal-page h3 {
-  margin-top: 32px;
+  margin-block-start: 32px;
 }
 
 .legal-page hr {
