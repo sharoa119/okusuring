@@ -207,11 +207,6 @@ summary::-webkit-details-marker {
   padding: 0;
 }
 
-.about-feature-item {
-  padding: 14px 16px;
-  border-radius: 14px;
-}
-
 .about-feature-item h3 {
   font-size: 1rem;
 }
