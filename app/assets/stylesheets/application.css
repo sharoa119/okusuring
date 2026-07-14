@@ -387,6 +387,8 @@ summary::-webkit-details-marker {
   border-radius: 20px;
   padding: 18px 24px;
   box-shadow: 0 8px 24px rgba(47, 58, 63, 0.06);
+  /* カードヘッダー帯の角をカードの丸みに合わせて収める */
+  overflow: hidden;
 }
 
 .lp-description {
@@ -1016,10 +1018,17 @@ input.invite-url-field {
   font-size: 28px;
 }
 
+/* 予定カードの見出しをカードヘッダー風の帯にする。
+   .app-card の padding(18px 24px) 分を負マージンで打ち消してカード端まで広げる。 */
 .schedule-card-title {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin: -18px -24px 16px;
+  padding: 14px 24px;
+  background: #eef7f1;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 18px;
 }
 
 .title-dot {
