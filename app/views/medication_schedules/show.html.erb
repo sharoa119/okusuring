@@ -8,13 +8,10 @@
   <h1 class="page-title">お薬の詳細</h1>
 
   <section class="app-card">
+    <h2 class="card-header"><%= @medication_schedule.title %></h2>
+
     <div class="app-card__body">
       <dl class="detail-list">
-        <div class="detail-row">
-          <dt class="detail-label">タイトル</dt>
-          <dd class="detail-value"><%= @medication_schedule.title %></dd>
-        </div>
-
         <div class="detail-row">
           <dt class="detail-label">飲む人</dt>
           <dd class="detail-value">
