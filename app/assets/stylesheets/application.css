@@ -54,6 +54,11 @@ h3 {
    border-bottom: 1px solid #eee;
  }
 
+ /* リスト末尾の項目は下線を消す */
+ .med-item:last-child {
+   border-bottom: none;
+ }
+
 .med-time {
   font-weight: 700;
   color: var(--color-text);
