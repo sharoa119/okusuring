@@ -59,7 +59,6 @@ body {
 
 .site-main {
   flex: 1 0 auto;
-  padding-top: 20px;
 }
 
 /* 見出しの既定マージンを正規化（カード先頭の過剰な余白を防ぐ）。
