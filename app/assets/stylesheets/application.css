@@ -281,6 +281,25 @@ summary::-webkit-details-marker {
   line-height: 1.8;
 }
 
+.value-list {
+  display: grid;
+  gap: 16px;
+}
+
+.value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.value-icon {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: #e08aa2;
+}
+
 .detail-actions {
   display: flex;
   flex-direction: column;
