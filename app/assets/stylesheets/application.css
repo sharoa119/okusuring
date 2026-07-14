@@ -451,7 +451,6 @@ summary::-webkit-details-marker {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  padding: 18px 24px;
   box-shadow: 0 8px 24px rgba(47, 58, 63, 0.06);
   /* カードヘッダー帯の角をカードの丸みに合わせて収める */
   overflow: hidden;
@@ -767,6 +766,7 @@ textarea {
   background: #fff;
   color: #777;
   font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .family-member {
@@ -1167,12 +1167,6 @@ input.invite-url-field {
   padding-bottom: 4px;
   font-size: 10px;
   color: var(--color-text-secondary);
-}
-
-/* カードヘッダー(全幅の帯)を持つカードは、カード自体の padding を外す。
-   余白はヘッダーと本文ラッパー(.app-card__body)が持つ。 */
-.app-card:has(> .card-header) {
-  padding: 0;
 }
 
 /* カードヘッダー：下線付きの全幅の帯 */
