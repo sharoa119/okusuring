@@ -653,6 +653,10 @@ summary::-webkit-details-marker {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  border: solid 1px #ccc;
+  background: #f5fbfa;
+  padding: 4px 12px;
+  border-radius: 8px;
 }
 
 .detail-time {
