@@ -92,17 +92,6 @@ summary::-webkit-details-marker {
   width: 40px;
 }
 
-.about-logo {
-  text-align: center;
-  margin: 24px 0;
-}
-
-.about-logo img {
-  max-width: 350px;
-  width: 100%;
-  height: auto;
-}
-
 .about-page {
   max-width: 800px;
   margin: 0 auto;
@@ -122,12 +111,12 @@ summary::-webkit-details-marker {
   padding: 24px 16px;
 }
 
-.lp-logo {
+.logo {
   text-align: center;
-  margin: 24px 0;
+  margin: 24px 0 8px;
 }
 
-.lp-logo img {
+.logo img {
   max-width: 350px;
   width: 100%;
   height: auto;
@@ -865,4 +854,17 @@ input[type="submit"]:active {
   font-size: 14px;
   font-weight: 400;
   cursor: pointer;
+}
+
+.logo-tagline {
+  color: #5a4436;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 40px;
+}
+
+.paw {
+  margin-left: 2px;
+  font-size: 1.1em;
+  color: #5a4436;
 }
