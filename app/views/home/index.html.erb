@@ -4,29 +4,47 @@
 <% content_for :description, "服薬時間の通知や再通知、家族共有機能により、飲み忘れを防ぐ服薬管理サービスです。" %>
 
 <% if current_user %>
-  <div class="home-greeting">
-    <p>
+  <div class="page-container home-page">
+    <p class="home-greeting">
       こんにちは、<strong><%= current_user.name %> さん</strong>
     </p>
-  </div>
 
-  <div class="page-container home-page">
-    <h1 class="home-title">
-      今日のお薬の予定 <span class="home-title-icon">💊</span>
-    </h1>
+    <div class="home-heading">
+      <time class="daily-calendar" datetime="<%= Date.current.iso8601 %>" aria-label="<%= Date.current.strftime("%-m月%-d日") %>（<%= %w[日 月 火 水 木 金 土][Date.current.wday] %>）">
+        <span class="daily-calendar-month"><%= Date.current.strftime("%-m月") %></span>
+        <span class="daily-calendar-day"><%= Date.current.strftime("%-d") %></span>
+        <span class="daily-calendar-weekday"><%= %w[日 月 火 水 木 金 土][Date.current.wday] %></span>
+      </time>
+
+      <h1 class="home-title">
+        今日のお薬の予定 <span class="home-title-icon" aria-hidden="true">💊</span>
+      </h1>
+    </div>
+
+    <% unless current_user.line_bot_connected? %>
+      <div class="bot-alert" role="status">
+        <span class="bot-alert-icon" aria-hidden="true">🔔</span>
+        <div class="bot-alert-body">
+          <p class="bot-alert-title">まだ通知を受け取れません</p>
+          <p class="bot-alert-text">
+            LINE BOTを連携すると、服薬時間にLINEでお知らせが届きます。
+          </p>
+          <%= link_to "通知設定を開く",
+              notification_settings_path,
+              class: "app-button app-button-primary app-button-small" %>
+        </div>
+      </div>
+    <% end %>
 
     <section class="app-card">
-      <h2 class="schedule-card-title">
-        <span class="title-dot"></span>
-        自分の予定
-      </h2>
+      <h2 class="card-header">自分の予定</h2>
 
       <% if @my_times.any? %>
         <ul>
           <% @my_times.each do |time| %>
             <li class="med-item">
               <div class="med-info">
-                <span class="med-time"><%= time.time.strftime("%H:%M") %></span>
+                <time class="med-time" datetime="<%= time.time.strftime("%H:%M") %>"><%= time.time.strftime("%H:%M") %></time>
 
                 <span class="med-target">
                   <%= time.medication_schedule.target_name %>
@@ -38,40 +56,49 @@
               </div>
 
               <% if time.taken_today? %>
-                <span class="done">✔ 済</span>
+                <span class="med-meta">
+                  <%= medication_status_badge(true) %>
+                  <%= button_to "取り消す",
+                      medication_time_medication_record_path(
+                        time,
+                        time.medication_records.find { |r| r.taken_date == Date.current }
+                      ),
+                      method: :delete,
+                      class: "undo-button",
+                      form: { data: { turbo_confirm: "「済」を取り消しますか？" } } %>
+                </span>
               <% else %>
                 <span class="med-action">
                   <%= button_to "飲んだよ",
                       medication_time_medication_records_path(time),
-                      class: "app-button" %>
+                      class: "app-button app-button-primary" %>
                 </span>
               <% end %>
             </li>
           <% end %>
         </ul>
       <% else %>
-        <p>今日の服薬予定はありません</p>
+        <div class="app-card__body">
+          <p>今日の服薬予定はありません</p>
+        </div>
       <% end %>
     </section>
 
     <p class="home-action">
       <%= link_to "＋ 新しい服薬スケジュールを登録",
           new_medication_schedule_path,
-          class: "app-button app-button-primary" %>
+          class: "app-button" %>
     </p>
 
     <section class="app-card">
-      <h2 class="schedule-card-title">
-        <span class="title-dot"></span>
-        家族の予定
-      </h2>
+      <h2 class="card-header">家族の予定</h2>
 
       <% if @family_times.any? %>
         <ul>
           <% @family_times.each do |time| %>
             <li class="med-item">
               <div class="med-info">
-                <span class="med-time"><%= time.time.strftime("%H:%M") %></span>
+                <time class="med-time" datetime="<%= time.time.strftime("%H:%M") %>"><%= time.time.strftime("%H:%M") %></time>
 
                 <span class="med-target">
                   <%= time.medication_schedule.target_name %>
@@ -81,66 +108,91 @@
                     medication_schedule_path(time.medication_schedule),
                     class: "med-title" %>
               </div>
-              <span class="readonly">閲覧のみ</span>
+
+              <div class="med-meta">
+                <%= medication_status_badge(time.taken_today?) %>
+                <span class="readonly">閲覧のみ</span>
+              </div>
             </li>
           <% end %>
         </ul>
       <% elsif @has_family_links %>
-        <p>家族のお薬の予定はありません</p>
+        <div class="app-card__body">
+          <p>家族のお薬の予定はありません</p>
+        </div>
       <% else %>
-        <p>まだ家族と共有していません</p>
+        <div class="app-card__body">
+          <p>まだ家族と共有していません</p>
 
-        <%= link_to "＋ 家族を招待する",
-              family_links_path,
-              class: "app-button" %>
+          <%= link_to "＋ 家族を招待する",
+                family_links_path,
+                class: "app-button" %>
+        </div>
       <% end %>
     </section>
   </div>
 <% else %>
   <div class="lp-container">
     <div class="lp-logo">
-      <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
+      <picture>
+        <source srcset="<%= image_path "logo.webp" %>" type="image/webp">
+        <%= image_tag "logo.png", alt: "おくすリングのロゴ" %>
+      </picture>
     </div>
 
-    <h2 class="lp-section-title">おくすリングでできること</h2>
+    <p class="lp-tagline"><span class="lp-tagline-seg">家族も、ペットも、</span><span class="lp-tagline-seg">やさしく見守る。</span></p>
 
-    <div class="app-card feature-list">
-
-      <div class="feature-item">
-        <div class="feature-icon">💊</div>
-
-        <div class="feature-content">
-          <h3>服薬時間になるとLINEでお知らせ</h3>
-          <p>決まった時間にLINEへ通知します。</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">✅</div>
-
-        <div class="feature-content">
-          <h3>飲んだらワンタップで記録</h3>
-          <p>「飲んだよ」を押すだけで記録できます。</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">👨‍👩‍👧</div>
-
-        <div class="feature-content">
-          <h3>家族と服薬状況を見守れる</h3>
-          <p>飲み忘れがあったときは家族にも通知します。</p>
-        </div>
-      </div>
-
-    </div>
-
-    <p class="lp-login-note">
-      LINEアカウントでログインすると、すぐにご利用いただけます。<br>
-      <%= link_to "利用規約", terms_path %>・
-      <%= link_to "プライバシーポリシー", privacy_path %>
-      をご確認の上、ログインしてください。
+    <p class="about-lead">
+      <span class="about-lead-seg">おくすリングは、飲み忘れ防止に必要な機能だけに絞った</span>
+      <span class="about-lead-seg">シンプルな服薬リマインダーサービスです。</span>
     </p>
+
+    <section class="lp-features">
+      <h2 class="lp-section-title">おくすリングでできること</h2>
+
+      <ul class="feature-grid">
+        <li class="app-card feature-card">
+          <div class="app-card__body">
+            <div class="feature-icon" aria-hidden="true">💊</div>
+            <h3>服薬時間になると<br>LINEでお知らせ</h3>
+            <p>自分の予定はもちろん、<br>家族の予定も確認できます。</p>
+          </div>
+        </li>
+
+        <li class="app-card feature-card">
+          <div class="app-card__body">
+            <div class="feature-icon" aria-hidden="true">✅</div>
+            <h3>飲んだら<br>ワンタップで記録</h3>
+            <p>通知が届いたらそのまま<br>「飲んだよ」を記録できます。</p>
+          </div>
+        </li>
+
+        <li class="app-card feature-card">
+          <div class="app-card__body">
+            <div class="feature-icon" aria-hidden="true">👨‍👩‍👧</div>
+            <h3>家族と<br>服薬状況を見守れる</h3>
+            <p>「ちゃんと飲んだか」を<br>家族同士で確認できます。</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="app-card lp-values">
+      <h2 class="card-header">大切にしていること</h2>
+      <div class="app-card__body">
+        <div class="value-list">
+          <p class="value-item">
+            <%= heart_icon %>
+            <span>毎日続けやすいように、「通知」「飲んだ記録」「家族共有」を中心に、わかりやすく使えることを大切にしています。</span>
+          </p>
+
+          <p class="value-item">
+            <%= heart_icon %>
+            <span>服用チェックがされなかった場合には再通知や家族への通知を行い、周囲からの声かけを促すことで、家庭全体で支え合える仕組みを目指しています。</span>
+          </p>
+        </div>
+      </div>
+    </section>
 
     <div class="lp-actions">
       <%= button_to "LINEでログイン",
@@ -149,5 +201,12 @@
           class: "app-button app-button-primary",
           data: { turbo: false } %>
     </div>
+
+    <p class="lp-login-note">
+      LINEアカウントでログインすると、すぐにご利用いただけます。<br>
+      <%= link_to "利用規約", terms_path %>・
+      <%= link_to "プライバシーポリシー", privacy_path %>
+      をご確認の上、ログインしてください。
+    </p>
   </div>
 <% end %>

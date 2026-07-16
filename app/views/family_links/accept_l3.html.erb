@@ -5,31 +5,35 @@
 
 <div class="invite-page">
   <section class="app-card">
-    <div class="invite-icon">
-      🤝
+    <div class="app-card__body">
+      <div class="invite-icon">
+        🤝
+      </div>
+
+      <h1>
+        共有設定が<br>
+        完了しました
+      </h1>
+
+      <p class="invite-summary">
+        <strong><%= @owner.name %></strong> さんと<br>
+        家族として連携されました。
+      </p>
     </div>
-
-    <h1>
-      共有設定が<br>
-      完了しました
-    </h1>
-
-    <p class="invite-summary">
-      <strong><%= @owner.name %></strong> さんと<br>
-      家族として連携されました。
-    </p>
   </section>
 
   <section class="app-card">
-    <h2>家族共有が利用できます</h2>
+    <div class="app-card__body">
+      <h2>家族共有が利用できます</h2>
 
-    <p class="invite-help-text">
-      今後は共有されたお薬の予定を確認したり<br>
-      通知を受け取ったりできます。
-    </p>
+      <p class="invite-help-text">
+        今後は共有されたお薬の予定を確認したり<br>
+        通知を受け取ったりできます。
+      </p>
 
-    <%= link_to "トップページへ",
-          root_path,
-          class: "app-button app-button-primary" %>
+      <%= link_to "トップページへ",
+            root_path,
+            class: "app-button app-button-primary" %>
+    </div>
   </section>
 </div>

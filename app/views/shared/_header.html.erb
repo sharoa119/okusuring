@@ -7,23 +7,29 @@
     <% if is_home %>
       <div class="header-spacer"></div>
     <% else %>
-      <%= link_to "＜", root_path, class: "back-link" %>
+      <%= link_to root_path, class: "back-link", "aria-label": "ホームに戻る" do %>
+        <svg class="back-icon" viewBox="0 0 24 24" width="24" height="24"
+             fill="currentColor" aria-hidden="true">
+          <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      <% end %>
     <% end %>
 
-    <h1 class="site-title">
-      <% if is_home %>
-        おくすリング
-      <% else %>
-        <%= content_for?(:page_title) ? yield(:page_title) : "おくすリング" %>
+    <div class="site-title">
+      <%= link_to root_path, "aria-label": "ホームへ" do %>
+        <picture>
+          <source srcset="<%= image_path "mini-logo.webp" %>" type="image/webp">
+          <%= image_tag "mini-logo.png", alt: "おくすリング", class: "site-logo" %>
+        </picture>
       <% end %>
-    </h1>
+    </div>
 
     <% if current_user %>
       <nav class="hamburger-menu">
         <details
           data-controller="menu"
           data-action="click@window->menu#close">
-          <summary>☰</summary>
+          <summary aria-label="メニュー">☰</summary>
 
           <ul>
             <li><%= link_to "家族共有設定", family_links_path %></li>
@@ -40,6 +46,9 @@
           </ul>
         </details>
       </nav>
+    <% else %>
+      <%# タイトルを中央に保つための右側スペーサー %>
+      <div class="header-spacer"></div>
     <% end %>
   </div>
 </header>
