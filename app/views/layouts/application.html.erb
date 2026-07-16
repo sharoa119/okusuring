@@ -26,21 +26,29 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-
     <% hide_header =
       (controller_name == "home" && action_name == "index" && current_user.nil?) ||
       (controller_name == "family_links" && action_name == "accept") %>
 
     <%= render "shared/header" unless hide_header %>
 
-    <%= yield %>
+    <% if notice %>
+      <div class="flash flash-notice" role="status" data-controller="flash">
+        <span class="flash-icon" aria-hidden="true">✅</span>
+        <span><%= notice %></span>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="flash flash-alert" role="alert">
+        <span class="flash-icon" aria-hidden="true">⚠️</span>
+        <span><%= alert %></span>
+      </div>
+    <% end %>
+
+    <main class="site-main">
+      <%= yield %>
+    </main>
 
     <%= render "shared/footer" %>
   </body>

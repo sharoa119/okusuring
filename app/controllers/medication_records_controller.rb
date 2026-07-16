@@ -10,6 +10,13 @@ class MedicationRecordsController < ApplicationController
       )
     end
 
-    redirect_to root_path
+    redirect_to root_path, notice: '「飲んだよ」を記録しました'
+  end
+
+  def destroy
+    medication_time = MedicationTime.find(params[:medication_time_id])
+    medication_time.medication_records.where(taken_date: Date.current).destroy_all
+
+    redirect_to root_path, notice: '記録を取り消しました'
   end
 end

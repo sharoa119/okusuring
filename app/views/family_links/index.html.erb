@@ -1,79 +1,87 @@
 <% content_for :title, "家族共有設定 | おくすリング" %>
-<% content_for :page_title, "家族共有設定" %>
 <% content_for :description, "家族共有の招待や共有状況の確認ができます。" %>
 
 <div class="page-container">
+  <h1 class="page-title">家族共有設定</h1>
+
   <section class="app-card">
-    <h2>家族一覧</h2>
+    <h2 class="card-header">家族一覧</h2>
 
-    <% accepted_links = current_user.owned_family_links.where(status: "accepted") %>
+    <div class="app-card__body">
+      <% accepted_links = current_user.owned_family_links.where(status: "accepted") %>
 
-    <% if accepted_links.any? %>
-      <ul>
-        <% accepted_links.each do |link| %>
-          <li class="family-member">
-            <div class="family-member-row">
-              <span class="family-icon">👤</span>
+      <% if accepted_links.any? %>
+        <ul>
+          <% accepted_links.each do |link| %>
+            <li class="family-member">
+              <div class="family-member-row">
+                <span class="family-icon" aria-hidden="true">👤</span>
 
-              <strong class="family-member-name">
-                <%= link.member_user.name %>
-              </strong>
+                <strong class="family-member-name">
+                  <%= link.member_user.name %>
+                </strong>
 
-              <div class="family-member-actions">
-                <span class="family-status">連携済み</span>
+                <div class="family-member-actions">
+                  <span class="family-status">
+                    <%= family_linked_icon %>
+                    <span>連携済み</span>
+                  </span>
 
-                <%= button_to "共有を解除する",
-                      family_link_path(link),
-                      method: :delete,
-                      data: { turbo_confirm: "本当に家族共有を解除しますか？" },
-                      class: "family-link-delete-button" %>
+                  <%= button_to family_link_path(link),
+                        method: :delete,
+                        data: { turbo_confirm: "本当に家族共有を解除しますか？" },
+                        class: "family-link-delete-button" do %>
+                    <%= remove_icon %>
+                    <span>解除する</span>
+                  <% end %>
+                </div>
               </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>まだ連携済みのメンバーはいません。</p>
-    <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>まだ連携済みのメンバーはいません。</p>
+      <% end %>
 
-    <p>
-      ※ここに表示されるのは、LINE連携が完了しているメンバーのみです。<br>
-      ほかに連携したいメンバーがいる場合は、下記の招待リンクを送ってください。
-    </p>
-  </section>
-  
-  <section class="app-card">
-    <h2>家族を招待</h2>
-
-    <p>
-      LINEでログインした家族と服薬スケジュールを共有できます。<br>
-      以下のURLを招待したい家族に送ってください。
-    </p>
-
-    <div data-controller="clipboard">
-      <div class="invite-link-box">
-        <span class="invite-link-icon">🔗</span>
-
-        <input
-          type="text"
-          class="invite-url-field"
-          value="<%= invite_url(@family_link.token) %>"
-          readonly
-          data-clipboard-target="source">
-
-        <button
-          type="button"
-          class="copy-button"
-          data-action="click->clipboard#copy">
-          コピー
-        </button>
-      </div>
-
-      <p class="copy-message" data-clipboard-target="message" hidden>
-        リンクをコピーしました
+      <p>
+        ※ここに表示されるのは、LINE連携が完了しているメンバーのみです。<br>
+        ほかに連携したいメンバーがいる場合は、下記の招待リンクを送ってください。
       </p>
     </div>
+  </section>
 
-    <p>LINEやメールで送信してください。</p>
+  <section class="app-card">
+    <h2 class="card-header">家族を招待</h2>
+
+    <div class="app-card__body">
+      <p>
+        LINEでログインした家族と服薬スケジュールを共有できます。<br>
+        以下のURLを招待したい家族にLINEやメールで送信してください。
+      </p>
+
+      <div data-controller="clipboard">
+        <div class="invite-link-box">
+          <%= invite_link_icon %>
+
+          <input
+            type="text"
+            class="invite-url-field"
+            value="<%= invite_url(@family_link.token) %>"
+            readonly
+            data-clipboard-target="source">
+
+          <button
+            type="button"
+            class="copy-button"
+            data-action="click->clipboard#copy">
+            コピー
+          </button>
+        </div>
+
+        <p class="copy-message" data-clipboard-target="message" role="status" aria-live="polite" hidden>
+          リンクをコピーしました
+        </p>
+      </div>
+    </div>
   </section>
 </div>

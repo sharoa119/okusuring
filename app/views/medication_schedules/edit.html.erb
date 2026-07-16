@@ -1,5 +1,4 @@
 <% content_for :title, "お薬の予定を編集 | おくすリング" %>
-<% content_for :page_title, "お薬の予定を編集" %>
 <% content_for :description, "登録済みの服薬スケジュールを編集できます。" %>
 
-<%= render "form", medication_schedule: @medication_schedule %>
+<%= render "form", medication_schedule: @medication_schedule, page_title: "お薬の予定を編集" %>

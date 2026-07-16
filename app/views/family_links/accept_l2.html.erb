@@ -3,40 +3,44 @@
 
 <div class="invite-page">
   <section class="app-card">
-    <div class="invite-icon">
-      🎉
+    <div class="app-card__body">
+      <div class="invite-icon">
+        🎉
+      </div>
+
+      <h1>招待の確認が<br>
+      できました</h1>
+
+      <p class="invite-summary">
+        <strong><%= @owner.name %></strong> さんと<br>
+        家族共有を開始できます。
+      </p>
     </div>
-
-    <h1>招待の確認が<br>
-    できました</h1>
-
-    <p class="invite-summary">
-      <strong><%= @owner.name %></strong> さんと<br>
-      家族共有を開始できます。
-    </p>
   </section>
 
   <section class="app-card">
-    <h2>LINE BOT連携</h2>
+    <div class="app-card__body">
+      <h2>LINE BOT連携</h2>
 
-    <p class="status-message warning">
-      ⚠️ まだ「おくすリングBOT」と友達になっていません。
-    </p>
+      <p class="status-message warning">
+        ⚠️ まだ「おくすリングBOT」と友達になっていません。
+      </p>
 
-    <p>
-      通知を受け取るには、BOTを追加してください。
-    </p>
+      <p>
+        通知を受け取るには、BOTを追加してください。
+      </p>
 
-    <p>
-      <%= link_to "BOTを追加する",
-            "https://lin.ee/V1rMOS3",
-            class: "app-button app-button-primary" %>
-    </p>
+      <p>
+        <%= link_to "BOTを追加する",
+              "https://lin.ee/V1rMOS3",
+              class: "app-button app-button-primary" %>
+      </p>
 
-    <p class="invite-help-text">
-      BOTを追加すると、<br>
-      自動でこの画面に戻ります。<br>
-      続けて家族共有を開始できます。
-    </p>
+      <p class="invite-help-text">
+        BOTを追加すると、<br>
+        自動でこの画面に戻ります。<br>
+        続けて家族共有を開始できます。
+      </p>
+    </div>
   </section>
 </div>

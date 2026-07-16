@@ -3,45 +3,49 @@
 
 <div class="invite-page">
   <section class="app-card">
-    <div class="invite-icon">💌</div>
+    <div class="app-card__body">
+      <div class="invite-icon" aria-hidden="true">💌</div>
 
-    <h1>
-      家族から招待が<br>
-      届いています
-    </h1>
+      <h1>
+        家族から招待が<br>
+        届いています
+      </h1>
 
-    <p class="invite-summary">
-      <strong><%= @owner.name %></strong> さんから<br>
-      おくすリングに招待されています。
-    </p>
+      <p class="invite-summary">
+        <strong><%= @owner.name %></strong> さんから<br>
+        おくすリングに招待されています。
+      </p>
+    </div>
   </section>
 
   <section class="app-card invite-action-card">
-    <h2>おくすリングをはじめる</h2>
+    <div class="app-card__body">
+      <h2>おくすリングをはじめる</h2>
 
-    <p>
-      おくすリングでは、<br>
-      家族とお薬の予定を共有できます。
-    </p>
+      <p>
+        おくすリングでは、<br>
+        家族とお薬の予定を共有できます。
+      </p>
 
-    <p>
-      <%= link_to "おくすリングとは",
-          about_path(return_to: request.fullpath),
-          class: "text-link" %>
-    </p>
+      <p>
+        <%= link_to "おくすリングとは",
+            about_path(return_to: request.fullpath),
+            class: "text-link" %>
+      </p>
 
-    <p>
-      まずはLINEでログインしてください。
-    </p>
+      <p>
+        まずはLINEでログインしてください。
+      </p>
 
-    <%= button_to "LINEでログイン",
-          "/auth/line",
-          method: :post,
-          data: { turbo: false },
-          class: "app-button app-button-primary" %>
+      <%= button_to "LINEでログイン",
+            "/auth/line",
+            method: :post,
+            data: { turbo: false },
+            class: "app-button app-button-primary" %>
 
-    <p class="invite-note">
-      ログイン後、自動でこのページに戻ります。
-    </p>
+      <p class="invite-note">
+        ログイン後、自動でこのページに戻ります。
+      </p>
+    </div>
   </section>
 </div>
