@@ -23,6 +23,7 @@ module Dev
         dev_family
         dev_empty
         dev_bot_unlinked
+        dev_invitee
       ]
     end
   end

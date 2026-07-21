@@ -28,6 +28,13 @@ User.find_or_create_by!(line_user_id: 'dev_bot_unlinked') do |user|
   user.reminder_interval = 10
 end
 
+User.find_or_create_by!(line_user_id: 'dev_invitee') do |user|
+  user.name = '招待確認ユーザー'
+  user.line_bot_connected = true
+  user.reminder_enabled = true
+  user.reminder_interval = 10
+end
+
 self_schedule = owner.medication_schedules.find_or_create_by!(
   title: '朝と夜の薬',
   target_name: '自分'
