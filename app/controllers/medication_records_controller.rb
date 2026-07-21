@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class MedicationRecordsController < ApplicationController
-  def create
-    medication_time = MedicationTime.find(params[:medication_time_id])
+  before_action :require_login
+  before_action :set_medication_time
 
-    unless medication_time.taken_today?
-      medication_time.medication_records.create!(
+  def create
+    unless @medication_time.taken_today?
+      @medication_time.medication_records.create!(
         taken_date: Date.current
       )
     end
@@ -14,9 +15,16 @@ class MedicationRecordsController < ApplicationController
   end
 
   def destroy
-    medication_time = MedicationTime.find(params[:medication_time_id])
-    medication_time.medication_records.where(taken_date: Date.current).destroy_all
+    @medication_time.medication_records
+                    .where(taken_date: Date.current)
+                    .destroy_all
 
     redirect_to root_path, notice: '記録を取り消しました'
+  end
+
+  private
+
+  def set_medication_time
+    @medication_time = current_user.medication_times.find(params[:medication_time_id])
   end
 end
