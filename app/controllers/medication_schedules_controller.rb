@@ -6,24 +6,12 @@ class MedicationSchedulesController < ApplicationController
   def show
     @medication_schedule = MedicationSchedule.find(params[:id])
 
-    owner = @medication_schedule.user == current_user
-
-    family_member = FamilyLink.exists?(
-      owner_user: @medication_schedule.user,
-      member_user: current_user,
-      status: 'accepted'
-    ) || FamilyLink.exists?(
-      owner_user: current_user,
-      member_user: @medication_schedule.user,
-      status: 'accepted'
-    )
-
-    unless owner || family_member
+    unless @medication_schedule.viewable_by?(current_user)
       redirect_to root_path, alert: 'この予定は閲覧できません'
       return
     end
 
-    @readonly = !owner
+    @readonly = @medication_schedule.user != current_user
   end
 
   def new
