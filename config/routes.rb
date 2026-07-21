@@ -23,10 +23,9 @@ Rails.application.routes.draw do
   resources :medication_times, only: [] do
     resources :medication_records, only: %i[create destroy]
   end
-  resources :family_links, only: %i[index create destroy]
 
-  get 'notification_settings', to: 'notification_settings#show'
-  patch 'notification_settings', to: 'notification_settings#update'
+  resources :family_links, only: %i[index create destroy]
+  resource :notification_settings, only: %i[show update]
 
   # LINE関連
   get '/invite/:token', to: 'family_links#accept', as: :invite
