@@ -9,7 +9,7 @@ module Dev
     end
 
     def create
-      user = User.find_by!(line_user_id: params[:line_user_id])
+      user = User.find_by!(line_user_id: params.expect(:line_user_id))
       session[:user_id] = user.id
 
       redirect_to root_path, notice: "#{user.name}としてログインしました"

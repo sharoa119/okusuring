@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '4.0.6'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.2.3', '>= 7.2.3.1'
+gem 'rails', '~> 8.0.5', '>= 8.0.5.1'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -60,7 +60,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rubocop-rails', require: false
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3', '~> 2.1'
 end
 
 group :development do

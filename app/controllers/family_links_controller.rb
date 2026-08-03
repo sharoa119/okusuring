@@ -13,7 +13,7 @@ class FamilyLinksController < ApplicationController
   end
 
   def accept
-    @family_link = FamilyLink.find_by!(token: params[:token])
+    @family_link = FamilyLink.find_by!(token: params.expect(:token))
     @owner = @family_link.owner_user
 
     if current_user.nil?
@@ -41,7 +41,7 @@ class FamilyLinksController < ApplicationController
   end
 
   def destroy
-    family_link = current_user.owned_family_links.find(params[:id])
+    family_link = current_user.owned_family_links.find(params.expect(:id))
 
     family_link.destroy
 
