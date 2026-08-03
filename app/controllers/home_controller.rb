@@ -9,8 +9,8 @@ class HomeController < ApplicationController
 
       @owned_family_links = current_user.owned_family_links
 
-      owned_links = current_user.owned_family_links.where(status: 'accepted')
-      joined_links = current_user.joined_family_links.where(status: 'accepted')
+      owned_links = current_user.owned_family_links.accepted
+      joined_links = current_user.joined_family_links.accepted
 
       family_users =
         owned_links.map(&:member_user).compact +

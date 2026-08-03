@@ -83,6 +83,6 @@ class MedicationNotifier
   end
 
   def family_links
-    FamilyLink.where(owner_user: @user, status: 'accepted')
+    @user.owned_family_links.accepted
   end
 end

@@ -8,7 +8,7 @@
     <h2 class="card-header">家族一覧</h2>
 
     <div class="app-card__body">
-      <% accepted_links = current_user.owned_family_links.where(status: "accepted") %>
+      <% accepted_links = current_user.owned_family_links.accepted %>
 
       <% if accepted_links.any? %>
         <ul>
