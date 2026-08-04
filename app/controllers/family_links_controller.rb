@@ -4,6 +4,10 @@ class FamilyLinksController < ApplicationController
   before_action :require_login, except: [:accept]
 
   def index
+    @accepted_links = current_user.owned_family_links
+                                  .accepted
+                                  .order(:created_at, :id)
+
     @family_link = current_user.owned_family_links
                                .pending
                                .first_or_create!(
@@ -17,7 +21,7 @@ class FamilyLinksController < ApplicationController
 
     if current_user.nil?
       session[:return_to_after_login] = invite_path(@family_link.token)
-      render :accept
+      render :login_required
 
     elsif @family_link.owner_user == current_user
       redirect_to root_path,
@@ -27,13 +31,13 @@ class FamilyLinksController < ApplicationController
       redirect_to root_path, notice: 'すでに家族共有されています'
 
     elsif !current_user.line_bot_connected?
-      render :accept_l2
+      render :line_bot_required
 
     else
       @family_link.member_user = current_user
       @family_link.accepted!
 
-      render :accept_l3
+      render :accepted
     end
   end
 
