@@ -35,13 +35,13 @@ class MedicationNotifier
   end
 
   def first_notification?
-    scheduled_time > @check_start_time &&
-      scheduled_time <= @current_time
+    scheduled_time.after?(@check_start_time) &&
+      !scheduled_time.after?(@current_time)
   end
 
   def reminder_notification?
-    reminder_time > @check_start_time &&
-      reminder_time <= @current_time
+    reminder_time.after?(@check_start_time) &&
+      !reminder_time.after?(@current_time)
   end
 
   def scheduled_time
