@@ -80,7 +80,7 @@
 ## 動作環境
 
 - Ruby 4.0.6
-- Ruby on Rails 7.1.6
+- Ruby on Rails 8.1.3.1
 - SQLite3（開発・テスト環境）
 - PostgreSQL（本番環境）
 
