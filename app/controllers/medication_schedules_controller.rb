@@ -62,7 +62,7 @@ class MedicationSchedulesController < ApplicationController
         :memo,
         :reminder_interval,
         :reminder_enabled,
-        { medication_times_attributes: %i[id time _destroy] }
+        { medication_times_attributes: [%i[id time _destroy]] }
       ]
     )
   end
