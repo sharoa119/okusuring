@@ -4,6 +4,8 @@ class LineBotController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def callback
+    return head :ok if params[:events].blank?
+
     event = params.expect(events: [[{ source: [:userId] }]]).first
     user_id = event.dig('source', 'userId')
 

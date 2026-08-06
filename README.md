@@ -14,7 +14,7 @@
 
 ## URL
 
-[おくすリング](https://okusuring.onrender.com)
+[おくすリング](https://okusuring.com)
 
 ## 基本的な使い方
 

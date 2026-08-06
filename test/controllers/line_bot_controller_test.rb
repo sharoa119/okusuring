@@ -26,4 +26,13 @@ class LineBotControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'OK', response.body
     assert_predicate user.reload, :line_bot_connected?
   end
+
+  test 'イベントが空でも成功を返す' do
+    post webhook_path, params: {
+      destination: 'test_destination',
+      events: []
+    }, as: :json
+
+    assert_response :success
+  end
 end
