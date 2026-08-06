@@ -4,7 +4,7 @@ class LineBotController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def callback
-    event = params[:events].first
+    event = params.expect(events: [[{ source: [:userId] }]]).first
     user_id = event.dig('source', 'userId')
 
     Rails.logger.info("LINE user_id: #{user_id}")

@@ -16,6 +16,6 @@ class NotificationSettingsController < ApplicationController
   private
 
   def notification_setting_params
-    params.require(:user).permit(:reminder_enabled, :reminder_interval)
+    params.expect(user: %i[reminder_enabled reminder_interval])
   end
 end

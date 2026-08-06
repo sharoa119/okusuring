@@ -16,4 +16,9 @@ class User < ApplicationRecord
            foreign_key: :member_user_id,
            inverse_of: :member_user,
            dependent: :nullify
+
+  def shared_with?(viewer)
+    owned_family_links.accepted.exists?(member_user: viewer) ||
+      joined_family_links.accepted.exists?(owner_user: viewer)
+  end
 end

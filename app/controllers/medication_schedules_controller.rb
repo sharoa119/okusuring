@@ -4,7 +4,7 @@ class MedicationSchedulesController < ApplicationController
   before_action :require_login
 
   def show
-    @medication_schedule = MedicationSchedule.find(params[:id])
+    @medication_schedule = MedicationSchedule.find(params.expect(:id))
 
     unless @medication_schedule.viewable_by?(current_user)
       redirect_to root_path, alert: 'この予定は閲覧できません'
@@ -20,7 +20,7 @@ class MedicationSchedulesController < ApplicationController
   end
 
   def edit
-    @medication_schedule = current_user.medication_schedules.find(params[:id])
+    @medication_schedule = current_user.medication_schedules.find(params.expect(:id))
   end
 
   def create
@@ -34,7 +34,7 @@ class MedicationSchedulesController < ApplicationController
   end
 
   def update
-    @medication_schedule = current_user.medication_schedules.find(params[:id])
+    @medication_schedule = current_user.medication_schedules.find(params.expect(:id))
 
     if @medication_schedule.update(medication_schedule_params)
       redirect_to @medication_schedule, notice: '更新しました'
@@ -45,7 +45,7 @@ class MedicationSchedulesController < ApplicationController
 
   def destroy
     @medication_schedule =
-      current_user.medication_schedules.find(params[:id])
+      current_user.medication_schedules.find(params.expect(:id))
 
     @medication_schedule.destroy
 
@@ -55,9 +55,15 @@ class MedicationSchedulesController < ApplicationController
   private
 
   def medication_schedule_params
-    params.require(:medication_schedule)
-          .permit(:title, :target_name, :memo, :reminder_interval, :reminder_enabled, medication_times_attributes: %i[
-                    id time _destroy
-                  ])
+    params.expect(
+      medication_schedule: [
+        :title,
+        :target_name,
+        :memo,
+        :reminder_interval,
+        :reminder_enabled,
+        { medication_times_attributes: [%i[id time _destroy]] }
+      ]
+    )
   end
 end

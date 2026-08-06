@@ -25,6 +25,6 @@ class MedicationRecordsController < ApplicationController
   private
 
   def set_medication_time
-    @medication_time = current_user.medication_times.find(params[:medication_time_id])
+    @medication_time = current_user.medication_times.find(params.expect(:medication_time_id))
   end
 end
