@@ -5,7 +5,11 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth']
 
     user = User.find_or_create_by(line_user_id: auth.uid)
-    user.update(name: auth.info.name)
+
+    user.update(
+      name: auth.info.name,
+      line_picture_url: auth.info.image
+    )
 
     session[:user_id] = user.id
 
