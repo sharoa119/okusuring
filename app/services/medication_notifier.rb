@@ -75,9 +75,17 @@ class MedicationNotifier
 
       Rails.logger.info("家族通知: #{family_user.name} に送信")
 
+      message = <<~MESSAGE
+        💊 #{@user.name}さんの「#{@medication_schedule.title}」の飲んだよが確認できません。
+        声をかけてみてください。
+
+        おくすリング
+        #{ENV.fetch('APP_URL', nil)}
+      MESSAGE
+
       LineBotClient.push_text(
         family_user.line_user_id,
-        "💊 #{@user.name}さんの「#{@medication_schedule.title}」の飲んだよが確認できません。声をかけてみてください。"
+        message
       )
     end
   end
