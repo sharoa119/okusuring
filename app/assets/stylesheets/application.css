@@ -890,6 +890,7 @@ textarea {
   border-radius: 50%;
   background: #eef5f1;
   font-size: 1.4rem;
+  object-fit: cover;
 }
 
 .family-status {
