@@ -13,7 +13,13 @@
           <% @accepted_links.each do |link| %>
             <li class="family-member">
               <div class="family-member-row">
-                <span class="family-icon" aria-hidden="true">👤</span>
+                <% if link.member_user.line_picture_url.present? %>
+                  <%= image_tag link.member_user.line_picture_url,
+                        class: "family-icon",
+                        alt: "#{link.member_user.name}さんのプロフィール画像" %>
+                <% else %>
+                  <span class="family-icon" aria-hidden="true">👤</span>
+                <% end %>
 
                 <strong class="family-member-name">
                   <%= link.member_user.name %>
