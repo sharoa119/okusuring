@@ -4,9 +4,12 @@ class FamilyLinksController < ApplicationController
   before_action :require_login, except: [:accept]
 
   def index
-    @accepted_links = current_user.owned_family_links
-                                  .accepted
-                                  .order(:created_at, :id)
+    @accepted_links = FamilyLink
+                      .accepted
+                      .where(owner_user: current_user)
+                      .or(FamilyLink.accepted.where(member_user: current_user))
+                      .includes(:owner_user, :member_user)
+                      .order(:created_at, :id)
 
     @family_link = current_user.owned_family_links
                                .pending
