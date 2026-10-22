@@ -61,7 +61,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rubocop-rails', require: false
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 2.1'
+  gem 'sqlite3', '~> 2.10'
 end
 
 group :development do
