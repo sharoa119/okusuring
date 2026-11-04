@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :medication_records, only: %i[create destroy]
   end
 
+  resources :medication_histories, only: %i[index]
   resources :family_links, only: %i[index create destroy]
   resource :notification_settings, only: %i[show update]
 
