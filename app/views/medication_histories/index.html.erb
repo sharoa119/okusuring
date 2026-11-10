@@ -19,6 +19,8 @@
 
             <% if time.taken_on?(date) %>
               <%= medication_status_badge(true) %>
+            <% elsif date == Date.current && time.time.seconds_since_midnight > Time.current.seconds_since_midnight %>
+              <span class="med-status pending">予定</span>
             <% else %>
               <span class="med-status pending">未</span>
             <% end %>
