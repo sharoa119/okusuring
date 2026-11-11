@@ -1360,3 +1360,55 @@ input[type="submit"]:active {
   font-size: 1.1em;
   color: #5a4436;
 }
+
+/* ===== 服薬履歴ページ ===== */
+
+.history-description {
+  margin: 12px 0 24px;
+  color: var(--color-text-secondary);
+}
+
+.history-period {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.history-period__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.history-calendar-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-text-secondary);
+  border-radius: 4px;
+}
+
+.history-calendar-icon::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  border-top: 2px solid var(--color-text-secondary);
+}
+
+.history-period__badge {
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: #e0f3e5;
+  color: #27834a;
+  font-size: 0.9rem;
+}
+
+.history-divider {
+  margin-bottom: 24px;
+  border-top: 1px solid var(--color-border);
+}

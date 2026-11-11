@@ -3,7 +3,19 @@
 <div class="page-container">
   <h1 class="page-title">服薬履歴</h1>
 
-  <p>過去7日間の服薬記録</p>
+  <p class="history-description">
+    毎日の服薬状況を振り返ってみましょう。
+  </p>
+
+  <div class="history-period">
+    <div class="history-period__label">
+      <span class="history-calendar-icon" aria-hidden="true"></span>
+      <span>過去7日間</span>
+    </div>
+    <span class="history-period__badge">7日分</span>
+  </div>
+
+  <div class="history-divider"></div>
 
   <% @dates.reverse_each do |date| %>
     <section class="app-card">
