@@ -1,0 +1,44 @@
+<% content_for :title, "服薬履歴 | おくすリング" %>
+
+<div class="page-container">
+  <h1 class="page-title">服薬履歴</h1>
+
+  <p class="history-description">
+    毎日の服薬状況を振り返ってみましょう。
+  </p>
+
+  <div class="history-period">
+    <div class="history-period__label">
+      <span class="history-calendar-icon" aria-hidden="true"></span>
+      <span>過去7日間</span>
+    </div>
+    <span class="history-period__badge">7日分</span>
+  </div>
+
+  <div class="history-divider"></div>
+
+  <% @dates.reverse_each do |date| %>
+    <section class="app-card">
+      <h2 class="card-header">
+        <%= date.strftime("%-m月%-d日（%a）") %>
+      </h2>
+
+      <div class="app-card__body">
+        <% @medication_times.each do |time| %>
+          <p>
+            <%= time.medication_schedule.title %>
+            （<%= time.time.strftime("%H:%M") %>）
+
+            <% if time.taken_on?(date) %>
+              <%= medication_status_badge(true) %>
+            <% elsif date == Date.current && time.time.seconds_since_midnight > Time.current.seconds_since_midnight %>
+              <span class="med-status pending">予定</span>
+            <% else %>
+              <span class="med-status pending">未</span>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+</div>
