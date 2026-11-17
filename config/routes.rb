@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :announcements, only: %i[index show]
+
   get 'about', to: 'pages#about'
   get 'terms', to: 'pages#terms'
   get 'privacy', to: 'pages#privacy'
