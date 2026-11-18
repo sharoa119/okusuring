@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :announcements, only: %i[index show]
+  resources :announcements, only: %i[index show new create edit update destroy]
 
   get 'about', to: 'pages#about'
   get 'terms', to: 'pages#terms'

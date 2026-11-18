@@ -5,18 +5,43 @@
 
   <section class="app-card">
     <h2 class="card-header">
-      <%= @announcement.published_at.strftime("%Y年%m月%d日") %>
+      <% if @announcement.published_at.present? %>
+        <%= @announcement.published_at.strftime("%Y年%m月%d日") %>
+      <% else %>
+        未公開
+      <% end %>
+
       <span class="announcement-category <%= announcement_category_class(@announcement.category) %>">
         <%= @announcement.category %>
       </span>
+
+      <% if current_user.admin? %>
+        <span class="announcement-status">
+          <%= announcement_status_label(@announcement) %>
+        </span>
+      <% end %>
     </h2>
 
     <div class="app-card__body">
       <h3 class="announcement-title"><%= @announcement.title %></h3>
 
-      <p class="announcement-body">
-        <%= simple_format(@announcement.body) %>
-      </p>
+      <div class="announcement-body">
+        <%= announcement_body_with_links(@announcement.body) %>
+      </div>
+
+      <% if current_user.admin? %>
+        <div class="announcement-admin-actions">
+          <%= link_to "編集",
+                      edit_announcement_path(@announcement),
+                      class: "announcement-link" %>
+
+          <%= button_to "削除",
+                        announcement_path(@announcement),
+                        method: :delete,
+                        class: "button button--danger",
+                        form: { data: { turbo_confirm: "このお知らせを削除しますか？" } } %>
+        </div>
+      <% end %>
     </div>
   </section>
 

@@ -54,4 +54,15 @@ class AnnouncementTest < ActiveSupport::TestCase
     assert_not_includes announcements, Announcement.find_by!(title: '下書き')
     assert_not_includes announcements, Announcement.find_by!(title: '公開予約')
   end
+
+  test 'カテゴリーは指定された3種類以外を登録できない' do
+    announcement = Announcement.new(
+      title: 'テストのお知らせ',
+      body: '本文です。',
+      category: 'イベント'
+    )
+
+    assert_not announcement.valid?
+    assert_includes announcement.errors.attribute_names, :category
+  end
 end

@@ -1,0 +1,17 @@
+<% content_for :title, "お知らせを新規作成 | おくすリング" %>
+
+<div class="page-container">
+  <h1 class="page-title">お知らせを新規作成</h1>
+
+  <section class="app-card">
+    <div class="app-card__body">
+      <%= render "form", announcement: @announcement %>
+    </div>
+  </section>
+
+  <div class="announcement-back">
+    <%= link_to "お知らせ一覧に戻る",
+                announcements_path,
+                class: "announcement-link" %>
+  </div>
+</div>
