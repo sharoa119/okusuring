@@ -1412,3 +1412,80 @@ input[type="submit"]:active {
   margin-bottom: 24px;
   border-top: 1px solid var(--color-border);
 }
+
+/* ===== お知らせページ ===== */
+
+.announcement-description {
+  margin: 12px 0 24px;
+  color: var(--color-text-secondary);
+}
+
+.announcement-link {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.announcement-link:hover {
+  text-decoration: underline;
+}
+
+.announcement-body {
+  margin-top: 16px;
+  color: var(--color-text);
+  line-height: 1.8;
+}
+
+.announcement-back {
+  margin-top: 24px;
+}
+
+.announcement-back a {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.announcement-back a:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.announcement-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* お知らせカテゴリーラベル */
+
+.announcement-category {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.announcement-category--new {
+  background-color: #e0f3e5;
+  color: #27834a;
+}
+
+.announcement-category--improvement {
+  background-color: #fff0db;
+  color: #a65b16;
+}
+
+.announcement-category--other {
+  background-color: #eef1f3;
+  color: #5f6b70;
+}

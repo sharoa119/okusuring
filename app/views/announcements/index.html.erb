@@ -1,0 +1,55 @@
+<% content_for :title, "お知らせ一覧 | おくすリング" %>
+
+<div class="page-container">
+  <h1 class="page-title">お知らせ</h1>
+
+  <p class="announcement-description">
+    おくすリングからのお知らせをお届けします。
+  </p>
+
+  <% if current_user.admin? %>
+    <div class="announcement-admin-actions">
+      <%= link_to "お知らせを新規作成",
+                  new_announcement_path,
+                  class: "announcement-link" %>
+    </div>
+  <% end %>
+
+  <div class="history-divider"></div>
+
+  <% if @announcements.any? %>
+    <% @announcements.each do |announcement| %>
+      <section class="app-card">
+        <h2 class="card-header">
+          <% if announcement.published_at.present? %>
+            <%= announcement.published_at.strftime("%Y年%m月%d日") %>
+          <% else %>
+            未公開
+          <% end %>
+
+          <span class="announcement-category <%= announcement_category_class(announcement.category) %>">
+            <%= announcement.category %>
+          </span>
+
+          <% if current_user.admin? %>
+            <span class="announcement-status">
+              <%= announcement_status_label(announcement) %>
+            </span>
+          <% end %>
+        </h2>
+
+        <div class="app-card__body">
+          <% if current_user.admin? || (announcement.published_at.present? && announcement.published_at <= Time.current) %>
+            <%= link_to announcement.title,
+                        announcement_path(announcement),
+                        class: "announcement-link" %>
+          <% else %>
+            <%= announcement.title %>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  <% else %>
+    <p>現在、お知らせはありません。</p>
+  <% end %>
+</div>

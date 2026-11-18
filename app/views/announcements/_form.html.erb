@@ -1,0 +1,40 @@
+<%= form_with model: announcement do |f| %>
+  <% if announcement.errors.any? %>
+    <div class="error-messages">
+      <p>入力内容を確認してください。</p>
+      <ul>
+        <% announcement.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category, "カテゴリー" %>
+    <%= f.select :category,
+                 ["新機能", "改善・修正", "その他"],
+                 { prompt: "カテゴリーを選択してください" },
+                 required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, "本文" %>
+    <%= f.text_area :body, rows: 10, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :published_at, "公開日時" %>
+    <%= f.datetime_local_field :published_at %>
+    <p>空欄の場合は下書きとして保存されます。</p>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit announcement.persisted? ? "お知らせを更新する" : "お知らせを登録する" %>
+  </div>
+<% end %>
