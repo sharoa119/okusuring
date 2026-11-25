@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_17_051232) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_20_003000) do
+  create_table "announcement_reads", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "announcement_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announcement_id"], name: "index_announcement_reads_on_announcement_id"
+    t.index ["user_id", "announcement_id"], name: "index_announcement_reads_on_user_id_and_announcement_id", unique: true
+    t.index ["user_id"], name: "index_announcement_reads_on_user_id"
+  end
+
   create_table "announcements", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
@@ -75,6 +85,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_17_051232) do
     t.index ["line_user_id"], name: "index_users_on_line_user_id", unique: true
   end
 
+  add_foreign_key "announcement_reads", "announcements"
+  add_foreign_key "announcement_reads", "users"
   add_foreign_key "medication_records", "medication_times"
   add_foreign_key "medication_schedules", "users"
   add_foreign_key "medication_times", "medication_schedules"

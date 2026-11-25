@@ -1115,6 +1115,7 @@ input.invite-url-field {
 }
 
 .hamburger-menu summary {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1500,4 +1501,33 @@ input[type="submit"]:active {
 .announcement-category--other {
   background-color: #eef1f3;
   color: #5f6b70;
+}
+
+.announcement-new {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.menu-new-dot {
+  position: absolute;
+  top: 6px;
+  right: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #e74c3c;
+  box-shadow: 0 0 0 2px var(--color-surface, #fff);
+}
+
+.hamburger-menu details[open] .menu-new-dot {
+  display: none;
 }

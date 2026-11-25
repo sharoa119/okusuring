@@ -31,6 +31,10 @@
             <%= announcement.category %>
           </span>
 
+          <% if announcement.published? && !@read_announcement_ids.include?(announcement.id) %>
+            <span class="announcement-new">NEW</span>
+          <% end %>
+
           <% if current_user.admin? %>
             <span class="announcement-status">
               <%= announcement_status_label(announcement) %>
@@ -39,10 +43,12 @@
         </h2>
 
         <div class="app-card__body">
-          <% if current_user.admin? || (announcement.published_at.present? && announcement.published_at <= Time.current) %>
+          <% if current_user.admin? || announcement.published? %>
+            <%# マウスを乗せただけで詳細が先読みされ、既読になってしまうのを防ぐ %>
             <%= link_to announcement.title,
                         announcement_path(announcement),
-                        class: "announcement-link" %>
+                        class: "announcement-link",
+                        data: { turbo_prefetch: false } %>
           <% else %>
             <%= announcement.title %>
           <% end %>
