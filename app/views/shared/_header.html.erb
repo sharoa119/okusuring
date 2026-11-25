@@ -23,17 +23,30 @@
     </div>
 
     <% if current_user %>
+      <% has_new_announcements = current_user.unread_announcements? %>
       <nav class="hamburger-menu">
         <details
           data-controller="menu"
           data-action="click@window->menu#close">
-          <summary aria-label="メニュー">☰</summary>
+          <summary aria-label="<%= has_new_announcements ? "メニュー（新しいお知らせがあります）" : "メニュー" %>">
+            ☰
+            <% if has_new_announcements %>
+              <span class="menu-new-dot" aria-hidden="true"></span>
+            <% end %>
+          </summary>
 
           <ul>
             <li><%= link_to "家族共有設定", family_links_path %></li>
             <li><%= link_to "通知設定", notification_settings_path %></li>
             <li><%= link_to "服薬履歴", medication_histories_path %></li>
-            <li><%= link_to "お知らせ", announcements_path %></li>
+            <li>
+              <%= link_to announcements_path do %>
+                お知らせ
+                <% if has_new_announcements %>
+                  <span class="announcement-new">NEW</span>
+                <% end %>
+              <% end %>
+            </li>
             <li><%= link_to "このサービスについて", about_path %></li>
             <li><%= link_to "利用規約", terms_path %></li>
             <li><%= link_to "プライバシーポリシー", privacy_path %></li>
